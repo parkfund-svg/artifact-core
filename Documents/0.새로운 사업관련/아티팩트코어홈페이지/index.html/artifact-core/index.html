@@ -40,6 +40,12 @@
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial
     }
 
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
     a {
       color: inherit;
       text-decoration: none
@@ -52,7 +58,7 @@
 
     /* Layout */
     .container {
-      max-width: 1140px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 0 20px
     }
@@ -214,7 +220,7 @@
 
     /* Sections */
     section {
-      padding: 80px 0;
+      padding: 96px 0;
       border-top: 1px solid var(--border)
     }
 
@@ -262,6 +268,8 @@
     }
 
     /* COMPANY / FAQ / CONTACT use white background and dark text for readability */
+    section#history,
+    section#financials,
     section#company,
     section#faq,
     section#contact {
@@ -326,6 +334,7 @@
     footer {
       background: rgba(3, 10, 26, 0.904);
       border-top: 1px solid var(--border);
+      margin-top: auto;
     }
 
     /* Text color overrides for sections with background images */
@@ -404,11 +413,11 @@
     }
 
     .grid.cols-3 {
-      grid-template-columns: repeat(3, 1fr)
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))
     }
 
     .grid.cols-2 {
-      grid-template-columns: repeat(2, 1fr)
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr))
     }
 
     .card {
@@ -517,6 +526,23 @@
       background: #070b15
     }
 
+    .metric-number {
+      font-size: 32px;
+      font-weight: 800;
+      margin: 6px 0 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .history-card {
+      background: #f7f9fc;
+      color: #0d1a2f;
+      border: 1px solid rgba(36,50,68,0.12);
+      box-shadow: 0 6px 16px rgba(12,21,40,0.06);
+    }
+    .history-card .meta {
+      color: #243244;
+    }
+
     .demo-caption {
       padding: 12px 16px;
       color: var(--muted);
@@ -602,18 +628,15 @@
         <img src="./assets/logo.png" alt="아티팩트코어 로고" class="logo" />
         (주)아티팩트코어
         <nav class="menu" aria-label="주요 메뉴">
+          <a href="#home">HOME</a>
           <a href="#hats">HATS</a>
           <a href="#products">PRODUCTS</a>
-          <a href="#demo">DEMO</a>
-          <a href="#pricing">PRICING</a>
+          <a href="#history">개발연혁</a>
+          <a href="#financials">재무전망</a>
           <a href="#cases">CASES</a>
-          <a href="#company">COMPANY</a>
+          <a href="#company">회사소개</a>
           <a href="#contact">CONTACT</a>
         </nav>
-        <div class="cta">
-          <a class="btn" href="#pricing">요금제</a>
-          <a class="btn primary" href="#contact">데모 신청</a>
-        </div>
     </div>
   </header>
 
@@ -818,27 +841,141 @@
     </div>
   </section>
 
+  <!-- History -->
+  <section id="history">
+    <div class="container">
+      <h2>개발 연혁</h2>
+      <p class="section-desc">ATS에서 HATS까지, 매 분기 성능을 끌어올리며 하이브리드 AI 트레이딩을 완성했습니다.</p>
+      <div class="grid cols-3" style="gap:16px">
+        <div class="card history-card">
+          <span class="badge">2024.04</span>
+          <h3>ATS 개발 시작</h3>
+          <p class="meta">초저비용 AI 거래 시스템 기초 설계</p>
+        </div>
+        <div class="card history-card">
+          <span class="badge">2024.07</span>
+          <h3>ATS v1.0 출시</h3>
+          <p class="meta">베타 상용화, 초기 트레이더 확보</p>
+        </div>
+        <div class="card history-card">
+          <span class="badge">2024.10</span>
+          <h3>STS 출시</h3>
+          <p class="meta">안정성/다중 전략 지원 강화</p>
+        </div>
+        <div class="card history-card">
+          <span class="badge">2025.02</span>
+          <h3>Super Trading AI</h3>
+          <p class="meta">LLM 기반 자동 전략 설계 탑재</p>
+        </div>
+        <div class="card history-card">
+          <span class="badge">2025.04</span>
+          <h3>God AI System</h3>
+          <p class="meta">엔터프라이즈급 신호 엔진·B2B API</p>
+        </div>
+        <div class="card history-card">
+          <span class="badge">2025.07</span>
+          <h3>HATS 출시</h3>
+          <p class="meta">Brain–Artifact–Hand 완전 통합</p>
+        </div>
+        <div class="card history-card">
+          <span class="badge">2025.10</span>
+          <h3>HATS 2.5</h3>
+          <p class="meta">멀티자산 지원, 리스크 엔진 고도화</p>
+        </div>
+        <div class="card history-card">
+          <span class="badge">2026.01</span>
+          <h3>HATS 3.0 (예정)</h3>
+          <p class="meta">완전 자동화 플랫폼 · 차트 매매선 AI 통합</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Financials -->
+  <section id="financials">
+    <div class="container">
+      <h2>재무 전망 및 가치</h2>
+      <p class="section-desc">B2C 구독과 B2B API 계약을 기반으로 성장하는 재무 트랙션과 기업 가치 전망입니다.</p>
+      <div class="grid cols-3">
+        <div class="card" style="text-align:center">
+          <div class="metric-number" style="color:var(--accent)">5억+</div>
+          <h4 style="margin:0 0 6px">2025년 예상 매출</h4>
+          <p class="meta">SaaS 구독 + 엔터프라이즈 API</p>
+        </div>
+        <div class="card" style="text-align:center">
+          <div class="metric-number" style="color:var(--green)">30%</div>
+          <h4 style="margin:0 0 6px">연 매출 성장률</h4>
+          <p class="meta">2024–2026년 CAGR 가정</p>
+        </div>
+        <div class="card" style="text-align:center">
+          <div class="metric-number" style="color:#3fa9f5">50억+</div>
+          <h4 style="margin:0 0 6px">기업 가치 평가</h4>
+          <p class="meta">2026년 Series A 밸류에이션 가정</p>
+        </div>
+      </div>
+
+      <div class="grid cols-2" style="margin-top:20px">
+        <div class="card">
+          <h4 style="margin:0 0 10px">추정 손익 및 매출</h4>
+          <table style="width:100%;border-collapse:collapse;font-size:14px">
+            <thead>
+              <tr style="background:rgba(15,22,40,0.05)"><th style="padding:8px;text-align:left">연도</th><th style="padding:8px;text-align:right">매출</th><th style="padding:8px;text-align:right">비고</th></tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:8px">2024A</td><td style="padding:8px;text-align:right">3억</td><td style="padding:8px;text-align:right">파일럿·베타</td></tr>
+              <tr><td style="padding:8px">2025E</td><td style="padding:8px;text-align:right">5억+</td><td style="padding:8px;text-align:right">SaaS 구독 + API</td></tr>
+              <tr><td style="padding:8px">2026E</td><td style="padding:8px;text-align:right">7억~9억</td><td style="padding:8px;text-align:right">해외 파트너 확장</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h4 style="margin:0 0 10px">기업 가치 산정 가정</h4>
+          <ul class="list" style="margin-left:16px">
+            <li>멀티플: SaaS 8~10x / API 6~8x 혼합 적용</li>
+            <li>코호트 잔존율 90%+ 가정, 업셀 비율 20%</li>
+            <li>리스크: 시장 변동성, 규제, 거래소 파트너 의존도</li>
+          </ul>
+          <div style="margin-top:12px"><a class="btn primary" href="재무추정.pdf" download>재무추정 PDF 보기</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Company -->
   <section id="company">
     <div class="container">
       <h2>회사 소개</h2>
-      <p class="section-desc">아티팩트 코어는 LLM과 로컬 ML을 결합한 하이브리드 AI 트레이딩 시스템을 제공합니다.</p>
-      <div class="grid cols-2" style="margin-top:28px">
+      <p class="section-desc">하이브리드 AI 트레이딩을 실현하는 (주) 아티팩트 코어의 핵심 정보입니다.</p>
+
+      <div class="grid cols-2" style="gap:20px">
         <div class="card">
-          <h3>회사 소개</h3>
-          <p class="meta">Brain–Artifact–Hand 아키텍처를 기반으로 한 초저비용·초저지연 AI 자동매매 솔루션을 제공합니다. LLM의 전략 설계 능력과 로컬 ML의 고속 실행을 결합하여 운영 비용을 낮추고 실시간 대응력을 확보합니다.</p>
+          <h3>회사 개요</h3>
+          <p class="meta" style="margin-bottom:10px"><strong>회사명:</strong> (주) 아티팩트 코어</p>
+          <p class="meta" style="margin-bottom:10px"><strong>대표:</strong> 박규현</p>
+          <p class="meta" style="margin-bottom:10px"><strong>주소:</strong> 서울시 서초구 서초중앙로 110, B층(A190호)</p>
+          <p class="meta" style="margin-bottom:10px"><strong>연락처:</strong> 02-588-2844 / 010-7600-2927</p>
+          <p class="meta" style="margin-bottom:10px"><strong>이메일:</strong> <a href="mailto:parkfund@naver.com" style="color:var(--brand)">parkfund@naver.com</a></p>
           <h4 style="margin-top:14px">경영 철학</h4>
-          <p class="meta">신뢰성, 비용 효율성, 지속적 개선을 최우선으로 합니다. 모든 의사결정은 데이터에 기반하며 엔지니어링 품질, 고객과의 투명한 소통, 장기적인 파트너십을 중시합니다.</p>
-          <h4 style="margin-top:12px">개발자 역량</h4>
-          <p class="meta">시계열 머신러닝과 저지연 시스템 설계, 운영 환경 통합에 대한 풍부한 경험을 갖춘 개발팀입니다. 주요 역량은 시그널 엔지니어링, 주문 라우팅, 리스크 엔진 설계 및 확장 가능한 데이터 파이프라인 구축이며, Python, C++, Docker, WebSocket/REST 등 실무 기술을 보유하고 있습니다.</p>
+          <p class="meta">신뢰성, 비용 효율성, 지속적 개선을 최우선으로 하며, 데이터 기반 의사결정과 투명한 파트너십을 지향합니다.</p>
         </div>
+
         <div class="card">
-          <h3>오시는 길</h3>
-          <div style="margin-top:12px;border-radius:8px;overflow:hidden;height:300px">
-            <iframe src="https://maps.google.com/maps?q=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EC%84%9C%EC%B4%88%EC%A4%91%EC%95%99%EB%A1%9C%20110&t=&z=17&ie=UTF8&iwloc=&output=embed" style="width:100%;height:100%;border:none;filter:brightness(0.95)" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <h3>문서 및 제안서</h3>
+          <p class="meta" style="margin-bottom:12px">사업화 전략과 투자 제안서, 재무추정 자료를 PDF로 확인하세요.</p>
+          <div style="display:grid;gap:10px">
+            <a class="btn primary" href="투자유치및 사업화전략분석보고서.pdf" download>사업화전략 분석보고서 PDF</a>
+            <a class="btn" href="재무추정.pdf" download>재무추정 자료 PDF</a>
           </div>
-          <p class="meta" style="margin-top:12px;text-align:center">서울시 서초구 서초중앙로 110, B층(A190호)</p>
+          <p class="meta" style="margin-top:12px;font-size:12px">※ 파일이 보이지 않으면 레포지토리에 PDF를 함께 올려주세요.</p>
         </div>
+      </div>
+
+      <div class="card" style="margin-top:28px">
+        <h3>오시는 길</h3>
+        <div style="margin-top:12px;border-radius:12px;overflow:hidden;height:360px">
+          <iframe src="https://maps.google.com/maps?q=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EC%84%9C%EC%B4%88%EC%A4%91%EC%95%99%EB%A1%9C%20110&t=&z=17&ie=UTF8&iwloc=&output=embed" style="width:100%;height:100%;border:none;filter:brightness(0.95)" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <p class="meta" style="margin-top:10px;text-align:center">서울시 서초구 서초중앙로 110, B층(A190호) · 서초역 3번 출구 도보 5분</p>
       </div>
     </div>
   </section>
