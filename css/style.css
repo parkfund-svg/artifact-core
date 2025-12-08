@@ -1,0 +1,67 @@
+.logo {
+  height: 100px;     /* 원하는 높이 */
+  width: auto;      /* 가로 비율 자동 유지 */
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+  background: none; /* 혹시 남아있던 배경 제거 */
+  border-radius: 0; /* 혹시 둥근 모서리 제거 */
+}
+:root {
+  --background-color: #afb9d4;
+  --text-color: #0a1c38;
+  --muted-text-color: #9aa7b6;
+  --brand-color: #688b97;
+  --accent-color: #ecc15b;
+  --border-color: #1a2335;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--background-color);
+  color: var(--text-color);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+}
+
+header {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 50;
+  background: rgba(16, 82, 236, 0.6);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-color);
+}
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px; max-width: 1140px; margin: 0 auto; padding: 0 20px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px;
+  font-weight: 700; letter-spacing: .2px;
+}
+.logo {
+  height: 40px;        /* 로고 높이 */
+  width: auto;         /* 비율 유지 */
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+  background: none;    /* 혹시 남아있던 배경 제거 */
+  border-radius: 0;    /* 둥근 모서리 제거 */
+}
+.menu { display: flex; gap: 24px; }
+.menu a { font-weight: 600; color: var(--text-color); text-decoration: none; }
+.cta { display: flex; gap: 12px; }
+.btn {
+  padding: 10px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-color);
+}
+.btn.primary {
+  background: var(--brand-color);
+  border-color: var(--brand-color);
+  color: #00111a;
+  font-weight: 700;
+}
