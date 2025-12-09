@@ -657,10 +657,39 @@
       color: var(--muted)
     }
 
+    /* Mobile menu toggle */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--fg);
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .menu.mobile-open {
+      display: flex !important;
+      flex-direction: column;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: rgba(3, 10, 26, 0.98);
+      padding: 20px;
+      gap: 16px;
+      border-bottom: 1px solid var(--border);
+      z-index: 40;
+    }
+
     /* Responsive */
-    @media (max-width:1000px) {
+    @media (max-width:768px) {
       .menu {
         display: none
+      }
+
+      .mobile-menu-toggle {
+        display: block;
       }
 
       .pricing {
@@ -689,16 +718,18 @@
       <a href="#" class="brand">
         <img src="./assets/logo.png" alt="아티팩트코어 로고" class="logo" />
         (주)아티팩트코어
-        <nav class="menu" aria-label="주요 메뉴">
-          <a href="#home">HOME</a>
-          <a href="#hats">HATS</a>
-          <a href="#products">PRODUCTS</a>
-          <a href="#history">개발연혁</a>
-          <a href="#financials">재무전망</a>
-          <a href="#cases">CASES</a>
-          <a href="#company">회사소개</a>
-          <a href="#contact">CONTACT</a>
-        </nav>
+      </a>
+      <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="메뉴 열기">☰</button>
+      <nav class="menu" id="mainMenu" aria-label="주요 메뉴">
+        <a href="#home" onclick="closeMobileMenu()">HOME</a>
+        <a href="#hats" onclick="closeMobileMenu()">HATS</a>
+        <a href="#products" onclick="closeMobileMenu()">PRODUCTS</a>
+        <a href="#history" onclick="closeMobileMenu()">개발연혁</a>
+        <a href="#financials" onclick="closeMobileMenu()">재무전망</a>
+        <a href="#cases" onclick="closeMobileMenu()">CASES</a>
+        <a href="#company" onclick="closeMobileMenu()">회사소개</a>
+        <a href="#contact" onclick="closeMobileMenu()">CONTACT</a>
+      </nav>
     </div>
   </header>
 
@@ -1264,6 +1295,17 @@
       // Respond to manual hash changes (e.g., back/forward)
       window.addEventListener('hashchange', () => showSection(window.location.hash));
     })();
+
+    // Mobile menu toggle functions
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mainMenu');
+      menu.classList.toggle('mobile-open');
+    }
+
+    function closeMobileMenu() {
+      const menu = document.getElementById('mainMenu');
+      menu.classList.remove('mobile-open');
+    }
 
     // Register Service Worker for PWA
     if ('serviceWorker' in navigator) {
