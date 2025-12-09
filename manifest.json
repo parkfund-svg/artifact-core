@@ -1,0 +1,24 @@
+{
+  "name": "아티팩트 코어",
+  "short_name": "Artifact Core",
+  "description": "HATS AI 자동매매 - 하이브리드 AI 트레이딩 시스템",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f1628",
+  "theme_color": "#6fafc7",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
