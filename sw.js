@@ -1,4 +1,4 @@
-const CACHE_NAME = 'artifact-core-v1';
+const CACHE_NAME = 'artifact-core-v2';
 const urlsToCache = [
   '/',
   '/index.html',
