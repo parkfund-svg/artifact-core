@@ -711,13 +711,23 @@
     }
 
     /* Responsive */
-    @media (max-width:768px) {
+    @media (max-width:1024px) {
       .menu {
-        display: none
+        display: none !important
       }
 
       .mobile-menu-toggle {
-        display: block;
+        display: block !important;
+      }
+    }
+
+    @media (min-width:1025px) {
+      .menu {
+        display: flex !important
+      }
+
+      .mobile-menu-toggle {
+        display: none !important;
       }
 
       .pricing {
