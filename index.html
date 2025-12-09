@@ -670,70 +670,26 @@
       color: var(--muted)
     }
 
-    /* Mobile menu toggle */
-    .mobile-menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 28px;
-      color: var(--fg);
-      cursor: pointer;
-      padding: 8px 12px;
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 50;
-      line-height: 1;
-      min-width: 44px;
-      min-height: 44px
-    }
-
-    .menu.mobile-open {
-      display: flex !important;
-      flex-direction: column;
-      position: fixed;
-      top: 69px;
-      left: 0;
-      right: 0;
-      background: rgba(3, 10, 26, 0.98);
-      padding: 20px;
-      gap: 20px;
-      border-bottom: 1px solid var(--border);
-      z-index: 45;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3)
-    }
-
-    .menu.mobile-open a {
-      font-size: 18px;
-      padding: 12px;
-      text-align: center;
-      border-radius: 4px;
-      transition: background 0.2s
-    }
-
-    .menu.mobile-open a:hover {
-      background: rgba(255,255,255,0.1)
-    }
-
     /* Responsive */
-    @media (max-width:900px) {
+    @media (max-width:768px) {
+      .nav {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px 0
+      }
+
+      .brand {
+        margin-bottom: 8px
+      }
+
       .menu {
-        display: none !important
+        width: 100%;
+        justify-content: center;
+        gap: 12px
       }
 
-      .mobile-menu-toggle {
-        display: block !important;
-      }
-    }
-
-    @media (min-width:901px) {
-      .menu {
-        display: flex !important
-      }
-
-      .mobile-menu-toggle {
-        display: none !important;
+      .menu a {
+        font-size: 13px
       }
 
       .pricing {
@@ -763,16 +719,15 @@
         <img src="./assets/logo.png" alt="아티팩트코어 로고" class="logo" />
         (주)아티팩트코어
       </a>
-      <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="메뉴 열기">☰</button>
-      <nav class="menu" id="mainMenu" aria-label="주요 메뉴">
-        <a href="#home" onclick="closeMobileMenu()">HOME</a>
-        <a href="#hats" onclick="closeMobileMenu()">HATS</a>
-        <a href="#products" onclick="closeMobileMenu()">PRODUCTS</a>
-        <a href="#history" onclick="closeMobileMenu()">개발연혁</a>
-        <a href="#financials" onclick="closeMobileMenu()">재무전망</a>
-        <a href="#cases" onclick="closeMobileMenu()">CASES</a>
-        <a href="#company" onclick="closeMobileMenu()">회사소개</a>
-        <a href="#contact" onclick="closeMobileMenu()">CONTACT</a>
+      <nav class="menu" aria-label="주요 메뉴">
+        <a href="#home">HOME</a>
+        <a href="#hats">HATS</a>
+        <a href="#products">PRODUCTS</a>
+        <a href="#history">개발연혁</a>
+        <a href="#financials">재무전망</a>
+        <a href="#cases">CASES</a>
+        <a href="#company">회사소개</a>
+        <a href="#contact">CONTACT</a>
       </nav>
     </div>
   </header>
@@ -1339,17 +1294,6 @@
       // Respond to manual hash changes (e.g., back/forward)
       window.addEventListener('hashchange', () => showSection(window.location.hash));
     })();
-
-    // Mobile menu toggle functions
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mainMenu');
-      menu.classList.toggle('mobile-open');
-    }
-
-    function closeMobileMenu() {
-      const menu = document.getElementById('mainMenu');
-      menu.classList.remove('mobile-open');
-    }
 
     // Register Service Worker for PWA
     if ('serviceWorker' in navigator) {
