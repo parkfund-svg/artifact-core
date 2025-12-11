@@ -4,6 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>(주) 아티팩트 코어 | HATS AI 자동매매</title>
   <meta name="description"
     content="HATS: Brain–Artifact–Hand로 초저비용·초저지연 AI 자동매매. 전략 빌더, AI 봇 시그널, 차트 매매선, AI 예측봉, B2B API." />
@@ -18,6 +21,7 @@
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/png" href="assets/logo.png" />
   <link rel="shortcut icon" type="image/png" href="assets/logo.png" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <meta name="theme-color" content="#6fafc7" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1306,7 +1310,7 @@
 
       const handleClick = (e) => {
         const href = e.currentTarget.getAttribute('href');
-        if (!href || !href.startsWith('#')) return;
+        if (!href || !href.startsWith('#') || href === '#') return;
         const target = document.querySelector(href);
         if (target) {
           e.preventDefault();
