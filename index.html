@@ -674,24 +674,17 @@
       display: none;
       background: none;
       border: none;
-      font-size: 28px;
       color: var(--fg);
       cursor: pointer;
       padding: 8px;
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 100
+      z-index: 100;
+      font-size: 24px;
     }
 
     /* Responsive */
     @media (max-width:768px) {
       .mobile-menu-toggle {
-        display: block
-      }
-      .mobile-menu-toggle {
-        display: block
+        display: block;
       }
 
       .nav {
@@ -705,9 +698,10 @@
         left: 0;
         right: 0;
         background: rgba(3, 10, 26, 0.98);
+        backdrop-filter: blur(12px);
         flex-direction: column;
         padding: 20px;
-        gap: 8px;
+        gap: 12px;
         z-index: 99;
         border-bottom: 2px solid var(--border)
       }
@@ -782,7 +776,7 @@
         <p class="subtitle">토큰비용을 최소화하는 실시간 자동매매를 제공합니다.</p>
       <div class="hero-cta">
         <a class="btn primary" href="#demo">데모 보기</a>
-        <a class="btn ghost" href="#hats">HATS 아키텍처</a>
+        <a class="btn ghost" href="말 한마디로 주식 매매 로직 만든다.mp3" download>HATS 오디오 듣기</a>
       </div>
     </div>
   </section>
@@ -1024,54 +1018,54 @@
   <section id="financials">
     <div class="container">
       <h2>재무 전망 및 가치</h2>
-      <p class="section-desc">B2C 구독과 B2B API 계약을 기반으로 성장하는 재무 트랙션과 기업 가치 전망입니다.</p>
+      <p class="section-desc">B2C 구독과 B2B API 계약을 기반으로 연평균 171% 성장하는 재무 트랙션과 기업 가치 전망입니다.</p>
       <div class="grid cols-3">
         <div class="card" style="text-align:center">
-          <div class="metric-number" style="color:var(--accent)">0</div>
-          <h4 style="margin:0 0 6px">~2025 매출</h4>
-          <p class="meta">개발 단계 (매출 없음)</p>
+          <div class="metric-number" style="color:var(--accent)">6억</div>
+          <h4 style="margin:0 0 6px">1년차 매출</h4>
+          <p class="meta">B2C 500명 · 영업이익 1.8억</p>
         </div>
         <div class="card" style="text-align:center">
-          <div class="metric-number" style="color:var(--green)">7억~9억</div>
-          <h4 style="margin:0 0 6px">2026E 매출</h4>
-          <p class="meta">SaaS + API 첫 상업화</p>
+          <div class="metric-number" style="color:var(--green)">265억</div>
+          <h4 style="margin:0 0 6px">5년차 매출</h4>
+          <p class="meta">B2C 2만명 + B2B 5곳 · 영업이익 79.5억</p>
         </div>
         <div class="card" style="text-align:center">
-          <div class="metric-number" style="color:#3fa9f5">50억→120억</div>
-          <h4 style="margin:0 0 6px">기업 가치 추정</h4>
-          <p class="meta">현재 50억(개발단계) / 2030E 120억 (5x 매출 멀티플)</p>
+          <div class="metric-number" style="color:#3fa9f5">300~500억</div>
+          <h4 style="margin:0 0 6px">현재 기업 가치</h4>
+          <p class="meta">DCF 평가 160~260억 · 5년 후 954~1,192억</p>
         </div>
       </div>
 
       <div class="grid cols-2" style="margin-top:20px">
         <div class="card">
-          <h4 style="margin:0 0 10px">추정 매출 (B2C 기준, 단위: 억 원)</h4>
-          <table style="width:100%;border-collapse:collapse;font-size:14px">
+          <h4 style="margin:0 0 10px">5개년 재무 전망 (단위: 억 원)</h4>
+          <table style="width:100%;border-collapse:collapse;font-size:13px">
             <thead>
-              <tr style="background:rgba(15,22,40,0.05)"><th style="padding:8px;text-align:left">연도</th><th style="padding:8px;text-align:right">매출</th><th style="padding:8px;text-align:right">비고</th></tr>
+              <tr style="background:rgba(15,22,40,0.05)"><th style="padding:8px;text-align:left">연차</th><th style="padding:8px;text-align:right">B2C</th><th style="padding:8px;text-align:right">B2B</th><th style="padding:8px;text-align:right">총매출</th><th style="padding:8px;text-align:right">영업이익</th></tr>
             </thead>
             <tbody>
-              <tr><td style="padding:8px">2024A</td><td style="padding:8px;text-align:right">0</td><td style="padding:8px;text-align:right">개발</td></tr>
-              <tr><td style="padding:8px">2025E</td><td style="padding:8px;text-align:right">0</td><td style="padding:8px;text-align:right">개발/파일럿</td></tr>
-              <tr><td style="padding:8px">2026E</td><td style="padding:8px;text-align:right">7~9</td><td style="padding:8px;text-align:right">초기 상업화</td></tr>
-              <tr><td style="padding:8px">2027E</td><td style="padding:8px;text-align:right">12~15</td><td style="padding:8px;text-align:right">해외 파트너 확장</td></tr>
-              <tr><td style="padding:8px">2028E</td><td style="padding:8px;text-align:right">18~22</td><td style="padding:8px;text-align:right">데이터 라이선스 추가</td></tr>
-              <tr><td style="padding:8px">2029E</td><td style="padding:8px;text-align:right">24~28</td><td style="padding:8px;text-align:right">업셀/엔터프라이즈</td></tr>
-              <tr><td style="padding:8px">2030E</td><td style="padding:8px;text-align:right">30~35</td><td style="padding:8px;text-align:right">안정 성장</td></tr>
+              <tr><td style="padding:8px">1년차</td><td style="padding:8px;text-align:right">6억</td><td style="padding:8px;text-align:right">0억</td><td style="padding:8px;text-align:right">6억</td><td style="padding:8px;text-align:right">1.8억</td></tr>
+              <tr><td style="padding:8px">2년차</td><td style="padding:8px;text-align:right">24억</td><td style="padding:8px;text-align:right">0억</td><td style="padding:8px;text-align:right">24억</td><td style="padding:8px;text-align:right">7.2억</td></tr>
+              <tr><td style="padding:8px">3년차</td><td style="padding:8px;text-align:right">60억</td><td style="padding:8px;text-align:right">6억</td><td style="padding:8px;text-align:right">66억</td><td style="padding:8px;text-align:right">19.8억</td></tr>
+              <tr><td style="padding:8px">4년차</td><td style="padding:8px;text-align:right">120억</td><td style="padding:8px;text-align:right">15억</td><td style="padding:8px;text-align:right">135억</td><td style="padding:8px;text-align:right">40.5억</td></tr>
+              <tr><td style="padding:8px">5년차</td><td style="padding:8px;text-align:right">240억</td><td style="padding:8px;text-align:right">25억</td><td style="padding:8px;text-align:right">265억</td><td style="padding:8px;text-align:right">79.5억</td></tr>
             </tbody>
           </table>
-          <p class="meta" style="margin-top:8px;color:#0f1628">B2C 매출만 포함, 손익은 별도 산출 예정</p>
+          <p class="meta" style="margin-top:8px;color:#0f1628">B2C: 월 10만원 구독 · B2B: 연 1~5억 계약 · 영업이익률 30%</p>
         </div>
         <div class="card">
-          <h4 style="margin:0 0 10px">기업 가치 산정 가정</h4>
-          <ul class="list" style="margin-left:16px">
-            <li>매출 멀티플: 2030E 매출(30~35억) × 4~5배 ⇒ 120~175억 밸류 범위</li>
-            <li>현재 단계(개발) 프리머니 가정: 약 50억</li>
-            <li>리스크: 시장 변동성, 규제, 파트너 의존도 · 보수적 멀티플 적용</li>
+          <h4 style="margin:0 0 10px">기업 가치 산정 방법</h4>
+          <ul class="list" style="margin-left:16px;font-size:13px">
+            <li><strong>DCF 평가:</strong> 160~260억 (5개년 현금흐름 할인)</li>
+            <li><strong>기술 가치:</strong> 30~80억 (AI 알고리즘, 호가 분석 엔진)</li>
+            <li><strong>5년 후 시가총액:</strong> 954~1,192억 (EV/EBITDA 12~15배)</li>
+            <li><strong>프리머니 밸류:</strong> 300~500억 (보수적 추정)</li>
+            <li><strong>시장 규모:</strong> 글로벌 자동매매 25조원, 연 13% 성장</li>
           </ul>
           <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn primary" style="color:#0f1628;background:#ffffff;border:1px solid #0f1628;font-weight:700" href="재무추정.pdf" download>재무추정 PDF 보기</a>
-            <a class="btn" style="color:#0f1628;background:#ffffff;border:1px solid #0f1628;font-weight:700" href="투자유치및 사업화전략분석보고서.pdf" download>사업화전략 PDF</a>
+            <a class="btn primary" style="color:#0f1628;background:#ffffff;border:1px solid #0f1628;font-weight:700" href="투자설명서.pdf" download>투자설명서 PDF 보기</a>
+            <a class="btn" style="color:#0f1628;background:#ffffff;border:1px solid #0f1628;font-weight:700" href="말 한마디로 주식 매매 로직 만든다.mp3" download>오디오 파일 듣기</a>
           </div>
         </div>
       </div>
@@ -1097,13 +1091,13 @@
         </div>
 
         <div class="card">
-          <h3>문서 및 제안서</h3>
-          <p class="meta" style="margin-bottom:12px">사업화 전략과 투자 제안서, 재무추정 자료를 PDF로 확인하세요.</p>
+          <h3>문서 및 자료</h3>
+          <p class="meta" style="margin-bottom:12px">투자설명서와 소개 오디오 파일을 확인하세요.</p>
           <div style="display:grid;gap:10px">
-            <a class="btn primary" style="color:#0f1628;background:#ffffff;border:1px solid #0f1628;font-weight:700" href="투자유치및 사업화전략분석보고서.pdf" download>사업화전략 분석보고서 PDF</a>
-            <a class="btn" style="color:#0f1628;background:#ffffff;border:1px solid #0f1628;font-weight:700" href="재무추정.pdf" download>재무추정 자료 PDF</a>
+            <a class="btn primary" style="color:#0f1628;background:#ffffff;border:1px solid #0f1628;font-weight:700" href="투자설명서.pdf" download>투자설명서 PDF</a>
+            <a class="btn" style="color:#0f1628;background:#ffffff;border:1px solid #0f1628;font-weight:700" href="말 한마디로 주식 매매 로직 만든다.mp3" download>오디오 파일 듣기</a>
           </div>
-          <p class="meta" style="margin-top:12px;font-size:12px">※ 파일이 보이지 않으면 레포지토리에 PDF를 함께 올려주세요.</p>
+          <p class="meta" style="margin-top:12px;font-size:12px">※ 파일이 보이지 않으면 레포지토리에 PDF와 MP3를 함께 올려주세요.</p>
         </div>
       </div>
 
