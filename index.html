@@ -751,13 +751,12 @@
     <div class="container nav">
       <a href="#" class="brand">
         <img src="./assets/logo.png" alt="아티팩트코어 로고" class="logo" />
-        (주)아티팩트코어
+        ARTIFACT-CORE
       </a>
       <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="메뉴">☰</button>
       <nav class="menu" id="mainMenu" aria-label="주요 메뉴">
-        <a href="#home" onclick="closeMenu()">HOME</a>
         <a href="#hats" onclick="closeMenu()">HATS</a>
-        <a href="#products" onclick="closeMenu()">PRODUCTS</a>
+        <a href="#products" onclick="closeMenu()">핵심기능/수익모델</a>
         <a href="#history" onclick="closeMenu()">개발연혁</a>
         <a href="#financials" onclick="closeMenu()">재무전망</a>
         <a href="#cases" onclick="closeMenu()">CASES</a>
@@ -808,61 +807,97 @@
   <!-- HATS -->
   <section id="hats">
     <div class="container">
-      <h2>HATS 아키텍처: Brain–Artifact–Hand</h2>
-      <p class="section-desc">기존 LLM 자동매매의 두 가지 치명적 문제: 높은 토큰 비용과 느린 실행 속도를 구조적으로 해결합니다.</p>
-      <div style="text-align:center;margin-bottom:24px">
-        <a class="btn primary" href="아티팩트코어hats기능설명.wav" target="_blank" style="display:inline-block">🎧 HATS 기능설명 오디오 듣기</a>
+      <h2>HATS란? Hybrid AI Trading System</h2>
+      <p class="section-desc">LLM의 전략 설계 지능(Brain)과 Local ML의 실행 속도(Hand)를 Artifact로 연결한 하이브리드 AI 자동매매 시스템입니다.</p>
+
+      <!-- HATS의 정의 -->
+      <div class="card" style="margin-bottom:32px;background:rgba(111,175,199,0.1);border:2px solid var(--brand)">
+        <h3>💡 HATS의 핵심 개념</h3>
+        <div class="grid cols-3" style="gap:16px;margin-top:16px">
+          <div>
+            <strong style="color:var(--brand)">Brain (두뇌)</strong>
+            <p class="meta">LLM이 자연어 전략을 분석하여 실행 가능한 논리로 설계</p>
+          </div>
+          <div>
+            <strong style="color:var(--brand)">Artifact (설계도)</strong>
+            <p class="meta">설계된 전략을 JSON으로 영구 저장하여 재사용</p>
+          </div>
+          <div>
+            <strong style="color:var(--brand)">Hand (실행)</strong>
+            <p class="meta">Local ML이 초고속으로 신호 생성 및 매매 실행</p>
+          </div>
+        </div>
       </div>
-      <div class="grid cols-3">
+
+      <!-- HATS의 장점 -->
+      <h3 style="margin-bottom:16px">✨ HATS의 핵심 장점</h3>
+      <div class="grid cols-4" style="margin-bottom:32px">
         <div class="card">
-          <span class="badge">문제 1</span>
-          <h3>높은 운영 비용</h3>
-          <p class="meta">실행마다 LLM 호출로 토큰 비용이 누적됩니다. 거래 횟수가 많을수록 원가가 급증하여 가격 경쟁력이 약화됩니다.</p>
+          <h4 style="color:var(--accent);margin:0 0 8px">초저비용</h4>
+          <p class="meta">LLM 1회 사용 후 무한 실행, 토큰 비용 최소화</p>
         </div>
         <div class="card">
-          <span class="badge">문제 2</span>
-          <h3>느린 실행 속도</h3>
-          <p class="meta">수 초의 LLM 응답 지연으로 급변하는 시장에서 슬리피지와 기회 손실이 발생합니다.</p>
+          <h4 style="color:var(--accent);margin:0 0 8px">초저지연</h4>
+          <p class="meta">수 ms 단위 실행 속도, 실시간 시장 대응</p>
         </div>
         <div class="card">
-          <span class="badge">해결</span>
-          <h3>HATS: 지능의 분리</h3>
+          <h4 style="color:var(--accent);margin:0 0 8px">자연어 전략</h4>
+          <p class="meta">코딩 없이 말로 전략 생성 가능</p>
+        </div>
+        <div class="card">
+          <h4 style="color:var(--accent);margin:0 0 8px">안정성</h4>
+          <p class="meta">검증된 Artifact 재사용으로 일관성 보장</p>
+        </div>
+      </div>
+
+      <!-- 기존 시스템 vs HATS 비교 -->
+      <h3 style="margin-bottom:16px">⚖️ 기존 시스템 vs HATS 비교</h3>
+      <div class="grid cols-2" style="gap:20px">
+        <div class="card" style="background:rgba(145,69,69,0.2);border:1px solid var(--red)">
+          <h4 style="color:var(--red);margin:0 0 12px">❌ 기존 LLM 자동매매의 문제</h4>
           <ul class="list">
-            <li>Brain: 자연어 전략 설계, 1회 LLM 사용</li>
-            <li>Artifact: JSON 실행 설계도 영구 저장</li>
-            <li>Hand: Local ML로 초저지연 실행, Zero-cost</li>
+            <li><strong>높은 운영 비용:</strong> 매 실행마다 LLM 호출로 토큰 비용 급증</li>
+            <li><strong>느린 실행 속도:</strong> 수 초 지연으로 슬리피지 발생</li>
+            <li><strong>비일관성:</strong> 같은 입력에도 다른 결과 가능</li>
+            <li><strong>API 의존:</strong> 네트워크 장애 시 중단</li>
+          </ul>
+        </div>
+        <div class="card" style="background:rgba(147,165,132,0.2);border:1px solid var(--green)">
+          <h4 style="color:var(--green);margin:0 0 12px">✅ HATS의 해결책</h4>
+          <ul class="list">
+            <li><strong>초저비용:</strong> LLM 1회 사용 후 Artifact 무한 재사용</li>
+            <li><strong>초고속:</strong> Local ML로 수 ms 단위 실행</li>
+            <li><strong>일관성:</strong> 동일 Artifact로 예측 가능한 동작</li>
+            <li><strong>독립 실행:</strong> 로컬 환경에서 안정적 작동</li>
           </ul>
         </div>
       </div>
 
-      <div class="grid cols-2" style="margin-top:24px">
-        <div class="card">
-          <h3>Artifacts로 토큰비용 최저 수렴</h3>
-          <p class="meta">LLM 지능을 캡슐화하여 실행 단계에서 재호출 없이 무한 반복 실행이 가능. 토큰 비용 최저, 운영 효율 극대화.</p>
-        </div>
-        <div class="card">
-          <h3>초저지연 실행 엔진</h3>
-          <p class="meta">수 ms 단위 저지연으로 매매 신호를 생성하고 주문을 라우팅합니다. 실시간 대응력을 극대화합니다.</p>
-        </div>
-      </div>
-
-      <div class="timeline" style="margin-top:28px">
+      <!-- HATS 작동 프로세스 -->
+      <div class="timeline" style="margin-top:32px">
+        <h3 style="margin-bottom:16px">🔄 HATS 작동 프로세스</h3>
         <div class="item"><span class="dot"></span>
           <div>
-            <strong>1단계 · 전략 지능(Brain)</strong>
-            <p class="meta">자연어로 전략을 설명하면 LLM이 이를 분석해 실행 가능한 논리로 설계합니다.</p>
+            <strong>1단계 · 전략 입력 (Brain)</strong>
+            <p class="meta">"RSI 30 이하면 매수, 70 이상이면 매도" 같은 자연어로 전략 설명</p>
           </div>
         </div>
         <div class="item"><span class="dot"></span>
           <div>
-            <strong>2단계 · Artifact Core</strong>
-            <p class="meta">설계된 전략을 경량 JSON Artifact로 변환·저장하여 시스템의 표준 실행 규격으로 사용합니다.</p>
+            <strong>2단계 · Artifact 생성</strong>
+            <p class="meta">LLM이 전략을 분석하여 JSON 형태의 실행 설계도로 변환 및 저장</p>
           </div>
         </div>
         <div class="item"><span class="dot"></span>
           <div>
-            <strong>3단계 · 실행 지능(Hand)</strong>
-            <p class="meta">Artifact를 입력으로 Local ML이 시세/호가 데이터를 분석해 초고속으로 신호를 생성·실행합니다.</p>
+            <strong>3단계 · 실시간 실행 (Hand)</strong>
+            <p class="meta">Local ML이 Artifact를 읽어 시세/호가 분석 후 초고속 매매 신호 생성</p>
+          </div>
+        </div>
+        <div class="item"><span class="dot"></span>
+          <div>
+            <strong>4단계 · 무한 반복</strong>
+            <p class="meta">동일 Artifact로 추가 LLM 호출 없이 지속적 자동매매 (토큰 비용 0원)</p>
           </div>
         </div>
       </div>
@@ -872,41 +907,43 @@
   <!-- Products -->
   <section id="products">
     <div class="container">
-      <h2>제품·서비스</h2>
-      <p class="section-desc">B2C SaaS와 B2B API로 구성된 포트폴리오. 전략 빌더부터 실거래 엔진까지 단계적으로 제공합니다.</p>
-      <div class="grid cols-3">
+      <h2>HATS의 핵심기능 및 수익모델</h2>
+      <p class="section-desc">AI 예측봉부터 자동매매까지, 말로 만드는 트레이딩 시스템을 경험하세요.</p>
+
+      <!-- HATS 기능설명 오디오 버튼 -->
+      <div style="text-align:center;margin-bottom:32px">
+        <a class="btn primary" href="아티팩트코어hats기능설명.wav" target="_blank" style="display:inline-block;font-size:18px;padding:16px 32px">
+          🎧 HATS 기능설명 오디오 듣기
+        </a>
+      </div>
+
+      <!-- 4가지 핵심기능 -->
+      <h3 style="margin-bottom:20px">🎯 4가지 핵심기능</h3>
+      <div class="grid cols-4" style="margin-bottom:32px">
         <div class="card">
-          <span class="badge">BASIC</span>
-          <h3>AI 예측봉</h3>
-          <p class="meta">향후 5개 캔들의 단기 흐름 예측. 시계열 딥러닝 기반.</p>
+          <span class="badge">기능 1</span>
+          <h4 style="margin:8px 0">📈 매매선</h4>
+          <p class="meta">차트에 익절/손절/진입선을 자동 표시하여 직관적 매매 지점 제공</p>
         </div>
         <div class="card">
-          <span class="badge">PRO</span>
-          <h3>전략 빌더 + 차트 매매선</h3>
-          <p class="meta">자연어/노드 기반 전략 자동 생성과 백테스트. 차트에 익절/손절·진입선 자동 추가.</p>
+          <span class="badge">기능 2</span>
+          <h4 style="margin:8px 0">🔮 예측봉</h4>
+          <p class="meta">향후 5캔들의 고가·저가·변동성을 AI로 예측하여 차트에 시각화</p>
         </div>
         <div class="card">
-          <span class="badge">ULTIMATE</span>
-          <h3>AI 봇 시그널 엔진</h3>
-          <p class="meta">Local ML 기반 초저지연 자동매매. 호가창/시세 분석으로 실시간 신호 생성.</p>
+          <span class="badge">기능 3</span>
+          <h4 style="margin:8px 0">🔧 전략빌더</h4>
+          <p class="meta">자연어로 전략을 설명하면 자동으로 실행 가능한 Artifact 생성</p>
+        </div>
+        <div class="card" style="border:2px solid var(--accent);background:rgba(185,155,107,0.1)">
+          <span class="badge" style="background:var(--accent)">★ 핵심</span>
+          <h4 style="margin:8px 0;color:var(--accent)">🤖 AI봇 시그널 엔진</h4>
+          <p class="meta">Local ML 기반 초저지연 실시간 자동매매 신호 생성 및 실행</p>
         </div>
       </div>
 
-      <div class="grid cols-2" style="margin-top:24px">
-        <div class="card">
-          <h3>B2B · 시그널 엔진 API</h3>
-          <p class="meta">운용사·증권사 대상 연간 계약. 안정적인 고정 매출 확보를 위한 엔터프라이즈 연동.</p>
-        </div>
-        <div class="card">
-          <h3>호환성·보안</h3>
-          <ul class="list">
-            <li>REST/WebSocket API, Windows/Mac, 웹 콘솔</li>
-            <li>다중 계정, OAuth2/키 관리/2FA</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:24px;background:rgba(111,175,199,0.1);border:2px solid var(--brand)">
+      <!-- 수익모델 -->
+      <div class="card" style="margin-top:32px;background:rgba(111,175,199,0.1);border:2px solid var(--brand)">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
           <div style="flex:1;min-width:280px">
             <h3 style="margin:0 0 12px">💰 HATS 수익모델</h3>
@@ -920,6 +957,21 @@
           <div style="flex:0 0 auto">
             <a class="btn primary" href="아티팩트코어hats수익모델.wav" target="_blank" style="font-size:16px;padding:14px 24px">🎧 수익모델 오디오 듣기</a>
           </div>
+        </div>
+      </div>
+
+      <!-- 부가 정보 -->
+      <div class="grid cols-2" style="margin-top:24px">
+        <div class="card">
+          <h3>B2B · 시그널 엔진 API</h3>
+          <p class="meta">운용사·증권사 대상 연간 계약. 안정적인 고정 매출 확보를 위한 엔터프라이즈 연동.</p>
+        </div>
+        <div class="card">
+          <h3>호환성·보안</h3>
+          <ul class="list">
+            <li>REST/WebSocket API, Windows/Mac, 웹 콘솔</li>
+            <li>다중 계정, OAuth2/키 관리/2FA</li>
+          </ul>
         </div>
       </div>
     </div>
