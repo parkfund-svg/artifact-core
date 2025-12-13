@@ -66,13 +66,11 @@ ${SpreadsheetApp.getActiveSpreadsheet().getUrl()}
 
 관리자 페이지:
 https://artifact-core.com/admin.html
+비밀번호: artifact2025
       `;
       
-      MailApp.sendEmail({
-        to: ADMIN_EMAIL,
-        subject: subject,
-        body: body
-      });
+      GmailApp.sendEmail(ADMIN_EMAIL, subject, body);
+      Logger.log('이메일 발송 성공');
     } catch (mailError) {
       Logger.log('이메일 발송 실패: ' + mailError.toString());
     }

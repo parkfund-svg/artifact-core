@@ -171,11 +171,31 @@
   <script>
     // Apps Script 웹앱 URL (배포 후 여기에 입력)
     const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbzvGfjkQlH51b8f2GBnlAZvtpaXpPhP79gaD7LYw6Pj08evFk1GSYupiBDH_1vCE9aG/exec';
+    const ADMIN_PASSWORD = 'artifact2025'; // 관리자 비밀번호 (원하는 대로 변경 가능)
     
     let allData = [];
     let useLocalStorage = false; // 서버 연결 실패 시 localStorage 사용
 
+    // 비밀번호 확인
+    function checkAuth() {
+      const savedPassword = sessionStorage.getItem('adminAuth');
+      if (savedPassword === ADMIN_PASSWORD) {
+        return true;
+      }
+      
+      const password = prompt('🔐 관리자 비밀번호를 입력하세요:');
+      if (password === ADMIN_PASSWORD) {
+        sessionStorage.setItem('adminAuth', password);
+        return true;
+      } else {
+        alert('❌ 비밀번호가 틀렸습니다.');
+        window.location.href = 'index.html';
+        return false;
+      }
+    }
+
     async function loadData() {
+      if (!checkAuth()) return;
       // 1) 서버에서 데이터 불러오기 시도
       try {
         const response = await fetch(`${BACKEND_URL}?action=getSubmissions`);
