@@ -111,6 +111,7 @@ function doGet(e) {
         };
       });
       
+      // CORS 헤더 추가
       return ContentService
         .createTextOutput(JSON.stringify({ success: true, data: submissions.reverse() })) // 최신순
         .setMimeType(ContentService.MimeType.JSON);
