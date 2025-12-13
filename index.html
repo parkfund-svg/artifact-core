@@ -297,11 +297,11 @@
     }
 
     section#company {
-      background-image: linear-gradient(120deg, rgba(255,255,255,0.92), rgba(255,255,255,0.9)), url('assets/logo.png');
-      background-size: 320px auto;
+      background-image: linear-gradient(120deg, rgba(8,12,22,0.76), rgba(10,16,28,0.72)), url('assets/logo.png');
+      background-size: 360px auto;
       background-position: center;
       background-repeat: no-repeat;
-      color: #00111a;
+      color: #ffffff;
     }
 
     section#contact {
@@ -382,43 +382,50 @@
 
     section#history h2,
     section#financials h2,
-    section#contact h2 {
+    section#contact h2,
+    section#company h2 {
       color: #ffffff;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     section#history .section-desc,
     section#financials .section-desc,
-    section#contact .section-desc {
+    section#contact .section-desc,
+    section#company .section-desc {
       color: rgba(233, 242, 255, 0.92);
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
     }
 
-    section#company h2,
     section#faq h2 {
       color: #00111a;
       text-shadow: none;
     }
 
-    section#company .section-desc,
     section#faq .section-desc {
       color: #243244;
       text-shadow: none;
     }
 
     /* Cards and form elements inside these sections should be subtly translucent on white */
-    section#company .card,
     section#faq .card {
       background: rgba(255, 255, 255, 0.98);
       color: #00111a;
       border: 1px solid rgba(36,50,68,0.12);
       box-shadow: 0 6px 18px rgba(36,50,68,0.04);
     }
-    /* Ensure meta and subheadings in company card are dark for readability */
+
+    /* Company cards follow dark overlay tones */
+    section#company .card {
+      background: rgba(12, 20, 34, 0.78);
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 10px 24px rgba(4, 10, 24, 0.25);
+    }
     section#company .card .meta,
     section#company .card h4,
-    section#company .card p {
-      color: #00111a;
+    section#company .card p,
+    section#company .card a {
+      color: #ffffff;
     }
 
     section#faq details {
