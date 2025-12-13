@@ -290,17 +290,31 @@
       background-repeat: no-repeat;
     }
 
-    /* COMPANY / FAQ / CONTACT use white background and dark text for readability */
-    section#company,
-    section#faq,
-    section#contact {
+    /* FAQ stays light; COMPANY/CONTACT get branded backgrounds; HISTORY/FINANCIALS use brighter overlays */
+    section#faq {
       background: #ffffff;
       color: #00111a;
     }
 
-    /* HISTORY / FINANCIALS use dedicated main images with dark overlay for legibility */
+    section#company {
+      background-image: linear-gradient(120deg, rgba(255,255,255,0.92), rgba(255,255,255,0.9)), url('assets/logo.png');
+      background-size: 320px auto;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #00111a;
+    }
+
+    section#contact {
+      background-image: linear-gradient(120deg, rgba(5,10,20,0.75), rgba(12,26,44,0.72)), url('assets/main7.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #ffffff;
+    }
+
+    /* HISTORY / FINANCIALS with lighter overlays */
     section#history {
-      background-image: linear-gradient(120deg, rgba(5,10,20,0.85), rgba(8,18,32,0.8)), url('assets/main5.png');
+      background-image: linear-gradient(120deg, rgba(5,10,20,0.65), rgba(8,18,32,0.62)), url('assets/main5.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -308,7 +322,7 @@
     }
 
     section#financials {
-      background-image: linear-gradient(120deg, rgba(5,10,20,0.85), rgba(12,26,44,0.82)), url('assets/main6.png');
+      background-image: linear-gradient(120deg, rgba(5,10,20,0.65), rgba(12,26,44,0.6)), url('assets/main6.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -317,9 +331,9 @@
 
     section#history .card,
     section#financials .card {
-      background: rgba(7, 12, 24, 0.82);
+      background: rgba(12, 20, 34, 0.72);
       color: #ffffff;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
       box-shadow: 0 10px 26px rgba(4, 10, 24, 0.2);
     }
 
@@ -329,7 +343,7 @@
     section#financials .section-desc,
     section#financials .metric-number,
     section#financials .list li {
-      color: rgba(233, 242, 255, 0.9);
+      color: rgba(233, 242, 255, 0.92);
       text-shadow: none;
     }
 
@@ -340,11 +354,11 @@
     }
 
     section#financials thead tr {
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.1);
     }
 
     section#financials tbody tr:nth-child(even) {
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.05);
     }
 
     section#financials .btn {
@@ -367,35 +381,34 @@
     }
 
     section#history h2,
-    section#financials h2 {
+    section#financials h2,
+    section#contact h2 {
       color: #ffffff;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     section#history .section-desc,
-    section#financials .section-desc {
-      color: rgba(233, 242, 255, 0.9);
+    section#financials .section-desc,
+    section#contact .section-desc {
+      color: rgba(233, 242, 255, 0.92);
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
     }
 
     section#company h2,
-    section#faq h2,
-    section#contact h2 {
+    section#faq h2 {
       color: #00111a;
       text-shadow: none;
     }
 
     section#company .section-desc,
-    section#faq .section-desc,
-    section#contact .section-desc {
+    section#faq .section-desc {
       color: #243244;
       text-shadow: none;
     }
 
     /* Cards and form elements inside these sections should be subtly translucent on white */
     section#company .card,
-    section#faq .card,
-    section#contact .card {
+    section#faq .card {
       background: rgba(255, 255, 255, 0.98);
       color: #00111a;
       border: 1px solid rgba(36,50,68,0.12);
@@ -408,18 +421,9 @@
       color: #00111a;
     }
 
-    section#faq details,
-    section#contact input,
-    section#contact select,
-    section#contact textarea {
+    section#faq details {
       background: rgba(250, 250, 250, 0.95);
       color: #00111a;
-    }
-
-    section#faq details,
-    section#contact input,
-    section#contact select,
-    section#contact textarea {
       border-color: rgba(36,50,68,0.08);
     }
 
@@ -427,9 +431,57 @@
       color: #00111a;
     }
 
-    section#faq .meta,
-    section#contact .meta {
+    section#faq .meta {
       color: #243244;
+    }
+
+    /* Contact on dark background */
+    section#contact form {
+      background: rgba(7, 12, 24, 0.78);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 10px 24px rgba(4, 10, 24, 0.25);
+    }
+
+    section#contact label {
+      color: rgba(233, 242, 255, 0.95);
+      font-weight: 600;
+    }
+
+    section#contact input,
+    section#contact select,
+    section#contact textarea {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border-color: rgba(255,255,255,0.25);
+    }
+
+    section#contact input::placeholder,
+    section#contact textarea::placeholder {
+      color: rgba(233, 242, 255, 0.7);
+    }
+
+    section#contact .meta,
+    section#contact a {
+      color: rgba(233, 242, 255, 0.9);
+    }
+
+    section#contact .btn {
+      border-color: rgba(255,255,255,0.7);
+      color: #ffffff;
+      background: rgba(255,255,255,0.08);
+    }
+
+    section#contact .btn.primary {
+      background: #ffffff;
+      color: #0f1628;
+      border-color: #ffffff;
+      font-weight: 700;
+    }
+
+    section#contact .btn:hover {
+      background: rgba(255,255,255,0.16);
     }
 
     footer {
@@ -1314,8 +1366,8 @@
           <button class="btn" type="button" onclick="clearSubmissions()">로컬 데이터 삭제</button>
           <span class="meta">※ 데이터는 사이트 방문자의 브라우저에만 저장됩니다.</span>
         </div>
-        <div id="submit-status" class="meta" style="margin-top:8px;color:#0f1628"></div>
-        <p class="meta" style="margin-top:6px;color:#0f1628">※ Apps Script 웹앱 URL만 연결하면 제출 시 지정한 이메일로 자동 발송됩니다.</p>
+        <div id="submit-status" class="meta" style="margin-top:8px"></div>
+        <p class="meta" style="margin-top:6px">※ Apps Script 웹앱 URL만 연결하면 제출 시 지정한 이메일로 자동 발송됩니다.</p>
       </form>
     </div>
   </section>
