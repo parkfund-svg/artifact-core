@@ -169,13 +169,45 @@
   </div>
 
   <script>
+    // Apps Script 웹앱 URL (배포 후 여기에 입력)
+    const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbxz8JZSdTZBZ6hT-l8zoWwSmY1Qlitp2dEk2RFFcjqCOPe5YjvSAXzEiSUYLAv3-nui/exec';
+    
     let allData = [];
+    let useLocalStorage = false; // 서버 연결 실패 시 localStorage 사용
 
-    function loadData() {
-      const data = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
-      allData = data.sort((a, b) => new Date(b.ts) - new Date(a.ts)); // 최신순 정렬
+    async function loadData() {
+      // 1) 서버에서 데이터 불러오기 시도
+      try {
+        const response = await fetch(`${BACKEND_URL}?action=getSubmissions`);
+        const result = await response.json();
+        
+        if (result.success && result.data) {
+          allData = result.data;
+          useLocalStorage = false;
+          console.log('✅ 서버에서 데이터 로드 성공');
+        } else {
+          throw new Error('서버 응답 오류');
+        }
+      } catch (error) {
+        console.warn('⚠️ 서버 연결 실패, localStorage 사용:', error);
+        // 2) 서버 연결 실패 시 localStorage 사용
+        const data = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+        allData = data.sort((a, b) => new Date(b.ts) - new Date(a.ts));
+        useLocalStorage = true;
+      }
+      
       updateStats();
       filterData();
+      updateStatusBadge();
+    }
+    
+    function updateStatusBadge() {
+      const header = document.querySelector('header p');
+      if (useLocalStorage) {
+        header.innerHTML = '상담 신청 내역 관리 <span style="background:#d32f2f;color:white;padding:4px 8px;border-radius:4px;font-size:12px;margin-left:8px">⚠️ 로컬 모드</span>';
+      } else {
+        header.innerHTML = '상담 신청 내역 관리 <span style="background:#4caf50;color:white;padding:4px 8px;border-radius:4px;font-size:12px;margin-left:8px">✅ 서버 연결</span>';
+      }
     }
 
     function updateStats() {
@@ -347,7 +379,6 @@ ${item.message}
 
     function refreshData() {
       loadData();
-      alert('✅ 데이터를 새로고침했습니다.');
     }
 
     // 검색 입력 이벤트
