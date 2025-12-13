@@ -291,8 +291,6 @@
     }
 
     /* COMPANY / FAQ / CONTACT use white background and dark text for readability */
-    section#history,
-    section#financials,
     section#company,
     section#faq,
     section#contact {
@@ -300,35 +298,65 @@
       color: #00111a;
     }
 
-    /* Financials: force dark text and solid cards for readability */
-    section#financials,
-    section#financials h2,
-    section#financials h3,
-    section#financials h4,
-    section#financials p,
+    /* HISTORY / FINANCIALS use dedicated main images with dark overlay for legibility */
+    section#history {
+      background-image: linear-gradient(120deg, rgba(5,10,20,0.85), rgba(8,18,32,0.8)), url('assets/main5.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #ffffff;
+    }
+
+    section#financials {
+      background-image: linear-gradient(120deg, rgba(5,10,20,0.85), rgba(12,26,44,0.82)), url('assets/main6.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #ffffff;
+    }
+
+    section#history .card,
+    section#financials .card {
+      background: rgba(7, 12, 24, 0.82);
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 10px 26px rgba(4, 10, 24, 0.2);
+    }
+
+    section#history .meta,
     section#financials .meta,
+    section#history .section-desc,
     section#financials .section-desc,
     section#financials .metric-number,
-    section#financials .list li,
-    section#financials table,
-    section#financials th,
-    section#financials td {
-      color: #0f1628;
+    section#financials .list li {
+      color: rgba(233, 242, 255, 0.9);
       text-shadow: none;
     }
 
-    section#financials .card {
-      background: rgba(255, 255, 255, 0.98);
-      color: #0f1628;
-      border: 1px solid rgba(36,50,68,0.12);
-      box-shadow: 0 6px 18px rgba(36,50,68,0.04);
+    section#financials table,
+    section#financials th,
+    section#financials td {
+      color: #ffffff;
+    }
+
+    section#financials thead tr {
+      background: rgba(255,255,255,0.08);
+    }
+
+    section#financials tbody tr:nth-child(even) {
+      background: rgba(255,255,255,0.04);
     }
 
     section#financials .btn {
+      background: rgba(255,255,255,0.92);
+      border-color: #0f1628;
+      color: #0f1628;
+    }
+
+    section#financials .btn:hover {
       background: #ffffff;
       border-color: #0f1628;
       color: #0f1628;
-      font-weight: 700;
     }
 
     section#financials .btn.primary {
@@ -339,21 +367,15 @@
     }
 
     section#history h2,
-    section#financials h2,
-    section#company h2,
-    section#faq h2,
-    section#contact h2 {
-      color: #0d1a2f;
-      text-shadow: none;
+    section#financials h2 {
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     section#history .section-desc,
-    section#financials .section-desc,
-    section#company .section-desc,
-    section#faq .section-desc,
-    section#contact .section-desc {
-      color: #243244;
-      text-shadow: none;
+    section#financials .section-desc {
+      color: rgba(233, 242, 255, 0.9);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
     }
 
     section#company h2,
@@ -613,13 +635,29 @@
     }
 
     .history-card {
-      background: #f7f9fc;
-      color: #0d1a2f;
-      border: 1px solid rgba(36,50,68,0.12);
-      box-shadow: 0 6px 16px rgba(12,21,40,0.06);
+      padding: 14px 16px;
     }
+
+    .history-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 2px;
+    }
+
+    .history-card h3 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .history-card .badge {
+      margin: 0;
+    }
+
     .history-card .meta {
-      color: #243244;
+      margin: 0;
+      line-height: 1.4;
     }
 
     .demo-caption {
@@ -1047,45 +1085,61 @@
     <div class="container">
       <h2>개발 연혁</h2>
       <p class="section-desc">ATS에서 HATS까지, 매 분기 성능을 끌어올리며 하이브리드 AI 트레이딩을 완성했습니다.</p>
-      <div class="grid cols-1" style="gap:16px">
+      <div class="grid cols-1" style="gap:12px">
         <div class="card history-card">
-          <span class="badge">2024.04</span>
-          <h3>ATS 개발 시작</h3>
+          <div class="history-line">
+            <span class="badge">2024.04</span>
+            <h3>ATS 개발 시작</h3>
+          </div>
           <p class="meta">초저비용 AI 거래 시스템 기초 설계</p>
         </div>
         <div class="card history-card">
-          <span class="badge">2024.07</span>
-          <h3>ATS v1.0 출시</h3>
+          <div class="history-line">
+            <span class="badge">2024.07</span>
+            <h3>ATS v1.0 출시</h3>
+          </div>
           <p class="meta">베타 상용화, 초기 트레이더 확보</p>
         </div>
         <div class="card history-card">
-          <span class="badge">2024.10</span>
-          <h3>STS 출시</h3>
+          <div class="history-line">
+            <span class="badge">2024.10</span>
+            <h3>STS 출시</h3>
+          </div>
           <p class="meta">안정성/다중 전략 지원 강화</p>
         </div>
         <div class="card history-card">
-          <span class="badge">2025.02</span>
-          <h3>Super Trading AI</h3>
+          <div class="history-line">
+            <span class="badge">2025.02</span>
+            <h3>Super Trading AI</h3>
+          </div>
           <p class="meta">LLM 기반 자동 전략 설계 탑재</p>
         </div>
         <div class="card history-card">
-          <span class="badge">2025.04</span>
-          <h3>God AI System</h3>
+          <div class="history-line">
+            <span class="badge">2025.04</span>
+            <h3>God AI System</h3>
+          </div>
           <p class="meta">엔터프라이즈급 신호 엔진·B2B API</p>
         </div>
         <div class="card history-card">
-          <span class="badge">2025.07</span>
-          <h3>HATS 출시</h3>
+          <div class="history-line">
+            <span class="badge">2025.07</span>
+            <h3>HATS 출시</h3>
+          </div>
           <p class="meta">Brain–Artifact–Hand 완전 통합</p>
         </div>
         <div class="card history-card">
-          <span class="badge">2025.10</span>
-          <h3>HATS 2.5</h3>
+          <div class="history-line">
+            <span class="badge">2025.10</span>
+            <h3>HATS 2.5</h3>
+          </div>
           <p class="meta">멀티자산 지원, 리스크 엔진 고도화</p>
         </div>
         <div class="card history-card">
-          <span class="badge">2026.01</span>
-          <h3>HATS 3.0 (예정)</h3>
+          <div class="history-line">
+            <span class="badge">2026.01</span>
+            <h3>HATS 3.0 (예정)</h3>
+          </div>
           <p class="meta">완전 자동화 플랫폼 · 차트 매매선 AI 통합</p>
         </div>
       </div>
@@ -1120,7 +1174,7 @@
           <h4 style="margin:0 0 10px">5개년 재무 전망 (단위: 억 원)</h4>
           <table style="width:100%;border-collapse:collapse;font-size:13px">
             <thead>
-              <tr style="background:rgba(15,22,40,0.05)"><th style="padding:8px;text-align:left">연차</th><th style="padding:8px;text-align:right">B2C</th><th style="padding:8px;text-align:right">B2B</th><th style="padding:8px;text-align:right">총매출</th><th style="padding:8px;text-align:right">영업이익</th></tr>
+              <tr><th style="padding:8px;text-align:left">연차</th><th style="padding:8px;text-align:right">B2C</th><th style="padding:8px;text-align:right">B2B</th><th style="padding:8px;text-align:right">총매출</th><th style="padding:8px;text-align:right">영업이익</th></tr>
             </thead>
             <tbody>
               <tr><td style="padding:8px">1년차</td><td style="padding:8px;text-align:right">6억</td><td style="padding:8px;text-align:right">0억</td><td style="padding:8px;text-align:right">6억</td><td style="padding:8px;text-align:right">1.8억</td></tr>
