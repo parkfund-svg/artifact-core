@@ -164,10 +164,11 @@
       text-align: center;
       padding-top: 68px;
       overflow: hidden;
-      background-image: url('assets/main4.png');
+      background-image: url('assets/bmain.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      transition: background-image 0.6s ease;
     }
 
     .hero .overlay {
@@ -249,10 +250,7 @@
 
     /* Section backgrounds - individual main.png files */
     section#home {
-      background-image: url('assets/main.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      background: transparent;
     }
 
     section#hats {
@@ -864,13 +862,6 @@
   <section class="hero" id="home" aria-label="메인 히어로">
     <div class="overlay"></div>
     <div class="container content">
-      <img src="assets/logo.png" alt="아티팩트코어 로고" class="hero-logo" style="width:120px;height:120px;margin:0 auto 24px;border-radius:12px" />
-      <div class="kicker">HYBRID AI TRADING SYSTEM</div>
-      <div><h1 class="title">추상적 비정형화된 전략으로도 AI 자동매매</h1></div>
-      <h2 class="title">HATS로 구현합니다</h2>
-      <div style="height:8px"></div>
-      <p class="subtitle">LLM의 전략 설계 지능(Brain)과 Local ML의 실행 속도(Hand)를 Artifact로 연결하여</p> 
-        <p class="subtitle">토큰비용을 최소화하는 실시간 자동매매를 제공합니다.</p>
       <div class="hero-cta">
         <a class="btn primary" href="#demo">데모 보기</a>
         <a class="btn ghost" href="아티팩트코어hats기능설명.wav" target="_blank">🎧 HATS 기능설명</a>
@@ -1486,6 +1477,23 @@
     (function () {
       const sections = Array.from(document.querySelectorAll('section'));
       if (!sections.length) return;
+
+      // Hero background rotator
+      const hero = document.querySelector('.hero');
+      const heroImages = ['assets/bmain.png', 'assets/bmain1.png', 'assets/bmain2.png', 'assets/bmain3.png'];
+      let heroIdx = 0;
+
+      const cycleHero = () => {
+        heroIdx = (heroIdx + 1) % heroImages.length;
+        if (hero) {
+          hero.style.backgroundImage = `url('${heroImages[heroIdx]}')`;
+        }
+      };
+
+      if (hero && heroImages.length) {
+        hero.style.backgroundImage = `url('${heroImages[0]}')`;
+        setInterval(cycleHero, 5000);
+      }
 
       const showSection = (hash) => {
         const targetId = hash && hash.startsWith('#') ? hash : '#home';
