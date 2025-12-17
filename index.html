@@ -170,7 +170,9 @@
       background-repeat: no-repeat;
       background-attachment: fixed;
       width: 100%;
-      transition: background-image 0.6s ease;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
+      transform-origin: center center;
+      perspective: 1000px;
     }
 
     .hero .overlay {
@@ -1494,15 +1496,17 @@
       const cycleHero = () => {
         heroIdx = (heroIdx + 1) % heroImages.length;
         if (hero) {
-          hero.style.opacity = '0.6';
+          hero.style.transform = 'scale(0.92) rotateY(5deg)';
+          hero.style.opacity = '0.7';
           setTimeout(() => {
             const img = heroImages[heroIdx];
             hero.style.backgroundImage = `url('${img.url}?t=${ts}')`;
             hero.style.backgroundSize = '100% 100%';
             hero.style.backgroundPosition = `${img.posX} center`;
             hero.style.backgroundRepeat = 'no-repeat';
+            hero.style.transform = 'scale(1) rotateY(0deg)';
             hero.style.opacity = '1';
-          }, 300);
+          }, 400);
         }
       };
 
@@ -1513,7 +1517,7 @@
         hero.style.backgroundPosition = `${firstImg.posX} center`;
         hero.style.backgroundRepeat = 'no-repeat';
         hero.style.opacity = '1';
-        hero.style.transition = 'opacity 0.3s ease-in-out';
+        hero.style.transform = 'scale(1) rotateY(0deg)';
         setInterval(cycleHero, 5000);
       }
 
