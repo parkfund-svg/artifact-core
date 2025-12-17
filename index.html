@@ -1480,9 +1480,14 @@
       const sections = Array.from(document.querySelectorAll('section'));
       if (!sections.length) return;
 
-      // Hero background rotator with cache busting
+      // Hero background rotator with cache busting - handles tiled/connected images
       const hero = document.querySelector('.hero');
-      const heroImages = ['assets/bmain.png', 'assets/bmain1.png', 'assets/bmain2.png', 'assets/bmain3.png'];
+      const heroImages = [
+        { url: 'assets/bmain.png', posX: '0%' },
+        { url: 'assets/bmain1.png', posX: '0%' },
+        { url: 'assets/bmain2.png', posX: '0%' },
+        { url: 'assets/bmain3.png', posX: '0%' }
+      ];
       const ts = new Date().getTime();
       let heroIdx = 0;
 
@@ -1491,14 +1496,22 @@
         if (hero) {
           hero.style.opacity = '0.6';
           setTimeout(() => {
-            hero.style.backgroundImage = `url('${heroImages[heroIdx]}?t=${ts}')`;
+            const img = heroImages[heroIdx];
+            hero.style.backgroundImage = `url('${img.url}?t=${ts}')`;
+            hero.style.backgroundSize = '100% 100%';
+            hero.style.backgroundPosition = `${img.posX} center`;
+            hero.style.backgroundRepeat = 'no-repeat';
             hero.style.opacity = '1';
           }, 300);
         }
       };
 
       if (hero && heroImages.length) {
-        hero.style.backgroundImage = `url('${heroImages[0]}?t=${ts}')`;
+        const firstImg = heroImages[0];
+        hero.style.backgroundImage = `url('${firstImg.url}?t=${ts}')`;
+        hero.style.backgroundSize = '100% 100%';
+        hero.style.backgroundPosition = `${firstImg.posX} center`;
+        hero.style.backgroundRepeat = 'no-repeat';
         hero.style.opacity = '1';
         hero.style.transition = 'opacity 0.3s ease-in-out';
         setInterval(cycleHero, 5000);
