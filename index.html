@@ -1480,7 +1480,7 @@
       const sections = Array.from(document.querySelectorAll('section'));
       if (!sections.length) return;
 
-      // Hero background rotator with cache busting - handles tiled/connected images
+      // Hero background rotator with cache busting - handles doubled/tiled images
       const hero = document.querySelector('.hero');
       const heroImages = [
         { url: 'assets/bmain.png', posX: '0%' },
@@ -1498,7 +1498,7 @@
           setTimeout(() => {
             const img = heroImages[heroIdx];
             hero.style.backgroundImage = `url('${img.url}?t=${ts}')`;
-            hero.style.backgroundSize = '100% 100%';
+            hero.style.backgroundSize = '200% 100%';
             hero.style.backgroundPosition = `${img.posX} center`;
             hero.style.backgroundRepeat = 'no-repeat';
             hero.style.opacity = '1';
@@ -1509,7 +1509,7 @@
       if (hero && heroImages.length) {
         const firstImg = heroImages[0];
         hero.style.backgroundImage = `url('${firstImg.url}?t=${ts}')`;
-        hero.style.backgroundSize = '100% 100%';
+        hero.style.backgroundSize = '200% 100%';
         hero.style.backgroundPosition = `${firstImg.posX} center`;
         hero.style.backgroundRepeat = 'no-repeat';
         hero.style.opacity = '1';
