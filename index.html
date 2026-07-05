@@ -272,14 +272,21 @@
     }
 
     section#demo {
-      background-image: url('assets/main2.png');
+      background-image: url('assets/main.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    section#videos {
+      background-image: linear-gradient(120deg, rgba(5,10,20,0.55), rgba(8,18,32,0.55)), url('assets/bmain3.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
     }
 
     section#pricing {
-      background-image: url('assets/main3.png');
+      background-image: url('assets/bmain1.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -299,7 +306,10 @@
     }
 
     section#company {
-      background-image: linear-gradient(120deg, rgba(8,12,22,0.76), rgba(10,16,28,0.72));
+      background-image: linear-gradient(120deg, rgba(8,12,22,0.8), rgba(10,16,28,0.76)), url('assets/bmain.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       color: #ffffff;
     }
 
@@ -501,6 +511,7 @@
     section#hats h2,
     section#products h2,
     section#demo h2,
+    section#videos h2,
     section#pricing h2,
     section#cases h2 {
       color: #ffffff;
@@ -511,6 +522,7 @@
     section#hats .section-desc,
     section#products .section-desc,
     section#demo .section-desc,
+    section#videos .section-desc,
     section#pricing .section-desc,
     section#cases .section-desc {
       color: #ffffff;
@@ -521,6 +533,7 @@
     section#hats .card,
     section#products .card,
     section#demo .card,
+    section#videos .card,
     section#pricing .card,
     section#cases .card {
       background: rgba(15, 22, 40, 0.7);
@@ -531,6 +544,7 @@
     section#hats .card h3,
     section#products .card h3,
     section#demo .card h3,
+    section#videos .card h3,
     section#pricing .card h3,
     section#cases .card h3 {
       color: #ffffff;
@@ -540,6 +554,7 @@
     section#hats .badge,
     section#products .badge,
     section#demo .badge,
+    section#videos .badge,
     section#pricing .badge,
     section#cases .badge {
       background: rgba(17, 25, 42, 0.95);
@@ -551,6 +566,7 @@
     section#hats .meta,
     section#products .meta,
     section#demo .meta,
+    section#videos .meta,
     section#pricing .meta,
     section#cases .meta {
       color: #ffffff;
@@ -853,6 +869,7 @@
       <nav class="menu" id="mainMenu" aria-label="주요 메뉴">
         <a href="#hats" onclick="closeMenu()">HATS</a>
         <a href="#products" onclick="closeMenu()">핵심기능/수익모델</a>
+        <a href="#videos" onclick="closeMenu()">매매실제영상</a>
         <a href="#history" onclick="closeMenu()">개발연혁</a>
         <a href="#financials" onclick="closeMenu()">재무전망</a>
         <a href="#cases" onclick="closeMenu()">CASES</a>
@@ -1065,6 +1082,35 @@
       </div>
     </div>
   </section>
+
+  <!-- Videos -->
+  <section id="videos">
+    <div class="container">
+      <h2>매매실제영상</h2>
+      <p class="section-desc">HATS로 실제 매매하는 모습을 담은 최신 영상입니다. 채널: <a href="https://www.youtube.com/@artifact-core" target="_blank" rel="noopener" style="color:var(--brand)">@artifact-core</a></p>
+      <div class="grid cols-3">
+        <div class="card" style="padding:0;overflow:hidden">
+          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/qc7PuZ2nEiE" title="HATS 주식SK하이닉스5분봉 260429" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        </div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/Ik8i4hD9uZY" title="HATS 주간선물 AI자동매매 20260430" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        </div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/XtOJ6gntovU" title="HATS 주간선물 AI자동매매 260430" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        </div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/u6EiTqwRoJc" title="HATS 주간선물 AI자동매매 260504" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        </div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/d_g70JNfCVo" title="HATS 주간선물 AI자동매매 260507" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        </div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/XDIBKVREA2c" title="HATS 주간선물 AI자동매매 0508" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Pricing -->
   <section id="pricing">
     <div class="container">
@@ -1266,7 +1312,7 @@
           <h3>회사 개요</h3>
           <p class="meta" style="margin-bottom:10px"><strong>회사명:</strong> (주) 아티팩트 코어</p>
           <p class="meta" style="margin-bottom:10px"><strong>대표:</strong> 박규현</p>
-          <p class="meta" style="margin-bottom:10px"><strong>주소:</strong> 서울시 서초구 서초중앙로 110, B층(A190호)</p>
+          <p class="meta" style="margin-bottom:10px"><strong>주소:</strong> 서울시 금천구 가산디지털로9길 46 210호</p>
           <p class="meta" style="margin-bottom:10px"><strong>연락처:</strong> 02-588-2844 / 010-7600-2927</p>
           <p class="meta" style="margin-bottom:10px"><strong>이메일:</strong> <a href="mailto:parkfund@naver.com" style="color:var(--brand)">parkfund@naver.com</a></p>
         </div>
@@ -1296,9 +1342,9 @@
       <div class="card" style="margin-top:28px">
         <h3>오시는 길</h3>
         <div style="margin-top:12px;border-radius:12px;overflow:hidden;height:360px">
-          <iframe src="https://maps.google.com/maps?q=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EC%84%9C%EC%B4%88%EC%A4%91%EC%95%99%EB%A1%9C%20110&t=&z=17&ie=UTF8&iwloc=&output=embed" style="width:100%;height:100%;border:none;filter:brightness(0.95)" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="https://maps.google.com/maps?q=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EA%B8%88%EC%B2%9C%EA%B5%AC%20%EA%B0%80%EC%82%B0%EB%94%94%EC%A7%80%ED%84%B8%EB%A1%9C9%EA%B8%B8%2046%20210%ED%98%B8&t=&z=17&ie=UTF8&iwloc=&output=embed" style="width:100%;height:100%;border:none;filter:brightness(0.95)" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-        <p class="meta" style="margin-top:10px;text-align:center">서울시 서초구 서초중앙로 110, B층(A190호) · 교대역 13번 출구 도보 1분</p>
+        <p class="meta" style="margin-top:10px;text-align:center">서울시 금천구 가산디지털로9길 46 210호</p>
       </div>
     </div>
   </section>
@@ -1386,7 +1432,7 @@
         <div>
           <div style="margin-bottom:8px"><strong>© 2025 (주) 아티팩트 코어</strong></div>
           <div style="font-size:13px;line-height:1.6">
-            <div><strong>Address:</strong> 서울시 서초구 서초중앙로 110, B층(A190호)</div>
+            <div><strong>Address:</strong> 서울시 금천구 가산디지털로9길 46 210호</div>
             <div><strong>CEO:</strong> Park Gyuhyun (박규현)</div>
             <div><strong>Tel:</strong> 02-588-2844 | <strong>Mobile:</strong> 010-7600-2927</div>
             <div><strong>Email:</strong> <a href="mailto:parkfund@naver.com" style="color:inherit">parkfund@naver.com</a></div>
