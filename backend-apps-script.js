@@ -125,12 +125,16 @@ function addVideo(data) {
   }
 
   const sheet = getVideoSheet();
-  sheet.appendRow([
+  const row = sheet.getLastRow() + 1;
+  // 업로드일이 YYYY-MM-DD 형태라 시트가 자동으로 날짜 타입으로 바꿔버리는 것을 막기 위해
+  // 저장 전에 셀 서식을 일반 텍스트로 고정한다.
+  sheet.getRange(row, 1, 1, 4).setNumberFormat('@');
+  sheet.getRange(row, 1, 1, 4).setValues([[
     new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }),
     data.videoId,
     data.title,
     data.uploadDate || new Date().toISOString().slice(0, 10)
-  ]);
+  ]]);
 
   return ContentService
     .createTextOutput(JSON.stringify({ success: true, message: '영상이 추가되었습니다.' }))
