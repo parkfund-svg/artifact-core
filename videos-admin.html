@@ -163,7 +163,7 @@
       try {
         const res = await fetch(WEBHOOK_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // application/json은 CORS preflight를 유발해 Apps Script(405)에서 막힘
           body: JSON.stringify({ action: 'addVideo', password: ADMIN_PASSWORD, videoId, title, uploadDate }),
         });
         const result = await res.json();
@@ -183,7 +183,7 @@
       try {
         const res = await fetch(WEBHOOK_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // application/json은 CORS preflight를 유발해 Apps Script(405)에서 막힘
           body: JSON.stringify({ action: 'deleteVideo', password: ADMIN_PASSWORD, videoId }),
         });
         const result = await res.json();

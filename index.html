@@ -1482,7 +1482,7 @@
         try {
           const res = await fetch(WEBHOOK_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // application/json은 CORS preflight를 유발해 Apps Script(405)에서 막힘
             body: JSON.stringify(payload),
           });
           if (!res.ok) throw new Error('웹훅 전송 실패');
