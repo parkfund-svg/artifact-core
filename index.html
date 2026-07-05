@@ -142,6 +142,11 @@
       color: var(--fg)
     }
 
+    .btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
     .btn.primary {
       background: var(--brand);
       border-color: var(--brand);
@@ -1108,6 +1113,11 @@
           <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/qc7PuZ2nEiE" title="HATS 주식SK하이닉스5분봉 260429" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
         </div>
       </div>
+      <div id="videosPager" style="display:none;justify-content:center;align-items:center;gap:16px;margin-top:24px">
+        <button class="btn" id="videosPrev" onclick="videosPrevPage()">← 이전</button>
+        <span class="meta" id="videosPageInfo"></span>
+        <button class="btn" id="videosNext" onclick="videosNextPage()">다음 →</button>
+      </div>
     </div>
   </section>
 
@@ -1613,9 +1623,40 @@
       document.getElementById('mainMenu').classList.remove('show');
     }
 
-    // 매매실제영상: Apps Script에서 최신 영상 목록을 불러와 최신순 상위 6개만 표시
+    // 매매실제영상: Apps Script에서 전체 영상 목록을 불러와 최신순으로 페이지네이션 표시
     // (연결 실패 시 위에 하드코딩된 영상들이 그대로 유지됨)
-    const MAX_VIDEOS = 6;
+    const VIDEOS_PER_PAGE = 6;
+    let allVideos = [];
+    let videosPage = 0;
+
+    function renderVideosPage() {
+      const grid = document.getElementById('videosGrid');
+      const start = videosPage * VIDEOS_PER_PAGE;
+      const pageItems = allVideos.slice(start, start + VIDEOS_PER_PAGE);
+
+      grid.innerHTML = pageItems.map(v => `
+        <div class="card" style="padding:0;overflow:hidden">
+          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/${v.videoId}" title="${v.title.replace(/"/g, '&quot;')}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        </div>
+      `).join('');
+
+      const totalPages = Math.max(1, Math.ceil(allVideos.length / VIDEOS_PER_PAGE));
+      const pager = document.getElementById('videosPager');
+      pager.style.display = totalPages > 1 ? 'flex' : 'none';
+      document.getElementById('videosPageInfo').textContent = `${videosPage + 1} / ${totalPages}`;
+      document.getElementById('videosPrev').disabled = videosPage === 0;
+      document.getElementById('videosNext').disabled = videosPage >= totalPages - 1;
+    }
+
+    function videosPrevPage() {
+      if (videosPage > 0) { videosPage--; renderVideosPage(); window.scrollTo({ top: document.getElementById('videos').offsetTop, behavior: 'smooth' }); }
+    }
+
+    function videosNextPage() {
+      const totalPages = Math.max(1, Math.ceil(allVideos.length / VIDEOS_PER_PAGE));
+      if (videosPage < totalPages - 1) { videosPage++; renderVideosPage(); window.scrollTo({ top: document.getElementById('videos').offsetTop, behavior: 'smooth' }); }
+    }
+
     async function loadVideos() {
       const grid = document.getElementById('videosGrid');
       if (!grid || !WEBHOOK_URL || WEBHOOK_URL.includes('YOUR_APPS_SCRIPT_WEBAPP_URL')) return;
@@ -1624,12 +1665,9 @@
         const result = await res.json();
         if (!result.success || !result.data || !result.data.length) return;
 
-        const videos = result.data.slice(0, MAX_VIDEOS);
-        grid.innerHTML = videos.map(v => `
-          <div class="card" style="padding:0;overflow:hidden">
-            <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/${v.videoId}" title="${v.title.replace(/"/g, '&quot;')}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-          </div>
-        `).join('');
+        allVideos = result.data;
+        videosPage = 0;
+        renderVideosPage();
       } catch (err) {
         console.log('영상 목록 로드 실패, 기본 목록 표시:', err);
       }
