@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>매매실제영상 관리 - 아티팩트코어</title>
+  <style>
+    :root {
+      --brand: #6FAFC7;
+      --accent: #B99B6B;
+      --bg: #0f1628;
+      --card-bg: rgba(255,255,255,0.03);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: #e0e0e0;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    header {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    h1 { color: var(--brand); font-size: 22px; }
+    .btn {
+      background: var(--brand);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.8; }
+    .btn.danger { background: #d32f2f; }
+    .card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(111,175,199,0.3);
+      margin-bottom: 24px;
+    }
+    label { display: block; font-size: 13px; color: var(--brand); margin-bottom: 6px; font-weight: 600; }
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: #0e1424;
+      color: #fff;
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+    .form-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .status { font-size: 13px; margin-top: 8px; color: var(--brand); min-height: 18px; }
+    table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 8px; overflow: hidden; }
+    th { background: rgba(111,175,199,0.2); color: var(--brand); padding: 10px; text-align: left; font-size: 13px; }
+    td { padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; }
+    .empty { text-align: center; padding: 40px 20px; color: #888; }
+    @media (max-width:600px) { .form-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>🎬 매매실제영상 관리</h1>
+        <p style="color:#888;font-size:13px;margin-top:4px">유튜브 링크를 추가하면 홈페이지 "매매실제영상" 섹션에 최신순으로 자동 반영됩니다 (최대 6개 노출)</p>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn" onclick="location.href='index.html'">← 홈페이지로</button>
+        <button class="btn" onclick="loadVideos()">🔄 새로고침</button>
+      </div>
+    </header>
+
+    <div class="card">
+      <div class="form-row">
+        <div>
+          <label for="url">유튜브 링크 (URL 또는 영상ID)</label>
+          <input id="url" placeholder="https://youtu.be/XXXXXXXXXXX">
+        </div>
+        <div>
+          <label for="title">제목</label>
+          <input id="title" placeholder="HATS 주간선물 AI자동매매 260510">
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label for="uploadDate">업로드일 (선택, 비우면 오늘 날짜)</label>
+          <input id="uploadDate" type="date">
+        </div>
+        <div style="display:flex;align-items:flex-end">
+          <button class="btn" style="width:100%" onclick="addVideo()">➕ 추가</button>
+        </div>
+      </div>
+      <div class="status" id="addStatus"></div>
+    </div>
+
+    <div id="tableContainer"></div>
+  </div>
+
+  <script>
+    const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwMiiK9q0HQzy3z4_tTPIa1d2lHlPbOHfFNtM55aFnyUnxSUsT6AfnyR9U6RwtSXPD2/exec';
+    const ADMIN_PASSWORD = 'artifact2025';
+
+    function checkAuth() {
+      const saved = sessionStorage.getItem('adminAuth');
+      if (saved === ADMIN_PASSWORD) return true;
+
+      const password = prompt('🔐 관리자 비밀번호를 입력하세요:');
+      if (password === ADMIN_PASSWORD) {
+        sessionStorage.setItem('adminAuth', password);
+        return true;
+      }
+      alert('❌ 비밀번호가 틀렸습니다.');
+      window.location.href = 'index.html';
+      return false;
+    }
+
+    function extractVideoId(input) {
+      const trimmed = (input || '').trim();
+      const patterns = [
+        /(?:youtu\.be\/)([a-zA-Z0-9_-]{11})/,
+        /(?:v=)([a-zA-Z0-9_-]{11})/,
+        /(?:embed\/)([a-zA-Z0-9_-]{11})/
+      ];
+      for (const p of patterns) {
+        const m = trimmed.match(p);
+        if (m) return m[1];
+      }
+      if (/^[a-zA-Z0-9_-]{11}$/.test(trimmed)) return trimmed;
+      return null;
+    }
+
+    async function addVideo() {
+      const urlInput = document.getElementById('url').value;
+      const title = document.getElementById('title').value.trim();
+      const uploadDate = document.getElementById('uploadDate').value || new Date().toISOString().slice(0, 10);
+      const status = document.getElementById('addStatus');
+
+      const videoId = extractVideoId(urlInput);
+      if (!videoId) {
+        status.textContent = '❌ 유효한 유튜브 링크/영상ID가 아닙니다.';
+        return;
+      }
+      if (!title) {
+        status.textContent = '❌ 제목을 입력하세요.';
+        return;
+      }
+
+      status.textContent = '전송 중...';
+      try {
+        const res = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'addVideo', password: ADMIN_PASSWORD, videoId, title, uploadDate }),
+        });
+        const result = await res.json();
+        if (!result.success) throw new Error(result.error || '추가 실패');
+        status.textContent = '✅ 추가되었습니다.';
+        document.getElementById('url').value = '';
+        document.getElementById('title').value = '';
+        document.getElementById('uploadDate').value = '';
+        loadVideos();
+      } catch (err) {
+        status.textContent = '❌ 전송 실패: ' + err.message;
+      }
+    }
+
+    async function deleteVideo(videoId) {
+      if (!confirm('이 영상을 삭제하시겠습니까?')) return;
+      try {
+        const res = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'deleteVideo', password: ADMIN_PASSWORD, videoId }),
+        });
+        const result = await res.json();
+        if (!result.success) throw new Error(result.error || '삭제 실패');
+        loadVideos();
+      } catch (err) {
+        alert('❌ 삭제 실패: ' + err.message);
+      }
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text || '';
+      return div.innerHTML;
+    }
+
+    async function loadVideos() {
+      const container = document.getElementById('tableContainer');
+      container.innerHTML = '<div class="empty">불러오는 중...</div>';
+      try {
+        const res = await fetch(`${WEBHOOK_URL}?action=getVideos`);
+        const result = await res.json();
+        if (!result.success) throw new Error(result.error || '조회 실패');
+        renderTable(result.data);
+      } catch (err) {
+        container.innerHTML = `<div class="empty">⚠️ 아직 Apps Script가 배포/갱신되지 않았거나 연결에 실패했습니다.<br>${escapeHtml(err.message)}</div>`;
+      }
+    }
+
+    function renderTable(videos) {
+      const container = document.getElementById('tableContainer');
+      if (!videos.length) {
+        container.innerHTML = '<div class="empty">📭 등록된 영상이 없습니다.</div>';
+        return;
+      }
+      container.innerHTML = `
+        <table>
+          <thead>
+            <tr><th>업로드일</th><th>제목</th><th>영상ID</th><th>작업</th></tr>
+          </thead>
+          <tbody>
+            ${videos.map(v => `
+              <tr>
+                <td style="white-space:nowrap">${escapeHtml(v.uploadDate)}</td>
+                <td>${escapeHtml(v.title)}</td>
+                <td><a href="https://youtu.be/${escapeHtml(v.videoId)}" target="_blank" style="color:var(--brand)">${escapeHtml(v.videoId)}</a></td>
+                <td><button class="btn danger" style="padding:6px 12px;font-size:12px" onclick="deleteVideo('${escapeHtml(v.videoId)}')">삭제</button></td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (checkAuth()) loadVideos();
+    });
+  </script>
+</body>
+</html>

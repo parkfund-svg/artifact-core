@@ -1088,24 +1088,24 @@
     <div class="container">
       <h2>매매실제영상</h2>
       <p class="section-desc">HATS로 실제 매매하는 모습을 담은 최신 영상입니다. 채널: <a href="https://www.youtube.com/@artifact-core" target="_blank" rel="noopener" style="color:var(--brand)">@artifact-core</a></p>
-      <div class="grid cols-3">
+      <div class="grid cols-3" id="videosGrid">
         <div class="card" style="padding:0;overflow:hidden">
-          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/qc7PuZ2nEiE" title="HATS 주식SK하이닉스5분봉 260429" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-        </div>
-        <div class="card" style="padding:0;overflow:hidden">
-          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/Ik8i4hD9uZY" title="HATS 주간선물 AI자동매매 20260430" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-        </div>
-        <div class="card" style="padding:0;overflow:hidden">
-          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/XtOJ6gntovU" title="HATS 주간선물 AI자동매매 260430" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-        </div>
-        <div class="card" style="padding:0;overflow:hidden">
-          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/u6EiTqwRoJc" title="HATS 주간선물 AI자동매매 260504" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/XDIBKVREA2c" title="HATS 주간선물 AI자동매매 0508" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
         </div>
         <div class="card" style="padding:0;overflow:hidden">
           <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/d_g70JNfCVo" title="HATS 주간선물 AI자동매매 260507" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
         </div>
         <div class="card" style="padding:0;overflow:hidden">
-          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/XDIBKVREA2c" title="HATS 주간선물 AI자동매매 0508" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/u6EiTqwRoJc" title="HATS 주간선물 AI자동매매 260504" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        </div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/XtOJ6gntovU" title="HATS 주간선물 AI자동매매 260430" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        </div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/Ik8i4hD9uZY" title="HATS 주간선물 AI자동매매 20260430" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        </div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/qc7PuZ2nEiE" title="HATS 주식SK하이닉스5분봉 260429" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
         </div>
       </div>
     </div>
@@ -1612,6 +1612,29 @@
     function closeMenu() {
       document.getElementById('mainMenu').classList.remove('show');
     }
+
+    // 매매실제영상: Apps Script에서 최신 영상 목록을 불러와 최신순 상위 6개만 표시
+    // (연결 실패 시 위에 하드코딩된 영상들이 그대로 유지됨)
+    const MAX_VIDEOS = 6;
+    async function loadVideos() {
+      const grid = document.getElementById('videosGrid');
+      if (!grid || !WEBHOOK_URL || WEBHOOK_URL.includes('YOUR_APPS_SCRIPT_WEBAPP_URL')) return;
+      try {
+        const res = await fetch(`${WEBHOOK_URL}?action=getVideos`);
+        const result = await res.json();
+        if (!result.success || !result.data || !result.data.length) return;
+
+        const videos = result.data.slice(0, MAX_VIDEOS);
+        grid.innerHTML = videos.map(v => `
+          <div class="card" style="padding:0;overflow:hidden">
+            <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/${v.videoId}" title="${v.title.replace(/"/g, '&quot;')}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+          </div>
+        `).join('');
+      } catch (err) {
+        console.log('영상 목록 로드 실패, 기본 목록 표시:', err);
+      }
+    }
+    loadVideos();
 
     // Register Service Worker for PWA
     if ('serviceWorker' in navigator) {
