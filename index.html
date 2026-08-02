@@ -9,15 +9,12 @@
   <meta http-equiv="Expires" content="0" />
   <title>(주) 아티팩트 코어 | HATS AI 자동매매</title>
   <meta name="description"
-    content="HATS: Brain–Artifact–Hand로 초저비용·초저지연 AI 자동매매. 전략 빌더, AI 봇 시그널, 차트 매매선, AI 예측봉, B2B API." />
+    content="전략을 말로 설명하면 AI가 노드로 조립하고, 백테스트로 검증한 뒤 무인으로 실행하는 AI 자동매매 프로그램 HATS.">
   <meta property="og:title" content="Artifact Core | HATS AI Autotrading" />
-  <meta property="og:description" content="LLM의 지능과 Local ML의 속도를 결합한 하이브리드 AI 트레이딩 시스템." />
+  <meta property="og:description" content="전략을 자연어로 설명하면 AI가 노드로 조립하고, 자동 백테스트로 검증한 뒤 무인으로 실행하는 HATS." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/og-image.jpg" />
   <meta property="og:url" content="https://artifact-core.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/png" href="assets/logo.png" />
   <link rel="shortcut icon" type="image/png" href="assets/logo.png" />
@@ -29,766 +26,116 @@
   <meta name="apple-mobile-web-app-title" content="Artifact Core" />
   <link rel="apple-touch-icon" href="assets/logo.png" />
   <style>
+    /* HATS 홈페이지 v2 — hats-home(D:\1.프로그램개발폴더\hats-home) 디자인을 이 라이브 사이트로 이식 */
     :root {
-      --bg: #4d64a8;
+      --bg: #030a1a;
+      --bg-elevated: #0f1628;
+      --bg-card: #11192a;
+      --border: #232733;
       --fg: #e5eaf0;
-      --muted: #eef2f7;
+      --muted: #9aa3b2;
       --brand: #6fafc7;
+      --brand-hover: #8bc2d6;
       --accent: #e2ad30;
-      --border: #394152;
-      --green: #93a584;
-      --red: #914545;
+      --success: #7bc47f;
+      --danger: #d97878;
+      --radius: 14px;
     }
 
     * {
-      box-sizing: border-box
+      box-sizing: border-box;
     }
 
-    html,
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      background: #030a1a;
-      color: var(--fg);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial
     }
 
     body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", Pretendard, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
     }
 
     a {
-      color: inherit;
-      text-decoration: none
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--brand-hover);
     }
 
     img {
       max-width: 100%;
-      display: block
+      display: block;
     }
 
-    /* Layout */
     .container {
-      max-width: 1240px;
+      max-width: 1160px;
       margin: 0 auto;
-      padding: 0 20px
+      padding: 0 24px;
     }
 
-    header {
-      position: fixed;
+    /* Header */
+    .site-header {
+      position: sticky;
       top: 0;
-      left: 0;
-      right: 0;
       z-index: 50;
-      background: rgba(3, 10, 26, 0.904);
+      background: rgba(3, 10, 26, 0.92);
       backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border)
+      border-bottom: 1px solid var(--border);
     }
 
-    .nav {
+    .site-header .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 68px;
-      position: relative
+      height: 64px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 2px;
+      gap: 10px;
       font-weight: 900;
-      letter-spacing: 2px;
-      flex: 0 0 auto;
-      margin-right: 20px;
-      font-size: 14px
+      letter-spacing: 1.5px;
+      font-size: 15px;
+      color: var(--fg);
     }
 
-    .brand .logo {
-      width: 40px;
-      height: 40px;
+    .brand img {
+      width: 28px;
+      height: 28px;
       border-radius: 6px;
-      background: linear-gradient(135deg, #a4c6d3, #2986dd)
     }
 
     .menu {
       display: flex;
-      gap: 16px;
-      flex: 1;
-      justify-content: flex-end;
+      gap: 20px;
+      align-items: center;
       flex-wrap: wrap;
-      align-items: center
     }
 
     .menu a {
-      font-weight: 700;
-      color: var(--fg);
       font-size: 14px;
-      white-space: nowrap
-    }
-
-    .cta {
-      display: flex;
-      gap: 12px
-    }
-
-    .btn {
-      padding: 10px 14px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: transparent;
-      color: var(--fg)
-    }
-
-    .btn:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-
-    .btn.primary {
-      background: var(--brand);
-      border-color: var(--brand);
-      color: #00111a;
-      font-weight: 700
-    }
-
-    .btn.ghost {
-      background: #0f1628;
-      border-color: #0f1628
-    }
-
-    /* Hero */
-    .hero {
-      position: relative;
-      min-height: 92vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding-top: 68px;
-      overflow: hidden;
-      background-image: url('assets/bmain.png');
-      background-size: 100% 100%;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      width: 100%;
-      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
-      transform-origin: center center;
-      perspective: 1000px;
-    }
-
-    .hero .overlay {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(80% 60% at 50% 40%, rgba(121, 131, 134, 0.25) 0%, rgba(71, 85, 121, 0) 60%),
-        linear-gradient(to bottom, rgba(233, 234, 236, 0.2), rgba(5, 12, 29, 0.6))
-    }
-
-    .hero .content {
-      position: relative;
-      z-index: 2
-    }
-
-    .kicker {
-      color: var(--accent);
-      font-weight: 700;
-      letter-spacing: .12em;
-      margin-bottom: 12px
-    }
-
-    .title {
-      font-size: clamp(28px, 6vw, 56px);
-      line-height: 1.1;
-      margin: 0 0 3px
-    }
-
-    .subtitle {
-      color: var(--muted);
-      font-size: clamp(14px, 2.4vw, 18px);
-      max-width: 760px;
-      margin: 0 auto 24px
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 6px;
-      justify-content: center;
-      flex-wrap: wrap
-    }
-
-    /* SPA helpers: hide all sections except the active one */
-    .spa-hidden {
-      display: none !important
-    }
-
-    .spa-visible {
-      display: block !important
-    }
-
-    /* Hero CTA: semi-transparent button variants */
-    .hero .hero-cta .btn.primary {
-      background-color: rgba(111,175,199,0.85);
-      border-color: rgba(111,175,199,0.85);
-      color: #00111a;
-      transition: background-color .18s ease, border-color .18s ease;
-    }
-    .hero .hero-cta .btn.primary:hover {
-      background-color: rgba(111,175,199,1);
-      border-color: rgba(111,175,199,1);
-    }
-    .hero .hero-cta .btn.ghost {
-      background-color: rgba(15,22,40,0.6);
-      border-color: rgba(15,22,40,0.6);
-      color: var(--fg);
-      transition: background-color .18s ease, border-color .18s ease;
-    }
-    .hero .hero-cta .btn.ghost:hover {
-      background-color: rgba(15,22,40,0.85);
-      border-color: rgba(15,22,40,0.85);
-    }
-
-    /* Sections */
-    section {
-      padding: 96px 0;
-      border-top: 1px solid var(--border)
-    }
-
-    /* Section backgrounds - individual main.png files */
-    section#home {
-      background: transparent;
-    }
-
-    section#hats {
-      background-image: url('assets/main2.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    section#products {
-      background-image: url('assets/main3.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    section#demo {
-      background-image: url('assets/main.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    section#videos {
-      background-image: linear-gradient(120deg, rgba(5,10,20,0.55), rgba(8,18,32,0.55)), url('assets/bmain3.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    section#pricing {
-      background-image: url('assets/bmain1.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    section#cases {
-      background-image: url('assets/main4.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    /* FAQ stays light; COMPANY/CONTACT get branded backgrounds; HISTORY/FINANCIALS use brighter overlays */
-    section#faq {
-      background: #ffffff;
-      color: #00111a;
-    }
-
-    section#company {
-      background-image: linear-gradient(120deg, rgba(8,12,22,0.8), rgba(10,16,28,0.76)), url('assets/bmain.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color: #ffffff;
-    }
-
-    section#contact {
-      background-image: linear-gradient(120deg, rgba(5,10,20,0.75), rgba(12,26,44,0.72)), url('assets/main7.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color: #ffffff;
-    }
-
-    /* HISTORY / FINANCIALS with lighter overlays */
-    section#history {
-      background-image: linear-gradient(120deg, rgba(5,10,20,0.65), rgba(8,18,32,0.62)), url('assets/main5.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color: #ffffff;
-    }
-
-    section#financials {
-      background-image: linear-gradient(120deg, rgba(5,10,20,0.65), rgba(12,26,44,0.6)), url('assets/main6.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color: #ffffff;
-    }
-
-    section#history .card,
-    section#financials .card {
-      background: rgba(12, 20, 34, 0.72);
-      color: #ffffff;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 10px 26px rgba(4, 10, 24, 0.2);
-    }
-
-    section#history .meta,
-    section#financials .meta,
-    section#history .section-desc,
-    section#financials .section-desc,
-    section#financials .metric-number,
-    section#financials .list li {
-      color: rgba(233, 242, 255, 0.92);
-      text-shadow: none;
-    }
-
-    section#financials table,
-    section#financials th,
-    section#financials td {
-      color: #ffffff;
-    }
-
-    section#financials thead tr {
-      background: rgba(255,255,255,0.1);
-    }
-
-    section#financials tbody tr:nth-child(even) {
-      background: rgba(255,255,255,0.05);
-    }
-
-    section#financials .btn {
-      background: rgba(255,255,255,0.92);
-      border-color: #0f1628;
-      color: #0f1628;
-    }
-
-    section#financials .btn:hover {
-      background: #ffffff;
-      border-color: #0f1628;
-      color: #0f1628;
-    }
-
-    section#financials .btn.primary {
-      background: #ffffff;
-      border-color: #0f1628;
-      color: #0f1628;
-      font-weight: 700;
-    }
-
-    section#history h2,
-    section#financials h2,
-    section#contact h2,
-    section#company h2 {
-      color: #ffffff;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    }
-
-    section#history .section-desc,
-    section#financials .section-desc,
-    section#contact .section-desc,
-    section#company .section-desc {
-      color: rgba(233, 242, 255, 0.92);
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-    }
-
-    section#faq h2 {
-      color: #00111a;
-      text-shadow: none;
-    }
-
-    section#faq .section-desc {
-      color: #243244;
-      text-shadow: none;
-    }
-
-    /* Cards and form elements inside these sections should be subtly translucent on white */
-    section#faq .card {
-      background: rgba(255, 255, 255, 0.98);
-      color: #00111a;
-      border: 1px solid rgba(36,50,68,0.12);
-      box-shadow: 0 6px 18px rgba(36,50,68,0.04);
-    }
-
-    /* Company cards follow dark overlay tones */
-    section#company .card {
-      background: rgba(12, 20, 34, 0.78);
-      color: #ffffff;
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: 0 10px 24px rgba(4, 10, 24, 0.25);
-    }
-    section#company .card .meta,
-    section#company .card h4,
-    section#company .card p,
-    section#company .card a {
-      color: #ffffff;
-    }
-
-    section#faq details {
-      background: rgba(250, 250, 250, 0.95);
-      color: #00111a;
-      border-color: rgba(36,50,68,0.08);
-    }
-
-    section#faq summary {
-      color: #00111a;
-    }
-
-    section#faq .meta {
-      color: #243244;
-    }
-
-    /* Contact on dark background */
-    section#contact form {
-      background: rgba(7, 12, 24, 0.78);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 10px 24px rgba(4, 10, 24, 0.25);
-    }
-
-    section#contact label {
-      color: rgba(233, 242, 255, 0.95);
       font-weight: 600;
+      color: var(--fg);
+      white-space: nowrap;
     }
 
-    section#contact input,
-    section#contact select,
-    section#contact textarea {
-      background: rgba(255, 255, 255, 0.08);
-      color: #ffffff;
-      border-color: rgba(255,255,255,0.25);
+    .menu a:hover {
+      color: var(--brand);
     }
 
-    section#contact input::placeholder,
-    section#contact textarea::placeholder {
-      color: rgba(233, 242, 255, 0.7);
-    }
-
-    section#contact .meta,
-    section#contact a {
-      color: rgba(233, 242, 255, 0.9);
-    }
-
-    section#contact .btn {
-      border-color: rgba(255,255,255,0.7);
-      color: #ffffff;
-      background: rgba(255,255,255,0.08);
-    }
-
-    section#contact .btn.primary {
-      background: #ffffff;
-      color: #0f1628;
-      border-color: #ffffff;
-      font-weight: 700;
-    }
-
-    section#contact .btn:hover {
-      background: rgba(255,255,255,0.16);
-    }
-
-    footer {
-      background: rgba(3, 10, 26, 0.904);
-      border-top: 1px solid var(--border);
-      margin-top: auto;
-    }
-
-    /* Text color overrides for sections with background images */
-    section#home h2,
-    section#hats h2,
-    section#products h2,
-    section#demo h2,
-    section#videos h2,
-    section#pricing h2,
-    section#cases h2 {
-      color: #ffffff;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    }
-
-    section#home .section-desc,
-    section#hats .section-desc,
-    section#products .section-desc,
-    section#demo .section-desc,
-    section#videos .section-desc,
-    section#pricing .section-desc,
-    section#cases .section-desc {
-      color: #ffffff;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-    }
-
-    section#home .card,
-    section#hats .card,
-    section#products .card,
-    section#demo .card,
-    section#videos .card,
-    section#pricing .card,
-    section#cases .card {
-      background: rgba(15, 22, 40, 0.7);
-      color: #ffffff;
-    }
-
-    section#home .card h3,
-    section#hats .card h3,
-    section#products .card h3,
-    section#demo .card h3,
-    section#videos .card h3,
-    section#pricing .card h3,
-    section#cases .card h3 {
-      color: #ffffff;
-    }
-
-    section#home .badge,
-    section#hats .badge,
-    section#products .badge,
-    section#demo .badge,
-    section#videos .badge,
-    section#pricing .badge,
-    section#cases .badge {
-      background: rgba(17, 25, 42, 0.95);
-      border-color: #6fafc7;
-      color: #ffffff;
-    }
-
-    section#home .meta,
-    section#hats .meta,
-    section#products .meta,
-    section#demo .meta,
-    section#videos .meta,
-    section#pricing .meta,
-    section#cases .meta {
-      color: #ffffff;
-    }
-
-    h2 {
-      font-size: 28px;
-      margin: 0 0 12px
-    }
-
-    .section-desc {
-      color: var(--muted);
-      margin: 0 0 28px
-    }
-
-    .grid {
-      display: grid;
-      gap: 20px
-    }
-
-    .grid.cols-3 {
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))
-    }
-
-    .grid.cols-2 {
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr))
-    }
-
-    .card {
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 20px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, .02), rgba(255, 255, 255, 0))
-    }
-
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 18px
-    }
-
-    .meta {
-      color: var(--muted);
-      font-size: 14px
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: #11192a;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 13px
-    }
-
-    .stat {
+    .nav-actions {
       display: flex;
-      align-items: center;
-      gap: 10px
-    }
-
-    .stat .num {
-      font-weight: 700;
-      color: var(--accent)
-    }
-
-    .list {
-      margin: 10px 0 0 18px
-    }
-
-    /* Timeline */
-    .timeline {
-      display: grid;
-      gap: 20px
-    }
-
-    .timeline .item {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--brand);
-      margin-top: 6px
-    }
-
-    /* Pricing */
-    .pricing {
-      display: grid;
-      gap: 20px;
-      grid-template-columns: repeat(3, 1fr)
-    }
-
-    .price-card {
-      border: 1px solid rgba(57,65,82,0.6);
-      border-radius: 16px;
-      padding: 24px;
-      background: rgba(15,22,40,0.7);
-      color: #ffffff;
-      backdrop-filter: blur(6px);
-    }
-
-    .price {
-      font-size: 28px;
-      font-weight: 700
-    }
-
-    .price .unit {
-      font-size: 14px;
-      color: var(--muted);
-      font-weight: 600
-    }
-
-    .features {
-      margin: 12px 0 0 18px
-    }
-
-    /* Demo */
-    .demo-wrap {
-      position: relative;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden
-    }
-
-    .demo-media {
-      aspect-ratio: 16/9;
-      background: #070b15
-    }
-
-    .metric-number {
-      font-size: 32px;
-      font-weight: 800;
-      margin: 6px 0 8px;
-      letter-spacing: -0.02em;
-    }
-
-    .history-card {
-      padding: 14px 16px;
-    }
-
-    .history-line {
-      display: flex;
-      align-items: center;
       gap: 10px;
-      margin: 0 0 2px;
-    }
-
-    .history-card h3 {
-      margin: 0;
-      font-size: 18px;
-      line-height: 1.2;
-    }
-
-    .history-card .badge {
-      margin: 0;
-    }
-
-    .history-card .meta {
-      margin: 0;
-      line-height: 1.4;
-    }
-
-    .demo-caption {
-      padding: 12px 16px;
-      color: var(--muted);
-      border-top: 1px solid var(--border)
-    }
-
-    /* FAQ */
-    details {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      background: #0f1628
-    }
-
-    summary {
-      font-weight: 600;
-      cursor: pointer
-    }
-
-    /* Contact */
-    form {
-      display: grid;
-      gap: 12px
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: #0e1424;
-      color: var(--fg)
-    }
-
-    textarea {
-      min-height: 120px;
-      resize: vertical
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px
-    }
-
-    footer {
-      padding: 40px 0;
-      color: var(--muted)
+      align-items: center;
     }
 
     .mobile-menu-toggle {
@@ -798,891 +145,1053 @@
       color: var(--fg);
       cursor: pointer;
       padding: 8px;
-      z-index: 100;
       font-size: 24px;
+      line-height: 1;
     }
 
-    /* Responsive */
-    @media (max-width:768px) {
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--fg);
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn:hover {
+      border-color: var(--brand);
+      color: var(--brand-hover);
+    }
+
+    .btn-primary {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: #00131c;
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-hover);
+      border-color: var(--brand-hover);
+      color: #00131c;
+    }
+
+    .btn-block {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 110px 0 72px;
+      text-align: center;
+      background:
+        radial-gradient(60% 60% at 50% 0%, rgba(111, 175, 199, 0.16) 0%, rgba(3, 10, 26, 0) 60%);
+    }
+
+    .kicker {
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 5.5vw, 50px);
+      line-height: 1.15;
+      margin: 0 0 18px;
+      font-weight: 800;
+      text-wrap: balance;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: clamp(15px, 2vw, 18px);
+      max-width: 620px;
+      margin: 0 auto 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Sections */
+    .section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-kicker {
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .section h2 {
+      font-size: 30px;
+      margin: 0 0 12px;
+      text-wrap: balance;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 0 40px;
+    }
+
+    /* Grid & Cards */
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .grid.cols-2 {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+
+    .grid.cols-3 {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .grid.cols-4 {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #171f33;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .badge-accent {
+      background: rgba(226, 173, 48, 0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Concept box */
+    .concept-box {
+      background: rgba(111, 175, 199, 0.08);
+      border: 1px solid var(--brand);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 40px;
+    }
+
+    .concept-box h3 {
+      margin: 0 0 16px;
+    }
+
+    .concept-box .grid {
+      margin-top: 16px;
+    }
+
+    .concept-box strong.label {
+      color: var(--brand);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* Timeline */
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline .item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      min-width: 10px;
+      border-radius: 50%;
+      background: var(--brand);
+      margin-top: 8px;
+    }
+
+    .timeline .item h4 {
+      margin: 0 0 4px;
+      font-size: 16px;
+    }
+
+    .timeline .item .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* Pricing */
+    .pricing {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .price-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      background: var(--bg-card);
+    }
+
+    .price-card.featured {
+      border-color: var(--accent);
+      background: rgba(226, 173, 48, 0.06);
+    }
+
+    .price-card .price {
+      font-size: 30px;
+      font-weight: 800;
+      margin: 10px 0 4px;
+    }
+
+    .price-card .price .unit {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .price-card ul {
+      margin: 16px 0 20px;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .price-card ul li {
+      margin-bottom: 6px;
+    }
+
+    /* Institutional pricing table */
+    .institutional-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .institutional-table th,
+    .institutional-table td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .institutional-table th {
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .institutional-table td.price-cell {
+      color: var(--accent);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+    }
+
+    /* Login/download-gated teaser cards */
+    .gated-card {
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      text-align: center;
+      background: var(--bg-card);
+    }
+
+    .gated-card .lock-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    /* Video grid (기능소개 단일 영상 + 실제매매영상 그리드 공용) */
+    .video-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .video-frame {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #05070d;
+    }
+
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-caption {
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* Company info */
+    .info-row {
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .info-row strong {
+      color: var(--fg);
+      margin-right: 6px;
+    }
+
+    /* Growth metrics */
+    .metric-number {
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--accent);
+      margin: 4px 0 6px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Contact form */
+    form {
+      display: grid;
+      gap: 16px;
+      max-width: 720px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      color: var(--fg);
+      font-size: 14px;
+      font-family: inherit;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--brand);
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .checkbox-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .checkbox-row label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      color: var(--fg);
+      cursor: pointer;
+      margin-bottom: 0;
+    }
+
+    .checkbox-row input {
+      width: auto;
+    }
+
+    #submit-status {
+      color: var(--brand);
+      font-size: 13px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: auto;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--brand-hover);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto !important; }
+    }
+
+    /* Responsive nav */
+    @media (max-width: 768px) {
       .mobile-menu-toggle {
         display: block;
-      }
-
-      .nav {
-        height: 60px
       }
 
       .menu {
         display: none;
         position: fixed;
-        top: 60px;
+        top: 64px;
         left: 0;
         right: 0;
         background: rgba(3, 10, 26, 0.98);
         backdrop-filter: blur(12px);
         flex-direction: column;
+        align-items: stretch;
         padding: 20px;
-        gap: 12px;
+        gap: 4px;
         z-index: 99;
-        border-bottom: 2px solid var(--border)
+        border-bottom: 1px solid var(--border);
       }
 
       .menu.show {
-        display: flex
+        display: flex;
       }
 
       .menu a {
-        font-size: 16px;
         padding: 12px;
         text-align: center;
-        border-radius: 4px;
-        background: rgba(255,255,255,0.05)
+        border-radius: 8px;
       }
 
       .menu a:hover {
-        background: rgba(255,255,255,0.15)
-      }
-
-      .pricing {
-        grid-template-columns: 1fr
-      }
-
-      .grid.cols-3 {
-        grid-template-columns: 1fr
-      }
-
-      .grid.cols-2 {
-        grid-template-columns: 1fr
+        background: var(--bg-card);
       }
 
       .form-row {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Header -->
-  <header>
-    <div class="container nav">
-      <a href="#" class="brand">
-        <img src="./assets/logo.png" alt="아티팩트코어 로고" class="logo" />
-        ARTIFACT-CORE
-      </a>
-      <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="메뉴">☰</button>
-      <nav class="menu" id="mainMenu" aria-label="주요 메뉴">
-        <a href="#hats" onclick="closeMenu()">HATS</a>
-        <a href="#products" onclick="closeMenu()">핵심기능/수익모델</a>
-        <a href="#videos" onclick="closeMenu()">매매실제영상</a>
-        <a href="#history" onclick="closeMenu()">개발연혁</a>
-        <a href="#financials" onclick="closeMenu()">재무전망</a>
-        <a href="#cases" onclick="closeMenu()">CASES</a>
-        <a href="#company" onclick="closeMenu()">회사소개</a>
-        <a href="#contact" onclick="closeMenu()">CONTACT</a>
-      </nav>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="#hero" class="brand">
+      <img src="assets/logo.png" alt="아티팩트코어 로고" />
+      ARTIFACT-CORE
+    </a>
+    <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="메뉴">☰</button>
+    <nav class="menu" id="mainMenu" aria-label="주요 메뉴">
+      <a href="#about" onclick="closeMenu()">HATS란</a>
+      <a href="#features" onclick="closeMenu()">기능</a>
+      <a href="#videos" onclick="closeMenu()">영상</a>
+      <a href="#history" onclick="closeMenu()">개발연혁</a>
+      <a href="#growth" onclick="closeMenu()">성장목표</a>
+      <a href="#pricing" onclick="closeMenu()">가격</a>
+      <a href="#download-teaser" onclick="closeMenu()">다운로드</a>
+      <a href="#company" onclick="closeMenu()">회사소개</a>
+      <a href="#contact" onclick="closeMenu()">문의</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="kicker">AI AUTOTRADING SYSTEM</div>
+    <h1>감정을 배제한<br>AI 자동매매, HATS</h1>
+    <p>전략을 자연어로 설명하면 AI가 노드로 조립하고, 자동 백테스트로 검증한 뒤, 화면을 보지 않아도 무인으로 실행합니다. 국내/해외 선물·옵션·주식·코인을 한 프로그램에서 다룹니다.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">상담 신청하기</a>
+      <a href="#about" class="btn">HATS 자세히 보기</a>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- Hero -->
-  <section class="hero" id="home" aria-label="메인 히어로">
-    <div class="overlay"></div>
-    <div class="container content">
-      <div class="hero-cta">
-        <a class="btn primary" href="#demo">데모 보기</a>
-        <a class="btn ghost" href="아티팩트코어hats기능설명.wav" target="_blank">🎧 HATS 기능설명</a>
-        <a class="btn ghost" href="아티팩트코어hats수익모델.wav" target="_blank">💰 수익모델 설명</a>
-        <a class="btn ghost" href="말 한마디로 주식 매매 로직 만든다.mp3" target="_blank">🎤 HATS의 딥다이브</a>
-      </div>
-    </div>
-  </section>
+<!-- HATS란? -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-kicker">ABOUT HATS</div>
+    <h2>HATS란 무엇인가</h2>
+    <p class="section-desc">HATS(Hybrid AI Trading System)는 전략을 설계하는 AI와, 그 전략을 빠르고 일관되게 실행하는 로컬 엔진을 결합한 AI 자동매매 프로그램입니다. 코딩을 몰라도 매매 아이디어를 말로 설명하면 실행 가능한 전략으로 바뀝니다.</p>
 
-  <!-- Demo -->
-  <section id="demo">
-    <div class="container">
-      <h2>데모 영상</h2>
-      <p class="section-desc">자동매매 흐름과 실거래 화면을 영상으로 확인하세요. 핵심 기능 설명 오버레이 제공.</p>
-      <div class="demo-wrap">
-        <div class="demo-media">
-          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/GsXRk13ocjE" title="HATS 데모 영상" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius:12px"></iframe>
-        </div>
-        <div class="demo-caption">전략 설계(Brain) → Artifact 변환 → 실행 엔진(Hand)</div>
-        <div style="margin-top:12px">
-          <a class="btn primary" href="https://youtu.be/GsXRk13ocjE" target="_blank" rel="noopener">YouTube에서 보기</a>
-          <a class="btn" href="#contact" style="margin-left:10px">상담 요청하기</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HATS -->
-  <section id="hats">
-    <div class="container">
-      <h2>HATS란? Hybrid AI Trading System</h2>
-      <p class="section-desc">LLM의 전략 설계 지능(Brain)과 Local ML의 실행 속도(Hand)를 Artifact로 연결한 하이브리드 AI 자동매매 시스템입니다.</p>
-
-      <!-- HATS의 정의 -->
-      <div class="card" style="margin-bottom:32px;background:rgba(111,175,199,0.1);border:2px solid var(--brand)">
-        <h3>💡 HATS의 핵심 개념</h3>
-        <div class="grid cols-3" style="gap:16px;margin-top:16px">
-          <div>
-            <strong style="color:var(--brand)">Brain (두뇌)</strong>
-            <p class="meta">LLM이 자연어 전략을 분석하여 실행 가능한 논리로 설계</p>
-          </div>
-          <div>
-            <strong style="color:var(--brand)">Artifact (설계도)</strong>
-            <p class="meta">설계된 전략을 JSON으로 영구 저장하여 재사용</p>
-          </div>
-          <div>
-            <strong style="color:var(--brand)">Hand (실행)</strong>
-            <p class="meta">Local ML이 초고속으로 신호 생성 및 매매 실행</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- HATS의 장점 -->
-      <h3 style="margin-bottom:16px">✨ HATS의 핵심 장점</h3>
-      <div class="grid cols-4" style="margin-bottom:32px">
-        <div class="card">
-          <h4 style="color:var(--accent);margin:0 0 8px">초저비용</h4>
-          <p class="meta">LLM 1회 사용 후 무한 실행, 토큰 비용 최소화</p>
-        </div>
-        <div class="card">
-          <h4 style="color:var(--accent);margin:0 0 8px">초저지연</h4>
-          <p class="meta">수 ms 단위 실행 속도, 실시간 시장 대응</p>
-        </div>
-        <div class="card">
-          <h4 style="color:var(--accent);margin:0 0 8px">자연어 전략</h4>
-          <p class="meta">코딩 없이 말로 전략 생성 가능</p>
-        </div>
-        <div class="card">
-          <h4 style="color:var(--accent);margin:0 0 8px">안정성</h4>
-          <p class="meta">검증된 Artifact 재사용으로 일관성 보장</p>
-        </div>
-      </div>
-
-      <!-- 기존 시스템 vs HATS 비교 -->
-      <h3 style="margin-bottom:16px">⚖️ 기존 시스템 vs HATS 비교</h3>
-      <div class="grid cols-2" style="gap:20px">
-        <div class="card" style="background:rgba(61, 1, 1, 0.2);border:1px solid var(--red)">
-          <h4 style="color:#d8ec24;margin:0 0 12px">❌ 기존 LLM 자동매매의 문제</h4>
-          <ul class="list">
-            <li><strong>높은 운영 비용:</strong> 매 실행마다 LLM 호출로 토큰 비용 급증</li>
-            <li><strong>느린 실행 속도:</strong> 수 초 지연으로 슬리피지 발생</li>
-            <li><strong>비일관성:</strong> 같은 입력에도 다른 결과 가능</li>
-            <li><strong>API 의존:</strong> 네트워크 장애 시 중단</li>
-          </ul>
-        </div>
-        <div class="card" style="background:rgba(25, 3, 77, 0.2);border:1px solid var(--green)">
-          <h4 style="color:#a5e70a;margin:0 0 12px">✅ HATS의 해결책</h4>
-          <ul class="list">
-            <li><strong>초저비용:</strong> LLM 1회 사용 후 Artifact 무한 재사용</li>
-            <li><strong>초고속:</strong> Local ML로 수 ms 단위 실행</li>
-            <li><strong>일관성:</strong> 동일 Artifact로 예측 가능한 동작</li>
-            <li><strong>독립 실행:</strong> 로컬 환경에서 안정적 작동</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- HATS 작동 프로세스 -->
-      <div class="timeline" style="margin-top:32px">
-        <h3 style="margin-bottom:16px">🔄 HATS 작동 프로세스</h3>
-        <div class="item"><span class="dot"></span>
-          <div>
-            <strong>1단계 · 전략 입력 (Brain)</strong>
-            <p class="meta">"RSI 30 이하면 매수, 70 이상이면 매도" 같은 자연어로 전략 설명</p>
-          </div>
-        </div>
-        <div class="item"><span class="dot"></span>
-          <div>
-            <strong>2단계 · Artifact 생성</strong>
-            <p class="meta">LLM이 전략을 분석하여 JSON 형태의 실행 설계도로 변환 및 저장</p>
-          </div>
-        </div>
-        <div class="item"><span class="dot"></span>
-          <div>
-            <strong>3단계 · 실시간 실행 (Hand)</strong>
-            <p class="meta">Local ML이 Artifact를 읽어 시세/호가 분석 후 초고속 매매 신호 생성</p>
-          </div>
-        </div>
-        <div class="item"><span class="dot"></span>
-          <div>
-            <strong>4단계 · 무한 반복</strong>
-            <p class="meta">동일 Artifact로 추가 LLM 호출 없이 지속적 자동매매 (토큰 비용 0원)</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Products -->
-  <section id="products">
-    <div class="container">
-      <h2>HATS의 핵심기능 및 수익모델</h2>
-      <p class="section-desc">AI 예측봉부터 자동매매까지, 말로 만드는 트레이딩 시스템을 경험하세요.</p>
-
-      <!-- HATS 기능설명 오디오 버튼 -->
-      <div style="text-align:center;margin-bottom:32px">
-        <a class="btn primary" href="아티팩트코어hats기능설명.wav" target="_blank" style="display:inline-block;font-size:18px;padding:16px 32px">
-          🎧 HATS 기능설명 오디오 듣기
-        </a>
-      </div>
-
-      <!-- 4가지 핵심기능 -->
-      <h3 style="margin-bottom:20px">🎯 4가지 핵심기능</h3>
-      <div class="grid cols-4" style="margin-bottom:32px">
-        <div class="card">
-          <span class="badge">기능 1</span>
-          <h4 style="margin:8px 0">📈 매매선</h4>
-          <p class="meta">차트에 익절/손절/진입선을 자동 표시하여 직관적 매매 지점 제공</p>
-        </div>
-        <div class="card">
-          <span class="badge">기능 2</span>
-          <h4 style="margin:8px 0">🔮 예측봉</h4>
-          <p class="meta">향후 5캔들의 고가·저가·변동성을 AI로 예측하여 차트에 시각화</p>
-        </div>
-        <div class="card">
-          <span class="badge">기능 3</span>
-          <h4 style="margin:8px 0">🔧 전략빌더</h4>
-          <p class="meta">자연어로 전략을 설명하면 자동으로 실행 가능한 Artifact 생성</p>
-        </div>
-        <div class="card" style="border:2px solid var(--accent);background:rgba(185,155,107,0.1)">
-          <span class="badge" style="background:var(--accent)">★ 핵심</span>
-          <h4 style="margin:8px 0;color:var(--accent)">🤖 AI봇 시그널 엔진</h4>
-          <p class="meta">Local ML 기반 초저지연 실시간 자동매매 신호 생성 및 실행</p>
-        </div>
-      </div>
-
-      <!-- 수익모델 -->
-      <div class="card" style="margin-top:32px;background:rgba(111,175,199,0.1);border:2px solid var(--brand)">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
-          <div style="flex:1;min-width:280px">
-            <h3 style="margin:0 0 12px">💰 HATS 수익모델</h3>
-            <div style="margin-bottom:12px">
-              <p class="meta" style="margin-bottom:8px"><strong>B2C 구독 수익:</strong> 월 7.9만원 ~ 39.9만원 (3단계 요금제)</p>
-              <p class="meta" style="margin-bottom:8px"><strong>B2B API 계약:</strong> 연간 1억 ~ 5억원 (증권사, 자산운용사)</p>
-              <p class="meta" style="margin-bottom:8px"><strong>전략 마켓플레이스:</strong> 수익 공유 모델 (향후 예정)</p>
-              <p class="meta"><strong>예상 성장:</strong> 1년차 6억 → 5년차 265억 (연평균 171% 성장)</p>
-            </div>
-          </div>
-          <div style="flex:0 0 auto">
-            <a class="btn primary" href="아티팩트코어hats수익모델.wav" target="_blank" style="font-size:16px;padding:14px 24px">🎧 수익모델 오디오 듣기</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 부가 정보 -->
-      <div class="grid cols-2" style="margin-top:24px">
-        <div class="card">
-          <h3>B2B · 시그널 엔진 API</h3>
-          <p class="meta">운용사·증권사 대상 연간 계약. 안정적인 고정 매출 확보를 위한 엔터프라이즈 연동.</p>
-        </div>
-        <div class="card">
-          <h3>호환성·보안</h3>
-          <ul class="list">
-            <li>REST/WebSocket API, Windows/Mac, 웹 콘솔</li>
-            <li>다중 계정, OAuth2/키 관리/2FA</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Videos -->
-  <section id="videos">
-    <div class="container">
-      <h2>매매실제영상</h2>
-      <p class="section-desc">HATS로 실제 매매하는 모습을 담은 최신 영상입니다. 채널: <a href="https://www.youtube.com/@artifact-core" target="_blank" rel="noopener" style="color:var(--brand)">@artifact-core</a></p>
-      <div class="grid cols-3" id="videosGrid">
-        <div class="card" style="padding:0;overflow:hidden">
-          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/XDIBKVREA2c" title="HATS 주간선물 AI자동매매 0508" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-        </div>
-        <div class="card" style="padding:0;overflow:hidden">
-          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/d_g70JNfCVo" title="HATS 주간선물 AI자동매매 260507" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-        </div>
-        <div class="card" style="padding:0;overflow:hidden">
-          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/u6EiTqwRoJc" title="HATS 주간선물 AI자동매매 260504" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-        </div>
-        <div class="card" style="padding:0;overflow:hidden">
-          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/XtOJ6gntovU" title="HATS 주간선물 AI자동매매 260430" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-        </div>
-        <div class="card" style="padding:0;overflow:hidden">
-          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/Ik8i4hD9uZY" title="HATS 주간선물 AI자동매매 20260430" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-        </div>
-        <div class="card" style="padding:0;overflow:hidden">
-          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/qc7PuZ2nEiE" title="HATS 주식SK하이닉스5분봉 260429" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-        </div>
-      </div>
-      <div id="videosPager" style="display:none;justify-content:center;align-items:center;gap:16px;margin-top:24px">
-        <button class="btn" id="videosPrev" onclick="videosPrevPage()">← 이전</button>
-        <span class="meta" id="videosPageInfo"></span>
-        <button class="btn" id="videosNext" onclick="videosNextPage()">다음 →</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing -->
-  <section id="pricing">
-    <div class="container">
-      <h2>요금제</h2>
-      <p class="section-desc">초기 체험부터 실거래 자동화까지 단계적으로 확장하세요.</p>
-      <div class="pricing">
-        <div class="price-card">
-          <h3>BASIC</h3>
-          <div class="price">월 7.9만 <span class="unit">원</span></div>
-          <ul class="features">
-            <li>AI 예측봉(5캔들) 제공</li>
-            <li>핵심 지표 연동</li>
-            <li>웹/데스크톱 접근</li>
-          </ul>
-          <div style="margin-top:14px"><a class="btn" href="#contact">시작하기</a></div>
-        </div>
-        <div class="price-card">
-          <h3>PRO</h3>
-          <div class="price">월 19.9만 <span class="unit">원</span></div>
-          <ul class="features">
-            <li>자연어 전략 빌더</li>
-            <li>차트 매매선 자동 추가</li>
-            <li>백테스트 리포트</li>
-          </ul>
-          <div style="margin-top:14px"><a class="btn primary" href="#contact">데모 신청</a></div>
-        </div>
-        <div class="price-card">
-          <h3>ULTIMATE</h3>
-          <div class="price">월 39.9만 <span class="unit">원</span></div>
-          <ul class="features">
-            <li>AI 봇 시그널 엔진</li>
-            <li>호가·시세 기반 실시간 자동매매</li>
-            <li>리스크 엔진(포지션/청산 규칙)</li>
-          </ul>
-          <div style="margin-top:14px"><a class="btn" href="#contact">상담 문의</a></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- Cases -->
-  <section id="cases">
-    <div class="container">
-      <h2>적용 사례</h2>
-      <p class="section-desc">시뮬레이션·PoC에서 확인한 활용 아이디어를 소개합니다.</p>
-      <div class="grid cols-1">
-        <div class="card">
-          <h3>리스크 관리 PoC</h3>
-          <p class="meta">다중 전략 회귀 테스트로 최대낙폭 목표치를 관리하는 시나리오.</p>
-          <p class="meta">실거래 전 페이퍼 트레이딩·시뮬레이션 단계.</p>
-        </div>
-        <div class="card">
-          <h3>트레이더 툴킷</h3>
-          <p class="meta">알림·자동 주문 템플릿을 구성해 반복 작업을 단순화.</p>
-          <p class="meta">전략 검증과 모니터링 워크플로우 자동화에 집중.</p>
-        </div>
-        <div class="card">
-          <h3>거래소 공동개발 제안</h3>
-          <p class="meta">수수료 최적화 라우팅과 모니터링 대시보드 공동 연구 제안 단계.</p>
-          <p class="meta">실제 적용 전 기술 검증·보안 점검을 우선 실행.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- History -->
-  <section id="history">
-    <div class="container">
-      <h2>개발 연혁</h2>
-      <p class="section-desc">ATS에서 HATS까지, 매 분기 성능을 끌어올리며 하이브리드 AI 트레이딩을 완성했습니다.</p>
-      <div class="grid cols-1" style="gap:12px">
-        <div class="card history-card">
-          <div class="history-line">
-            <span class="badge">2024.04</span>
-            <h3>ATS 개발 시작</h3>
-          </div>
-          <p class="meta">초저비용 AI 거래 시스템 기초 설계</p>
-        </div>
-        <div class="card history-card">
-          <div class="history-line">
-            <span class="badge">2024.07</span>
-            <h3>ATS v1.0 출시</h3>
-          </div>
-          <p class="meta">베타 상용화, 초기 트레이더 확보</p>
-        </div>
-        <div class="card history-card">
-          <div class="history-line">
-            <span class="badge">2024.10</span>
-            <h3>STS 출시</h3>
-          </div>
-          <p class="meta">안정성/다중 전략 지원 강화</p>
-        </div>
-        <div class="card history-card">
-          <div class="history-line">
-            <span class="badge">2025.02</span>
-            <h3>Super Trading AI</h3>
-          </div>
-          <p class="meta">LLM 기반 자동 전략 설계 탑재</p>
-        </div>
-        <div class="card history-card">
-          <div class="history-line">
-            <span class="badge">2025.04</span>
-            <h3>God AI System</h3>
-          </div>
-          <p class="meta">엔터프라이즈급 신호 엔진·B2B API</p>
-        </div>
-        <div class="card history-card">
-          <div class="history-line">
-            <span class="badge">2025.07</span>
-            <h3>HATS 출시</h3>
-          </div>
-          <p class="meta">Brain–Artifact–Hand 완전 통합</p>
-        </div>
-        <div class="card history-card">
-          <div class="history-line">
-            <span class="badge">2025.10</span>
-            <h3>HATS 2.5</h3>
-          </div>
-          <p class="meta">멀티자산 지원, 리스크 엔진 고도화</p>
-        </div>
-        <div class="card history-card">
-          <div class="history-line">
-            <span class="badge">2026.01</span>
-            <h3>HATS 3.0 (예정)</h3>
-          </div>
-          <p class="meta">완전 자동화 플랫폼 · 차트 매매선 AI 통합</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Financials -->
-  <section id="financials">
-    <div class="container">
-      <h2>재무 전망 및 가치</h2>
-      <p class="section-desc">B2C 구독과 B2B API 계약을 기반으로 연평균 171% 성장하는 재무 트랙션과 기업 가치 전망입니다.</p>
+    <div class="concept-box">
+      <h3>💡 HATS가 작동하는 방식</h3>
       <div class="grid cols-3">
-        <div class="card" style="text-align:center">
-          <div class="metric-number" style="color:var(--accent)">6억</div>
-          <h4 style="margin:0 0 6px">1년차 매출</h4>
-          <p class="meta">B2C 500명 · 영업이익 1.8억</p>
+        <div>
+          <strong class="label">1. 설계 (AI)</strong>
+          <p>자연어로 설명한 매매 아이디어를 AI가 분석해, 노드(조건·지표·주문)로 구성된 전략 그래프로 조립합니다.</p>
         </div>
-        <div class="card" style="text-align:center">
-          <div class="metric-number" style="color:var(--green)">265억</div>
-          <h4 style="margin:0 0 6px">5년차 매출</h4>
-          <p class="meta">B2C 2만명 + B2B 5곳 · 영업이익 79.5억</p>
+        <div>
+          <strong class="label">2. 검증 (백테스트)</strong>
+          <p>조립된 전략을 과거 시세로 즉시 백테스트하고, 결과(승률·샤프비율·MDD)를 AI가 다시 확인해 전략을 개선합니다.</p>
         </div>
-        <div class="card" style="text-align:center">
-          <div class="metric-number" style="color:#3fa9f5">30~80억</div>
-          <h4 style="margin:0 0 6px">현재 기술 가치</h4>
-          <p class="meta">DCF 평가 160~260억 · 5년 후 954~1,192억</p>
-        </div>
-      </div>
-
-      <div class="grid cols-2" style="margin-top:20px">
-        <div class="card">
-          <h4 style="margin:0 0 10px">5개년 재무 전망 (단위: 억 원)</h4>
-          <table style="width:100%;border-collapse:collapse;font-size:13px">
-            <thead>
-              <tr><th style="padding:8px;text-align:left">연차</th><th style="padding:8px;text-align:right">B2C</th><th style="padding:8px;text-align:right">B2B</th><th style="padding:8px;text-align:right">총매출</th><th style="padding:8px;text-align:right">영업이익</th></tr>
-            </thead>
-            <tbody>
-              <tr><td style="padding:8px">1년차</td><td style="padding:8px;text-align:right">6억</td><td style="padding:8px;text-align:right">0억</td><td style="padding:8px;text-align:right">6억</td><td style="padding:8px;text-align:right">1.8억</td></tr>
-              <tr><td style="padding:8px">2년차</td><td style="padding:8px;text-align:right">24억</td><td style="padding:8px;text-align:right">0억</td><td style="padding:8px;text-align:right">24억</td><td style="padding:8px;text-align:right">7.2억</td></tr>
-              <tr><td style="padding:8px">3년차</td><td style="padding:8px;text-align:right">60억</td><td style="padding:8px;text-align:right">6억</td><td style="padding:8px;text-align:right">66억</td><td style="padding:8px;text-align:right">19.8억</td></tr>
-              <tr><td style="padding:8px">4년차</td><td style="padding:8px;text-align:right">120억</td><td style="padding:8px;text-align:right">15억</td><td style="padding:8px;text-align:right">135억</td><td style="padding:8px;text-align:right">40.5억</td></tr>
-              <tr><td style="padding:8px">5년차</td><td style="padding:8px;text-align:right">240억</td><td style="padding:8px;text-align:right">25억</td><td style="padding:8px;text-align:right">265억</td><td style="padding:8px;text-align:right">79.5억</td></tr>
-            </tbody>
-          </table>
-          <p class="meta" style="margin-top:8px;color:#0f1628">B2C: 월 10만원 구독 · B2B: 연 1~5억 계약 · 영업이익률 30%</p>
-        </div>
-        <div class="card">
-          <h4 style="margin:0 0 10px">기업 가치 산정 방법</h4>
-          <ul class="list" style="margin-left:16px;font-size:13px">
-            <li><strong>DCF 평가:</strong> 160~260억 (5개년 현금흐름 할인)</li>
-            <li><strong>기술 가치:</strong> 30~80억 (AI 알고리즘, 호가 분석 엔진)</li>
-            <li><strong>5년 후 시가총액:</strong> 954~1,192억 (EV/EBITDA 12~15배)</li>
-            <li><strong>프리머니 밸류:</strong> 300~500억 (보수적 추정)</li>
-            <li><strong>시장 규모:</strong> 글로벌 자동매매 25조원, 연 13% 성장</li>
-          </ul>
-          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn primary" style="color:#0f1628;background:#ffffff;border:1px solid #0f1628;font-weight:700" href="투자설명서.pdf" download>투자설명서 PDF 보기</a>
-            <a class="btn" style="color:#0f1628;background:#ffffff;border:1px solid #0f1628;font-weight:700" href="말 한마디로 주식 매매 로직 만든다.mp3" target="_blank">오디오 파일 듣기</a>
-          </div>
+        <div>
+          <strong class="label">3. 실행 (로컬 엔진)</strong>
+          <p>검증된 전략 그래프는 이후 추가 AI 호출 없이 로컬 엔진이 반복 실행 — 빠르고 비용이 낮으며, 화면이 없어도 계속 동작합니다.</p>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Company -->
-  <section id="company">
-    <div class="container">
-      <h2>회사 소개</h2>
-      <p class="section-desc">하이브리드 AI 트레이딩을 실현하는 (주) 아티팩트 코어입니다.</p>
+    <div class="grid cols-4">
+      <div class="card">
+        <h3>노드 기반 전략</h3>
+        <p>코딩 없이 조건·지표·주문 노드를 조합해 나만의 매매 로직을 만듭니다.</p>
+      </div>
+      <div class="card">
+        <h3>즉시 백테스트</h3>
+        <p>전략을 만들자마자 실제 시세로 검증하고, 대화하듯 결과를 개선합니다.</p>
+      </div>
+      <div class="card">
+        <h3>무인 실행</h3>
+        <p>화면을 보지 않아도 계좌별로 전략·매매선·AI봇이 백그라운드에서 계속 작동합니다.</p>
+      </div>
+      <div class="card">
+        <h3>다중 자산군</h3>
+        <p>국내·해외 선물/옵션, 국내/해외 주식, 코인까지 한 프로그램에서 관리합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="grid cols-2" style="gap:20px">
-        <div class="card">
-          <h3>회사 개요</h3>
-          <p class="meta" style="margin-bottom:10px"><strong>회사명:</strong> (주) 아티팩트 코어</p>
-          <p class="meta" style="margin-bottom:10px"><strong>대표:</strong> 박규현</p>
-          <p class="meta" style="margin-bottom:10px"><strong>주소:</strong> 서울시 금천구 가산디지털로9길 46 210호</p>
-          <p class="meta" style="margin-bottom:10px"><strong>연락처:</strong> 02-588-2844 / 010-7600-2927</p>
-          <p class="meta" style="margin-bottom:10px"><strong>이메일:</strong> <a href="mailto:parkfund@naver.com" style="color:var(--brand)">parkfund@naver.com</a></p>
+<!-- 기능 카테고리 -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-kicker">FEATURES</div>
+    <h2>HATS의 핵심 기능</h2>
+    <p class="section-desc">각 기능은 독립적으로도, 조합해서도 사용할 수 있습니다.</p>
+
+    <div class="grid cols-2">
+      <div class="card">
+        <span class="badge">전략빌더</span>
+        <h3>노드 기반 전략빌더</h3>
+        <p>매매 아이디어를 채팅으로 설명하면 AI가 조건·지표·주문 노드로 조립합니다. 만든 전략은 즉시 백테스트되고, "손절이 없어서 손실이 컸다"처럼 결과를 바탕으로 대화하며 다듬을 수 있습니다.</p>
+      </div>
+      <div class="card">
+        <span class="badge">매매선</span>
+        <h3>차트 매매선</h3>
+        <p>차트에 진입선·익절선·손절선을 그리면 조건 충족 시 자동으로 체결됩니다. 분할매수처럼 여러 진입을 태그로 구분해 각각 다른 익절선에 연결할 수 있습니다.</p>
+      </div>
+      <div class="card">
+        <span class="badge badge-accent">예측봉</span>
+        <h3>AI 예측봉</h3>
+        <p>다음 캔들의 흐름을 AI가 예측해 차트에 표시합니다. 5개짜리 통계 기반 예측은 5회 반복 후 다수결로 최종안을 뽑아 신뢰도를 높였고, 1개짜리 예측은 진행 중인 봉의 마감가와 다음 봉을 함께 예측해 "예측봉 규칙매매"로 자동 실행할 수도 있습니다.</p>
+      </div>
+      <div class="card">
+        <span class="badge">AI봇</span>
+        <h3>AI봇 자동매매</h3>
+        <p>재미나이·클로드·GPT 중 원하는 엔진을 선택해 호가창과 시세를 분석시키고, 실시간으로 매매 판단을 실행합니다. 신호를 그대로 따를지, 반전시킬지, 시장 국면에 따라 자동으로 바꿀지도 설정할 수 있습니다.</p>
+      </div>
+      <div class="card">
+        <span class="badge">국면 판단</span>
+        <h3>시장 국면 기반 전략 전환</h3>
+        <p>추세 강도·변동성 지표를 정량적으로 조합해 지금이 강세장·약세장·횡보장인지 판단합니다. 국면에 맞는 전략만 자동으로 작동해, 안 맞는 장에서 억지로 매매하는 것을 막습니다.</p>
+      </div>
+      <div class="card">
+        <span class="badge">무인 운영</span>
+        <h3>다중 계좌 무인 자동매매</h3>
+        <p>여러 계좌에 서로 다른 전략을 걸어두면 화면을 보지 않아도 백그라운드에서 계속 실행됩니다. 계좌·전략별로 포지션이 독립적으로 관리돼 서로 섞이지 않습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 영상 -->
+<section class="section" id="videos">
+  <div class="container">
+    <div class="section-kicker">VIDEOS</div>
+    <h2>영상으로 보는 HATS</h2>
+    <p class="section-desc">기능 소개 영상과, 실제 계좌로 매매한 화면을 그대로 공개하는 실전 매매 영상입니다. 채널: <a href="https://www.youtube.com/@artifact-core" target="_blank" rel="noopener">@artifact-core</a></p>
+
+    <h3 style="margin-bottom:16px">기능 소개 영상</h3>
+    <div class="grid cols-2" style="margin-bottom:48px">
+      <div class="card video-card">
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/GsXRk13ocjE" title="HATS 기능 소개" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
+        <div class="video-caption">전략 설계 → 백테스트 → 실행까지, HATS의 전체 흐름 소개</div>
+      </div>
+    </div>
 
-        <div class="card">
-          <h3>문서 및 자료</h3>
-          <p class="meta" style="margin-bottom:12px">투자설명서와 소개 오디오 파일을 확인하세요.</p>
-          <div style="display:grid;gap:10px">
-            <a class="btn primary" style="color:#0f1628;background:#ffffff;border:1px solid #0f1628;font-weight:700;padding:8px 12px;font-size:13px" href="투자설명서.pdf" download>투자설명서 PDF</a>
-            <a class="btn" style="color:#0f1628;background:#ffffff;border:1px solid #0f1628;font-weight:700;padding:8px 12px;font-size:13px" href="말 한마디로 주식 매매 로직 만든다.mp3" target="_blank">오디오 파일 듣기</a>
-          </div>
+    <h3 style="margin-bottom:16px">실제매매영상</h3>
+    <p class="meta" style="color:var(--muted);font-size:13px;margin:-8px 0 16px">아래 목록은 관리자 페이지(videos-admin.html)에서 갱신됩니다. 불러오기 전까지는 최근 영상이 우선 표시됩니다.</p>
+    <div class="grid cols-3" id="videosGrid">
+      <div class="card video-card">
+        <div class="video-frame"><iframe src="https://www.youtube.com/embed/XDIBKVREA2c" title="HATS 주간선물 AI자동매매 0508" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      </div>
+      <div class="card video-card">
+        <div class="video-frame"><iframe src="https://www.youtube.com/embed/d_g70JNfCVo" title="HATS 주간선물 AI자동매매 260507" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      </div>
+      <div class="card video-card">
+        <div class="video-frame"><iframe src="https://www.youtube.com/embed/u6EiTqwRoJc" title="HATS 주간선물 AI자동매매 260504" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      </div>
+      <div class="card video-card">
+        <div class="video-frame"><iframe src="https://www.youtube.com/embed/XtOJ6gntovU" title="HATS 주간선물 AI자동매매 260430" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      </div>
+      <div class="card video-card">
+        <div class="video-frame"><iframe src="https://www.youtube.com/embed/Ik8i4hD9uZY" title="HATS 주간선물 AI자동매매 20260430" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      </div>
+      <div class="card video-card">
+        <div class="video-frame"><iframe src="https://www.youtube.com/embed/qc7PuZ2nEiE" title="HATS 주식SK하이닉스5분봉 260429" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      </div>
+    </div>
+    <div id="videosPager" style="display:none;justify-content:center;align-items:center;gap:16px;margin-top:24px">
+      <button class="btn" id="videosPrev" onclick="videosPrevPage()">← 이전</button>
+      <span class="meta" id="videosPageInfo"></span>
+      <button class="btn" id="videosNext" onclick="videosNextPage()">다음 →</button>
+    </div>
+  </div>
+</section>
+
+<!-- 개발 연혁 -->
+<section class="section" id="history">
+  <div class="container">
+    <div class="section-kicker">DEVELOPMENT HISTORY</div>
+    <h2>개발 연혁</h2>
+    <p class="section-desc">HATS는 지금도 매주 실제 매매 데이터를 보며 개선되고 있습니다. 최근 성장 과정입니다.</p>
+
+    <div class="timeline">
+      <div class="item">
+        <span class="dot"></span>
+        <div>
+          <span class="badge">2026.07 초</span>
+          <h4>안정적인 리스크 관리 기반 구축</h4>
+          <p class="meta">옵션 증거금·수수료를 시장별로 정밀 계산하고, 보유 포지션을 포함한 실시간 평가자산을 반영. 매매 발생 시 전후 장면을 자동으로 남기는 녹화 기능도 추가했습니다.</p>
         </div>
       </div>
+      <div class="item">
+        <span class="dot"></span>
+        <div>
+          <span class="badge">2026.07 중순</span>
+          <h4>전략빌더 "AI 자동 개선 루프" 완성</h4>
+          <p class="meta">전략을 만들면 즉시 백테스트되고, 결과를 AI가 다시 확인해 개선안을 제시하는 흐름을 완성. 캔들 해부·상위 타임프레임 분석 같은 프리미엄 노드도 이때부터 추가되기 시작했습니다.</p>
+        </div>
+      </div>
+      <div class="item">
+        <span class="dot"></span>
+        <div>
+          <span class="badge">2026.07 하순</span>
+          <h4>다중 계좌 무인 자동매매 · 국면전환 전략 완성</h4>
+          <p class="meta">여러 계좌를 동시에 무인으로 운영할 수 있는 인프라를 구축하고, 시장 국면(강세·약세·횡보)에 따라 자동으로 전환되는 전략 3종을 실전 백테스트로 검증. 같은 시기 안드로이드 앱도 출시했습니다.</p>
+        </div>
+      </div>
+      <div class="item">
+        <span class="dot"></span>
+        <div>
+          <span class="badge">2026.08</span>
+          <h4>AI봇 신호 제어 · 예측봉 규칙매매</h4>
+          <p class="meta">AI봇의 매매 신호를 그대로 따를지, 반전시킬지, 국면에 따라 자동 전환할지 설정하는 기능과, 예측봉을 기준으로 진입·청산을 자동 실행하는 "예측봉 규칙매매" 모드를 새로 추가했습니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="card" style="margin-top:20px">
+<!-- 성장 목표 -->
+<section class="section" id="growth">
+  <div class="container">
+    <div class="section-kicker">GROWTH</div>
+    <h2>HATS의 성장 목표</h2>
+    <p class="section-desc">개인 투자자 구독과 기관 대상 전략 라이선스를 함께 키워, 매년 자체 검증된 실적을 기반으로 성장하는 것을 목표로 합니다.</p>
+
+    <div class="grid cols-3" style="margin-bottom:32px">
+      <div class="card" style="text-align:center">
+        <div class="metric-number">6억</div>
+        <h4 style="margin:0 0 6px">1년차 목표 매출</h4>
+        <p>개인 구독자 500명 기준</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="metric-number">265억</div>
+        <h4 style="margin:0 0 6px">5년차 목표 매출</h4>
+        <p>개인 구독 2만명 + 기관 라이선스 5곳</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="metric-number">연 171%</div>
+        <h4 style="margin:0 0 6px">목표 연평균 성장률</h4>
+        <p>구독 매출과 기관 라이선스 매출 합산 기준</p>
+      </div>
+    </div>
+
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>제품 로드맵</h3>
+        <ul style="margin:12px 0 0 18px; color:var(--muted); font-size:14px;">
+          <li>프리미엄 노드 라인업 지속 확장(가격행동, 패턴매칭 등)</li>
+          <li>자체 과거시세 DB 구축으로 백테스트 기간 확장</li>
+          <li>기관 대상 전략 라이선스 · 맞춤 개발 트랙 강화</li>
+          <li>증권사 제휴/멀티벤더 마켓 입점 검토</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 style="margin:0 0 10px">5개년 매출 목표 (단위: 억 원)</h4>
+        <div class="table-scroll">
+        <table class="institutional-table">
+          <thead>
+            <tr><th>연차</th><th>개인 구독</th><th>기관 라이선스</th><th>총매출</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1년차</td><td>6억</td><td>0억</td><td>6억</td></tr>
+            <tr><td>2년차</td><td>24억</td><td>0억</td><td>24억</td></tr>
+            <tr><td>3년차</td><td>60억</td><td>6억</td><td>66억</td></tr>
+            <tr><td>4년차</td><td>120억</td><td>15억</td><td>135억</td></tr>
+            <tr><td>5년차</td><td>240억</td><td>25억</td><td>265억</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="meta" style="color:var(--muted); font-size:13px; margin-top:12px;">위 수치는 목표치이며 실제 실적과 다를 수 있습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 가격 -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-kicker">PRICING</div>
+    <h2>가격</h2>
+    <p class="section-desc">개인 투자자를 위한 구독 요금제입니다. 결제 연동은 준비 중이며, 지금은 문의를 통해 안내해드립니다.</p>
+
+    <div class="pricing">
+      <div class="price-card">
+        <h3>Basic</h3>
+        <div class="price">₩120,000 <span class="unit">/ 월</span></div>
+        <ul>
+          <li>전략빌더 기본 노드</li>
+          <li>모의투자 무제한 검증</li>
+          <li>단일봉 AI 예측 조회</li>
+        </ul>
+        <a href="#contact" class="btn btn-block">문의하기</a>
+      </div>
+      <div class="price-card featured">
+        <span class="badge badge-accent">인기</span>
+        <h3>Pro</h3>
+        <div class="price">₩290,000 <span class="unit">/ 월</span></div>
+        <ul>
+          <li>AI봇 자동매매 (재미나이)</li>
+          <li>차트 매매선 자동 체결</li>
+          <li>실계좌 연동 1개</li>
+          <li>5봉 예측봉 앙상블</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary btn-block">문의하기</a>
+      </div>
+      <div class="price-card">
+        <h3>Premium</h3>
+        <div class="price">₩480,000 <span class="unit">/ 월</span></div>
+        <ul>
+          <li>프리미엄 노드 전체 이용</li>
+          <li>다중 계좌 무인 자동매매</li>
+          <li>AI 엔진 선택 (클로드·GPT 포함)</li>
+          <li>예측봉 규칙매매, 우선 지원</li>
+        </ul>
+        <a href="#contact" class="btn btn-block">문의하기</a>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:32px">
+      <span class="badge badge-accent">기관 · 고액자산가 전용</span>
+      <h3 style="margin-top:8px">검증된 전략 라이선스</h3>
+      <p style="margin-bottom:20px">실전 백테스트로 검증된 국면전환 전략, 예측봉 규칙매매 전략을 기관/자산운용 목적으로 라이선스합니다. 정확한 조건은 운용 규모와 커스터마이징 범위에 따라 별도 협의합니다.</p>
+      <div class="table-scroll">
+        <table class="institutional-table">
+          <thead>
+            <tr>
+              <th>상품</th>
+              <th>내용</th>
+              <th>가이드 가격</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>국면전환 전략 패키지</td>
+              <td>강세·약세·횡보 3종 + 백테스트 리포트, 1년 라이선스</td>
+              <td class="price-cell">3,000만원 ~ 8,000만원</td>
+            </tr>
+            <tr>
+              <td>예측봉 규칙매매 전략</td>
+              <td>맞춤 예측 모델 튜닝 포함, 1년 라이선스</td>
+              <td class="price-cell">5,000만원 ~ 1억 5,000만원</td>
+            </tr>
+            <tr>
+              <td>맞춤 전략 개발</td>
+              <td>보유 자산군·리스크 한도에 맞춘 전용 전략 설계</td>
+              <td class="price-cell">별도 협의</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="meta" style="color:var(--muted);font-size:13px;margin-top:16px">위 금액은 가이드 가격이며, 실제 계약은 운용 규모·기간·성과 연동 조건에 따라 조정됩니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 다운로드 -->
+<section class="section" id="download-teaser">
+  <div class="container">
+    <div class="section-kicker">DOWNLOAD</div>
+    <h2>다운로드</h2>
+    <p class="section-desc">Windows / Android 앱은 구독 회원 전용으로 제공됩니다.</p>
+    <div class="gated-card">
+      <div class="lock-icon">🔒</div>
+      <p style="margin-bottom:16px">지금은 결제·회원 시스템 연동 준비 중입니다 — 문의를 남겨주시면 다운로드 방법을 안내해드립니다.</p>
+      <a href="#contact" class="btn btn-primary">문의하고 다운로드 안내받기</a>
+    </div>
+  </div>
+</section>
+
+<!-- 회사소개 -->
+<section class="section" id="company">
+  <div class="container">
+    <div class="section-kicker">COMPANY</div>
+    <h2>회사 소개</h2>
+    <p class="section-desc">하이브리드 AI 트레이딩을 만드는 (주) 아티팩트 코어입니다.</p>
+
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>회사 개요</h3>
+        <div class="info-row"><strong>회사명</strong>(주) 아티팩트 코어</div>
+        <div class="info-row"><strong>대표</strong>박규현</div>
+        <div class="info-row"><strong>주소</strong>서울시 금천구 가산디지털로9길 46 210호</div>
+        <div class="info-row"><strong>연락처</strong>02-588-2844 / 010-7600-2927</div>
+        <div class="info-row"><strong>이메일</strong><a href="mailto:parkfund@naver.com">parkfund@naver.com</a></div>
+      </div>
+      <div class="card">
         <h3>경영 철학</h3>
-        <div class="list" style="margin-left:0;display:grid;gap:12px">
-          <div>
-            <p class="meta" style="margin:0 0 8px">아티팩트코어는 고객의 투자 성공을 위한 최고 수준의 AI 기술 솔루션 개발에 전념합니다.</p>
-            <p class="meta" style="margin:0 0 8px">우리는 정교하고 오류 없는 알고리즘만이 고객에게 안정적인 자산 증식의 기회를 제공한다는 사명 아래, 기술적 완벽성을 핵심 가치로 삼습니다.</p>
-            <p class="meta" style="margin:0 0 8px">급변하는 금융 시장 환경에 맞춰 우리의 AI 코어 엔진은 멈추지 않고 진화하며, Deep Learning 기반의 자체 학습 시스템을 통해 어떠한 시장 상황에서도 최적의 매매 전략을 도출합니다.</p>
-            <p class="meta" style="margin:0">고객의 시스템이 항상 시장의 최전선에서 경쟁력을 갖추도록 혁신을 멈추지 않겠습니다.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:28px">
-        <h3>오시는 길</h3>
-        <div style="margin-top:12px;border-radius:12px;overflow:hidden;height:360px">
-          <iframe src="https://maps.google.com/maps?q=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EA%B8%88%EC%B2%9C%EA%B5%AC%20%EA%B0%80%EC%82%B0%EB%94%94%EC%A7%80%ED%84%B8%EB%A1%9C9%EA%B8%B8%2046%20210%ED%98%B8&t=&z=17&ie=UTF8&iwloc=&output=embed" style="width:100%;height:100%;border:none;filter:brightness(0.95)" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <p class="meta" style="margin-top:10px;text-align:center">서울시 금천구 가산디지털로9길 46 210호</p>
+        <p style="margin-bottom:10px">아티팩트코어는 고객의 투자 성공을 위한 AI 기술 솔루션 개발에 전념합니다.</p>
+        <p style="margin-bottom:10px">정교하고 오류 없는 알고리즘만이 고객에게 안정적인 자산 증식의 기회를 제공한다는 사명 아래, 기술적 완벽성을 핵심 가치로 삼습니다.</p>
+        <p>급변하는 금융 시장 환경에 맞춰, 고객의 시스템이 항상 시장의 최전선에서 경쟁력을 갖추도록 개발을 멈추지 않습니다.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="container">
-      <h2>자주 묻는 질문</h2>
-      <div class="grid cols-2">
-        <details>
-          <summary>왜 HATS가 비용 효율적인가요?</summary>
-          <p class="meta">실행 단계에서 LLM을 호출하지 않습니다. 초기 설계 시 1회만 사용하고, Artifact를 무한 반복 실행하므로 토큰 비용이 발생하지 않습니다.</p>
-        </details>
-        <details>
-          <summary>실행 속도는 어느 정도인가요?</summary>
-          <p class="meta">Local ML 최적화로 수 밀리초(ms) 단위의 저지연을 목표로 설계되었습니다. 시장 급변에도 신속하게 대응합니다.</p>
-        </details>
-        <details>
-          <summary>전략 빌더는 어떻게 동작하나요?</summary>
-          <p class="meta">자연어로 기술한 매매 규칙을 노드 그래프로 변환하고, Artifact(JSON)로 표준화하여 백테스트 및 실거래에 바로 사용합니다.</p>
-        </details>
-        <details>
-          <summary>B2B API는 어떤 연동을 제공하나요?</summary>
-          <p class="meta">시그널 생성, 리스크 관리, 주문 라우팅 엔드포인트를 제공합니다. REST/WebSocket, OAuth2 기반 인증을 지원합니다.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container">
-      <h2>문의 및 상담</h2>
-      <p class="section-desc">데모 신청 또는 기술 상담을 남겨주세요. 1영업일 내 답변 드립니다.</p>
-      <p class="meta">Email: <a href="mailto:parkfund@naver.com">parkfund@naver.com</a> · Tel: 02-588-2844</p>
-      <form action="#" method="post" onsubmit="return handleSubmit(event)">
-        <div class="form-row">
-          <div>
-            <label for="name">이름</label>
-            <input id="name" name="name" placeholder="홍길동" required />
-          </div>
-          <div>
-            <label for="email">이메일</label>
-            <input id="email" type="email" name="email" placeholder="you@example.com" required />
-          </div>
+<!-- 문의 -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-kicker">CONTACT</div>
+    <h2>문의 및 상담</h2>
+    <p class="section-desc">데모 신청 또는 기술 상담을 남겨주세요. 1영업일 내 답변 드립니다. Email: <a href="mailto:parkfund@naver.com">parkfund@naver.com</a> · Tel: 02-588-2844</p>
+    <form action="#" method="post" onsubmit="return handleSubmit(event)">
+      <div class="form-row">
+        <div>
+          <label for="name">이름</label>
+          <input id="name" name="name" placeholder="홍길동" required />
         </div>
-        <div class="form-row">
-          <div>
-            <label style="font-weight:700;color:rgba(233,242,255,0.95);margin-bottom:8px;display:block">관심사항 (복수선택 가능)</label>
-            <div style="display:flex;gap:16px;flex-wrap:wrap">
-              <label style="display:flex;align-items:center;gap:6px;color:rgba(233,242,255,0.95);cursor:pointer">
-                <input type="checkbox" name="interest" value="제품 HATS" style="width:auto;cursor:pointer" />
-                <span>제품 HATS</span>
-              </label>
-              <label style="display:flex;align-items:center;gap:6px;color:rgba(233,242,255,0.95);cursor:pointer">
-                <input type="checkbox" name="interest" value="투자" style="width:auto;cursor:pointer" />
-                <span>투자</span>
-              </label>
-            </div>
-          </div>
-          <div>
-            <label for="time" style="font-weight:700;color:rgba(233,242,255,0.95)">상담 희망 시간</label>
-            <input id="time" name="time" placeholder="예: 평일 오후 2–5시" />
+        <div>
+          <label for="email">이메일</label>
+          <input id="email" type="email" name="email" placeholder="you@example.com" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label>관심사항 (복수선택 가능)</label>
+          <div class="checkbox-row">
+            <label><input type="checkbox" name="interest" value="제품 HATS" /><span>제품 HATS</span></label>
+            <label><input type="checkbox" name="interest" value="투자" /><span>투자</span></label>
           </div>
         </div>
         <div>
-          <label for="message">요청 내용</label>
-          <textarea id="message" name="message" placeholder="현재 상황과 목표를 간단히 적어주세요." required></textarea>
+          <label for="time">상담 희망 시간</label>
+          <input id="time" name="time" placeholder="예: 평일 오후 2–5시" />
         </div>
-        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-          <button class="btn primary" type="submit">상담 신청</button>
-          <span class="meta">제출 시 기본 개인정보 처리에 동의한 것으로 간주합니다.</span>
-        </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
-         
-        </div>
-       
-      </form>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:20px">
-        <div>
-          <div style="margin-bottom:8px"><strong>© 2025 (주) 아티팩트 코어</strong></div>
-          <div style="font-size:13px;line-height:1.6">
-            <div><strong>Address:</strong> 서울시 금천구 가산디지털로9길 46 210호</div>
-            <div><strong>CEO:</strong> Park Gyuhyun (박규현)</div>
-            <div><strong>Tel:</strong> 02-588-2844 | <strong>Mobile:</strong> 010-7600-2927</div>
-            <div><strong>Email:</strong> <a href="mailto:parkfund@naver.com" style="color:inherit">parkfund@naver.com</a></div>
-          </div>
-        </div>
-        <div class="meta" style="text-align:right">개인정보 처리방침 · 이용약관</div>
       </div>
-    </div>
-  </footer>
+      <div>
+        <label for="message">요청 내용</label>
+        <textarea id="message" name="message" placeholder="현재 상황과 목표를 간단히 적어주세요." required></textarea>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <button class="btn btn-primary" type="submit">상담 신청</button>
+        <span class="meta" style="color:var(--muted);font-size:13px">제출 시 기본 개인정보 처리에 동의한 것으로 간주합니다.</span>
+      </div>
+      <div id="submit-status"></div>
+    </form>
+  </div>
+</section>
 
-  <script>
-    // 웹앱 URL과 관리자 이메일 설정 (완료)
-    const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwb1zjFQBFR7EAsFNgOUyIIcKMcP9aW8bbln6agOovTaagpiqZwe593HHFljGBehj1e/exec';
-    const ADMIN_EMAIL = 'parkfund@naver.com';
+<footer>
+  <div class="container">
+    <div>&copy; 2026 HATS. All rights reserved. · Powered by (주) 아티팩트 코어</div>
+    <div class="meta">개인정보 처리방침 · 이용약관</div>
+  </div>
+</footer>
 
-    async function handleSubmit(e) {
-      e.preventDefault();
-      const form = e.target;
-      const status = document.getElementById('submit-status');
-      status.textContent = '전송 중...';
+<script>
+  // 모바일 메뉴 토글
+  function toggleMenu() {
+    document.getElementById('mainMenu').classList.toggle('show');
+  }
 
-      const interests = Array.from(form.querySelectorAll('input[name="interest"]:checked')).map(cb => cb.value);
-      const payload = {
-        ts: new Date().toISOString(),
-        name: form.name.value,
-        email: form.email.value,
-        interest: interests.join(', '),
-        time: form.time.value,
-        message: form.message.value,
-        sendTo: ADMIN_EMAIL, // 서버(Apps Script)에서 이 주소로 이메일 발송
-      };
+  function closeMenu() {
+    document.getElementById('mainMenu').classList.remove('show');
+  }
 
-      // 1) 중앙 수집 + 이메일 전송: Apps Script 웹훅으로 전달 (URL이 설정된 경우만)
-      if (!WEBHOOK_URL || WEBHOOK_URL.includes('YOUR_APPS_SCRIPT_WEBAPP_URL')) {
-        status.textContent = '웹훅 미설정: 로컬에만 저장되었습니다.';
-      } else {
-        try {
-          const res = await fetch(WEBHOOK_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // application/json은 CORS preflight를 유발해 Apps Script(405)에서 막힘
-            body: JSON.stringify(payload),
-          });
-          if (!res.ok) throw new Error('웹훅 전송 실패');
-          status.textContent = '접수 완료: 관리자 이메일로 전송됨';
-        } catch (err) {
-          status.textContent = '웹훅 전송 실패: ' + err.message + ' (로컬에만 저장됨)';
-        }
-      }
+  // 문의 폼: Apps Script 웹훅으로 전달 + 로컬 백업 (기존 admin/Apps Script 인프라 그대로 재사용)
+  const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwb1zjFQBFR7EAsFNgOUyIIcKMcP9aW8bbln6agOovTaagpiqZwe593HHFljGBehj1e/exec';
+  const ADMIN_EMAIL = 'parkfund@naver.com';
 
-      // 2) 로컬 백업: 방문자 브라우저에 보관
-      const existing = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
-      existing.push(payload);
-      localStorage.setItem('contactSubmissions', JSON.stringify(existing));
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const status = document.getElementById('submit-status');
+    status.textContent = '전송 중...';
 
-      form.reset();
-      return false;
-    }
+    const interests = Array.from(form.querySelectorAll('input[name="interest"]:checked')).map(cb => cb.value);
+    const payload = {
+      ts: new Date().toISOString(),
+      name: form.name.value,
+      email: form.email.value,
+      interest: interests.join(', '),
+      time: form.time.value,
+      message: form.message.value,
+      sendTo: ADMIN_EMAIL,
+    };
 
-    function downloadSubmissions() {
-      const data = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
-      if (!data.length) {
-        alert('저장된 문의가 없습니다.');
-        return;
-      }
-      const header = ['timestamp', 'name', 'email', 'interest', 'time', 'message'];
-      const rows = data.map((item) => header.map((key) => {
-        const val = (item[key === 'timestamp' ? 'ts' : key] || '').toString();
-        const escaped = val.replace(/"/g, '""').replace(/\n/g, ' ');
-        return `"${escaped}"`;
-      }).join(','));
-      const csv = [header.join(','), ...rows].join('\n');
-      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'contact_submissions.csv';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    }
-
-    function clearSubmissions() {
-      if (confirm('로컬에 저장된 문의 데이터를 모두 삭제할까요?')) {
-        localStorage.removeItem('contactSubmissions');
-        alert('삭제되었습니다.');
-      }
-    }
-
-
-    // Simple SPA-style section toggling
-    (function () {
-      const sections = Array.from(document.querySelectorAll('section'));
-      if (!sections.length) return;
-
-      // Hero background rotator with cache busting - displays full doubled image
-      const hero = document.querySelector('.hero');
-      const heroImages = [
-        { url: 'assets/bmain.png', posX: '0%' },
-        { url: 'assets/bmain1.png', posX: '0%' },
-        { url: 'assets/bmain2.png', posX: '0%' },
-        { url: 'assets/bmain3.png', posX: '0%' }
-      ];
-      const ts = new Date().getTime();
-      let heroIdx = 0;
-
-      const cycleHero = () => {
-        heroIdx = (heroIdx + 1) % heroImages.length;
-        if (hero) {
-          hero.style.transform = 'scale(0.92) rotateY(5deg)';
-          hero.style.opacity = '0.7';
-          setTimeout(() => {
-            const img = heroImages[heroIdx];
-            hero.style.backgroundImage = `url('${img.url}?t=${ts}')`;
-            hero.style.backgroundSize = '100% 100%';
-            hero.style.backgroundPosition = `${img.posX} center`;
-            hero.style.backgroundRepeat = 'no-repeat';
-            hero.style.transform = 'scale(1) rotateY(0deg)';
-            hero.style.opacity = '1';
-          }, 400);
-        }
-      };
-
-      if (hero && heroImages.length) {
-        const firstImg = heroImages[0];
-        hero.style.backgroundImage = `url('${firstImg.url}?t=${ts}')`;
-        hero.style.backgroundSize = '100% 100%';
-        hero.style.backgroundPosition = `${firstImg.posX} center`;
-        hero.style.backgroundRepeat = 'no-repeat';
-        hero.style.opacity = '1';
-        hero.style.transform = 'scale(1) rotateY(0deg)';
-        setInterval(cycleHero, 5000);
-      }
-
-      const showSection = (hash) => {
-        const targetId = hash && hash.startsWith('#') ? hash : '#home';
-        const target = document.querySelector(targetId) || document.querySelector('#home') || sections[0];
-        sections.forEach((sec) => {
-          sec.classList.add('spa-hidden');
-          sec.classList.remove('spa-visible');
-        });
-        target.classList.remove('spa-hidden');
-        target.classList.add('spa-visible');
-        if (targetId !== window.location.hash) {
-          history.replaceState(null, '', targetId);
-        }
-        window.scrollTo(0, 0);
-      };
-
-      const handleClick = (e) => {
-        const href = e.currentTarget.getAttribute('href');
-        if (!href || !href.startsWith('#') || href === '#') return;
-        const target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          showSection(href);
-        }
-      };
-
-      // Attach to all in-page anchors
-      Array.from(document.querySelectorAll('a[href^="#"]')).forEach((a) => {
-        a.addEventListener('click', handleClick);
-      });
-
-      // Initial render
-      showSection(window.location.hash || '#home');
-
-      // Respond to manual hash changes (e.g., back/forward)
-      window.addEventListener('hashchange', () => showSection(window.location.hash));
-    })();
-
-    // Mobile menu toggle
-    function toggleMenu() {
-      document.getElementById('mainMenu').classList.toggle('show');
-    }
-
-    function closeMenu() {
-      document.getElementById('mainMenu').classList.remove('show');
-    }
-
-    // 매매실제영상: Apps Script에서 전체 영상 목록을 불러와 최신순으로 페이지네이션 표시
-    // (연결 실패 시 위에 하드코딩된 영상들이 그대로 유지됨)
-    const VIDEOS_PER_PAGE = 6;
-    let allVideos = [];
-    let videosPage = 0;
-
-    function renderVideosPage() {
-      const grid = document.getElementById('videosGrid');
-      const start = videosPage * VIDEOS_PER_PAGE;
-      const pageItems = allVideos.slice(start, start + VIDEOS_PER_PAGE);
-
-      grid.innerHTML = pageItems.map(v => `
-        <div class="card" style="padding:0;overflow:hidden">
-          <div class="demo-media"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/${v.videoId}" title="${v.title.replace(/"/g, '&quot;')}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-        </div>
-      `).join('');
-
-      const totalPages = Math.max(1, Math.ceil(allVideos.length / VIDEOS_PER_PAGE));
-      const pager = document.getElementById('videosPager');
-      pager.style.display = totalPages > 1 ? 'flex' : 'none';
-      document.getElementById('videosPageInfo').textContent = `${videosPage + 1} / ${totalPages}`;
-      document.getElementById('videosPrev').disabled = videosPage === 0;
-      document.getElementById('videosNext').disabled = videosPage >= totalPages - 1;
-    }
-
-    function videosPrevPage() {
-      if (videosPage > 0) { videosPage--; renderVideosPage(); window.scrollTo({ top: document.getElementById('videos').offsetTop, behavior: 'smooth' }); }
-    }
-
-    function videosNextPage() {
-      const totalPages = Math.max(1, Math.ceil(allVideos.length / VIDEOS_PER_PAGE));
-      if (videosPage < totalPages - 1) { videosPage++; renderVideosPage(); window.scrollTo({ top: document.getElementById('videos').offsetTop, behavior: 'smooth' }); }
-    }
-
-    async function loadVideos() {
-      const grid = document.getElementById('videosGrid');
-      if (!grid || !WEBHOOK_URL || WEBHOOK_URL.includes('YOUR_APPS_SCRIPT_WEBAPP_URL')) return;
+    if (!WEBHOOK_URL || WEBHOOK_URL.includes('YOUR_APPS_SCRIPT_WEBAPP_URL')) {
+      status.textContent = '웹훅 미설정: 로컬에만 저장되었습니다.';
+    } else {
       try {
-        const res = await fetch(`${WEBHOOK_URL}?action=getVideos`);
-        const result = await res.json();
-        if (!result.success || !result.data || !result.data.length) return;
-
-        allVideos = result.data;
-        videosPage = 0;
-        renderVideosPage();
+        const res = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error('웹훅 전송 실패');
+        status.textContent = '접수 완료: 관리자 이메일로 전송됨';
       } catch (err) {
-        console.log('영상 목록 로드 실패, 기본 목록 표시:', err);
+        status.textContent = '웹훅 전송 실패: ' + err.message + ' (로컬에만 저장됨)';
       }
     }
-    loadVideos();
 
-    // Register Service Worker for PWA
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then(reg => console.log('Service Worker registered'))
-          .catch(err => console.log('Service Worker registration failed'));
-      });
+    const existing = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+    existing.push(payload);
+    localStorage.setItem('contactSubmissions', JSON.stringify(existing));
+
+    form.reset();
+    return false;
+  }
+
+  // 매매실제영상: Apps Script에서 전체 영상 목록을 불러와 최신순으로 페이지네이션 표시
+  // (연결 실패 시 위에 하드코딩된 영상들이 그대로 유지됨 — videos-admin.html에서 관리)
+  const VIDEOS_PER_PAGE = 6;
+  let allVideos = [];
+  let videosPage = 0;
+
+  function renderVideosPage() {
+    const grid = document.getElementById('videosGrid');
+    const start = videosPage * VIDEOS_PER_PAGE;
+    const pageItems = allVideos.slice(start, start + VIDEOS_PER_PAGE);
+
+    grid.innerHTML = pageItems.map(v => `
+      <div class="card video-card">
+        <div class="video-frame"><iframe src="https://www.youtube.com/embed/${v.videoId}" title="${v.title.replace(/"/g, '&quot;')}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+      </div>
+    `).join('');
+
+    const totalPages = Math.max(1, Math.ceil(allVideos.length / VIDEOS_PER_PAGE));
+    const pager = document.getElementById('videosPager');
+    pager.style.display = totalPages > 1 ? 'flex' : 'none';
+    document.getElementById('videosPageInfo').textContent = `${videosPage + 1} / ${totalPages}`;
+    document.getElementById('videosPrev').disabled = videosPage === 0;
+    document.getElementById('videosNext').disabled = videosPage >= totalPages - 1;
+  }
+
+  function videosPrevPage() {
+    if (videosPage > 0) { videosPage--; renderVideosPage(); document.getElementById('videos').scrollIntoView({ behavior: 'smooth' }); }
+  }
+
+  function videosNextPage() {
+    const totalPages = Math.max(1, Math.ceil(allVideos.length / VIDEOS_PER_PAGE));
+    if (videosPage < totalPages - 1) { videosPage++; renderVideosPage(); document.getElementById('videos').scrollIntoView({ behavior: 'smooth' }); }
+  }
+
+  async function loadVideos() {
+    const grid = document.getElementById('videosGrid');
+    if (!grid || !WEBHOOK_URL || WEBHOOK_URL.includes('YOUR_APPS_SCRIPT_WEBAPP_URL')) return;
+    try {
+      const res = await fetch(`${WEBHOOK_URL}?action=getVideos`);
+      const result = await res.json();
+      if (!result.success || !result.data || !result.data.length) return;
+
+      allVideos = result.data;
+      videosPage = 0;
+      renderVideosPage();
+    } catch (err) {
+      console.log('영상 목록 로드 실패, 기본 목록 표시:', err);
     }
-  </script>
-</body>
+  }
+  loadVideos();
 
+  // PWA Service Worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(() => console.log('Service Worker registered'))
+        .catch(() => console.log('Service Worker registration failed'));
+    });
+  }
+</script>
+
+</body>
 </html>
