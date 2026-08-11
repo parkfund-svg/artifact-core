@@ -66,7 +66,7 @@ function doPost(e) {
 
     // 이메일 발송
     try {
-      const subject = `[아티팩트코어] 새로운 상담 신청 - ${data.name}`;
+      const subject = `[지비아] 새로운 상담 신청 - ${data.name}`;
       const body = `
 새로운 상담 신청이 접수되었습니다.
 
