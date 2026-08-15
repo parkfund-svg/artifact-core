@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>クオントレアXとは | GHVIA</title>
+  <meta name="description" content="クオントレアXは、戦略を設計するAIとローカル実行エンジンを組み合わせたAI自動売買プログラムです。">
+  <link rel="canonical" href="https://artifact-core.com/ja/about.html" />
+  <link rel="alternate" hreflang="ko" href="https://artifact-core.com/about.html" />
+  <link rel="alternate" hreflang="en" href="https://artifact-core.com/en/about.html" />
+  <link rel="alternate" hreflang="ja" href="https://artifact-core.com/ja/about.html" />
+  <link rel="alternate" hreflang="zh" href="https://artifact-core.com/zh/about.html" />
+  <link rel="alternate" hreflang="x-default" href="https://artifact-core.com/about.html" />
+  <link rel="manifest" href="../manifest.json" />
+  <link rel="icon" type="image/png" href="../assets/logo-ghvia.png" />
+  <meta name="theme-color" content="#6fafc7" />
+  <link rel="apple-touch-icon" href="../assets/logo-ghvia.png" />
+  <link rel="stylesheet" href="../css/site.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="../assets/logo-ghvia.png" alt="GHVIA" />
+      GHVIA
+    </a>
+    <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="menu">☰</button>
+    <nav class="menu" id="mainMenu" aria-label="main menu">
+      <a href="about.html" class="active" onclick="closeMenu()">クオントレアXとは</a>
+      <a href="features.html" onclick="closeMenu()">機能</a>
+      <a href="videos.html" onclick="closeMenu()">動画</a>
+      <a href="history.html" onclick="closeMenu()">沿革・目標</a>
+      <a href="pricing.html" onclick="closeMenu()">料金</a>
+      <a href="company.html" onclick="closeMenu()">会社概要</a>
+      <a href="contact.html" onclick="closeMenu()">お問い合わせ</a>
+      <div class="lang-switch"><a href="../about.html">KO</a><a href="../en/about.html">EN</a><a href="about.html" class="active">日本語</a><a href="../zh/about.html">中文</a></div>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <video autoplay muted loop playsinline poster="../assets/video/hero-about-poster.jpg">
+    <source src="../assets/video/hero-about.mp4" type="video/mp4" />
+  </video>
+  <div class="container">
+    <div class="kicker">クオントレアXとは</div>
+    <h1>クオントレアXとは何か</h1>
+    <p>戦略を設計するAIと、その戦略を高速かつ一貫して実行するローカルエンジンを組み合わせたAI自動売買プログラムです。コーディング不要、売買アイデアを言葉で説明するだけで実行可能な戦略に変わります。</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="concept-box">
+      <h3>💡 クオントレアXの仕組み</h3>
+      <div class="grid cols-3">
+        <div>
+          <strong class="label">1. 設計（AI）</strong>
+          <p>自然言語で説明した売買アイデアをAIが分析し、ノード（条件・指標・注文）で構成された戦略グラフに組み立てます。</p>
+        </div>
+        <div>
+          <strong class="label">2. 検証（バックテスト）</strong>
+          <p>組み立てた戦略を過去の相場データで即座にバックテストし、結果（勝率・シャープレシオ・最大ドローダウン）をAIが再確認して戦略を改善します。</p>
+        </div>
+        <div>
+          <strong class="label">3. 実行（ローカルエンジン）</strong>
+          <p>検証済みの戦略グラフはその後、追加のAI呼び出しなしにローカルエンジンが繰り返し実行 — 高速・低コストで、画面がなくても動き続けます。</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:16px">実際の画面</h3>
+    <div class="proof-clip">
+      <video autoplay muted loop playsinline>
+        <source src="../assets/video/demo-quantrea-x.mp4" type="video/mp4" />
+      </video>
+      <div class="proof-caption">AI売買開始 → リアルタイム買い約定 → 上昇継続、実際の口座画面そのままです。</div>
+    </div>
+
+    <div class="grid cols-4">
+      <div class="card">
+        <h3>ノードベース戦略</h3>
+        <p>コーディング不要で条件・指標・注文ノードを組み合わせ、自分だけの売買ロジックを作成します。</p>
+      </div>
+      <div class="card">
+        <h3>即時バックテスト</h3>
+        <p>戦略を作成すると同時に実際の相場で検証し、対話しながら結果を改善できます。</p>
+      </div>
+      <div class="card">
+        <h3>無人実行</h3>
+        <p>画面を見ていなくても口座ごとに戦略・売買ライン・AIボットがバックグラウンドで動作し続けます。</p>
+      </div>
+      <div class="card">
+        <h3>マルチアセット対応</h3>
+        <p>国内外の先物・オプション、国内外株式、仮想通貨までひとつのプログラムで管理します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Quantrea-x. All rights reserved. · Powered by GHVIA</div>
+    <div class="meta">プライバシーポリシー・利用規約</div>
+  </div>
+</footer>
+
+<script src="../js/site.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>核心功能 | Quantrea-X</title>
+  <meta name="description" content="基于节点的策略构建器、图表交易线、AI预测K线、AI机器人自动交易等Quantrea-X核心功能。">
+  <link rel="canonical" href="https://artifact-core.com/zh/features.html" />
+  <link rel="alternate" hreflang="ko" href="https://artifact-core.com/features.html" />
+  <link rel="alternate" hreflang="en" href="https://artifact-core.com/en/features.html" />
+  <link rel="alternate" hreflang="ja" href="https://artifact-core.com/ja/features.html" />
+  <link rel="alternate" hreflang="zh" href="https://artifact-core.com/zh/features.html" />
+  <link rel="alternate" hreflang="x-default" href="https://artifact-core.com/features.html" />
+  <link rel="manifest" href="../manifest.json" />
+  <link rel="icon" type="image/png" href="../assets/logo-ghvia.png" />
+  <meta name="theme-color" content="#6fafc7" />
+  <link rel="apple-touch-icon" href="../assets/logo-ghvia.png" />
+  <link rel="stylesheet" href="../css/site.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="../assets/logo-ghvia.png" alt="GHVIA" />
+      GHVIA
+    </a>
+    <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="menu">☰</button>
+    <nav class="menu" id="mainMenu" aria-label="main menu">
+      <a href="about.html" onclick="closeMenu()">关于Quantrea-X</a>
+      <a href="features.html" class="active" onclick="closeMenu()">功能</a>
+      <a href="videos.html" onclick="closeMenu()">视频</a>
+      <a href="history.html" onclick="closeMenu()">发展历程与目标</a>
+      <a href="pricing.html" onclick="closeMenu()">价格</a>
+      <a href="company.html" onclick="closeMenu()">公司简介</a>
+      <a href="contact.html" onclick="closeMenu()">联系我们</a>
+      <div class="lang-switch"><a href="../features.html">KO</a><a href="../en/features.html">EN</a><a href="../ja/features.html">日本語</a><a href="features.html" class="active">中文</a></div>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <video autoplay muted loop playsinline poster="../assets/video/hero-features-poster.jpg">
+    <source src="../assets/video/hero-features.mp4" type="video/mp4" />
+  </video>
+  <div class="container">
+    <div class="kicker">功能</div>
+    <h1>Quantrea-X的核心功能</h1>
+    <p>每项功能既可单独使用，也可组合使用。</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid cols-2">
+      <div class="card">
+        <span class="badge">策略构建器</span>
+        <h3>基于节点的策略构建器</h3>
+        <p>用聊天方式描述交易想法，AI会将其组装为条件、指标、订单节点。创建的策略会立即回测，您还可以根据结果进行对话式调整，比如发现"因为没有止损导致亏损较大"。</p>
+      </div>
+      <div class="card">
+        <span class="badge">交易线</span>
+        <h3>图表交易线</h3>
+        <p>在图表上画出进场线、止盈线、止损线，满足条件时自动成交。可用标签区分分批建仓等多次进场，并分别连接到不同的止盈线。</p>
+      </div>
+      <div class="card">
+        <span class="badge badge-accent">预测K线</span>
+        <h3>AI预测K线</h3>
+        <p>AI预测下一根K线的走势并显示在图表上。5根统计集成预测会重复5次后按多数表决得出最终结果以提高可靠性，单根预测则同时预测当前K线收盘价和下一根K线，还可作为"预测K线规则交易"自动执行。</p>
+      </div>
+      <div class="card">
+        <span class="badge badge-accent">三重验证</span>
+        <h3>AI三重验证预测K线交易</h3>
+        <p>Gemini、Claude、GPT三个AI分别独立预测下一根K线，只有方向一致时才会执行交易。不依赖单一AI，而是让不同AI互相验证。</p>
+      </div>
+      <div class="card">
+        <span class="badge">AI机器人</span>
+        <h3>AI机器人自动交易</h3>
+        <p>从Gemini、Claude、GPT中选择您想用的引擎，分析盘口和行情，实时执行交易判断。可以设置直接跟随信号、反向操作，或根据市场阶段自动切换。</p>
+      </div>
+      <div class="card">
+        <span class="badge">阶段判断</span>
+        <h3>阶段切换自动交易</h3>
+        <p>通过趋势强度、波动率指标的量化组合，判断当前是上涨、下跌还是盘整阶段。只有匹配当前阶段的策略才会自动运行，避免在不合适的行情中强行交易。</p>
+      </div>
+      <div class="card">
+        <span class="badge">无人值守</span>
+        <h3>无人值守多账户运行</h3>
+        <p>即使不打开账户界面，多个账户的策略、交易线、AI机器人也会在后台持续运行。可在同一屏幕汇总查看各账户正在运行的策略与盈亏。</p>
+      </div>
+      <div class="card">
+        <span class="badge">移动端</span>
+        <h3>移动端支持</h3>
+        <p>不仅限于PC，通过安卓应用也可以查看交易状况并运行自动交易。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Quantrea-x. All rights reserved. · Powered by GHVIA</div>
+    <div class="meta">隐私政策 · 服务条款</div>
+  </div>
+</footer>
+
+<script src="../js/site.js"></script>
+
+</body>
+</html>

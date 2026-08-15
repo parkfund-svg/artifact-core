@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>关于Quantrea-X | GHVIA</title>
+  <meta name="description" content="Quantrea-X是将设计策略的AI与本地执行引擎相结合的AI自动交易程序。">
+  <link rel="canonical" href="https://artifact-core.com/zh/about.html" />
+  <link rel="alternate" hreflang="ko" href="https://artifact-core.com/about.html" />
+  <link rel="alternate" hreflang="en" href="https://artifact-core.com/en/about.html" />
+  <link rel="alternate" hreflang="ja" href="https://artifact-core.com/ja/about.html" />
+  <link rel="alternate" hreflang="zh" href="https://artifact-core.com/zh/about.html" />
+  <link rel="alternate" hreflang="x-default" href="https://artifact-core.com/about.html" />
+  <link rel="manifest" href="../manifest.json" />
+  <link rel="icon" type="image/png" href="../assets/logo-ghvia.png" />
+  <meta name="theme-color" content="#6fafc7" />
+  <link rel="apple-touch-icon" href="../assets/logo-ghvia.png" />
+  <link rel="stylesheet" href="../css/site.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="../assets/logo-ghvia.png" alt="GHVIA" />
+      GHVIA
+    </a>
+    <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="menu">☰</button>
+    <nav class="menu" id="mainMenu" aria-label="main menu">
+      <a href="about.html" class="active" onclick="closeMenu()">关于Quantrea-X</a>
+      <a href="features.html" onclick="closeMenu()">功能</a>
+      <a href="videos.html" onclick="closeMenu()">视频</a>
+      <a href="history.html" onclick="closeMenu()">发展历程与目标</a>
+      <a href="pricing.html" onclick="closeMenu()">价格</a>
+      <a href="company.html" onclick="closeMenu()">公司简介</a>
+      <a href="contact.html" onclick="closeMenu()">联系我们</a>
+      <div class="lang-switch"><a href="../about.html">KO</a><a href="../en/about.html">EN</a><a href="../ja/about.html">日本語</a><a href="about.html" class="active">中文</a></div>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <video autoplay muted loop playsinline poster="../assets/video/hero-about-poster.jpg">
+    <source src="../assets/video/hero-about.mp4" type="video/mp4" />
+  </video>
+  <div class="container">
+    <div class="kicker">关于QUANTREA-X</div>
+    <h1>Quantrea-X是什么</h1>
+    <p>一款将设计策略的AI与快速、稳定执行策略的本地引擎相结合的AI自动交易程序。无需编程，只需用语言描述交易想法，即可转化为可执行的策略。</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="concept-box">
+      <h3>💡 Quantrea-X的运作方式</h3>
+      <div class="grid cols-3">
+        <div>
+          <strong class="label">1. 设计（AI）</strong>
+          <p>AI分析您用自然语言描述的交易想法，将其组装为由节点（条件·指标·订单）构成的策略图。</p>
+        </div>
+        <div>
+          <strong class="label">2. 验证（回测）</strong>
+          <p>组装好的策略立即用历史行情进行回测，AI再次确认结果（胜率·夏普比率·最大回撤）并改进策略。</p>
+        </div>
+        <div>
+          <strong class="label">3. 执行（本地引擎）</strong>
+          <p>验证通过的策略图此后无需额外调用AI，由本地引擎反复执行——速度快、成本低，即使不开屏幕也能持续运行。</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:16px">真实画面</h3>
+    <div class="proof-clip">
+      <video autoplay muted loop playsinline>
+        <source src="../assets/video/demo-quantrea-x.mp4" type="video/mp4" />
+      </video>
+      <div class="proof-caption">AI启动交易 → 实时买入成交 → 持续上涨，这是真实账户画面，未经剪辑。</div>
+    </div>
+
+    <div class="grid cols-4">
+      <div class="card">
+        <h3>基于节点的策略</h3>
+        <p>无需编程，通过组合条件、指标、订单节点，打造属于您自己的交易逻辑。</p>
+      </div>
+      <div class="card">
+        <h3>即时回测</h3>
+        <p>策略一经创建即可用实际行情验证，并通过对话方式不断优化结果。</p>
+      </div>
+      <div class="card">
+        <h3>无人值守执行</h3>
+        <p>即使不看屏幕，各账户的策略、交易线、AI机器人也会在后台持续运行。</p>
+      </div>
+      <div class="card">
+        <h3>多资产覆盖</h3>
+        <p>国内外期货/期权、国内外股票、加密货币，一个程序统一管理。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Quantrea-x. All rights reserved. · Powered by GHVIA</div>
+    <div class="meta">隐私政策 · 服务条款</div>
+  </div>
+</footer>
+
+<script src="../js/site.js"></script>
+
+</body>
+</html>

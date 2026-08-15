@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>開発沿革・成長目標 | クオントレアX</title>
+  <meta name="description" content="クオントレアXの開発沿革と今後5カ年の成長目標。">
+  <link rel="canonical" href="https://artifact-core.com/ja/history.html" />
+  <link rel="alternate" hreflang="ko" href="https://artifact-core.com/history.html" />
+  <link rel="alternate" hreflang="en" href="https://artifact-core.com/en/history.html" />
+  <link rel="alternate" hreflang="ja" href="https://artifact-core.com/ja/history.html" />
+  <link rel="alternate" hreflang="zh" href="https://artifact-core.com/zh/history.html" />
+  <link rel="alternate" hreflang="x-default" href="https://artifact-core.com/history.html" />
+  <link rel="manifest" href="../manifest.json" />
+  <link rel="icon" type="image/png" href="../assets/logo-ghvia.png" />
+  <meta name="theme-color" content="#6fafc7" />
+  <link rel="apple-touch-icon" href="../assets/logo-ghvia.png" />
+  <link rel="stylesheet" href="../css/site.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="../assets/logo-ghvia.png" alt="GHVIA" />
+      GHVIA
+    </a>
+    <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="menu">☰</button>
+    <nav class="menu" id="mainMenu" aria-label="main menu">
+      <a href="about.html" onclick="closeMenu()">クオントレアXとは</a>
+      <a href="features.html" onclick="closeMenu()">機能</a>
+      <a href="videos.html" onclick="closeMenu()">動画</a>
+      <a href="history.html" class="active" onclick="closeMenu()">沿革・目標</a>
+      <a href="pricing.html" onclick="closeMenu()">料金</a>
+      <a href="company.html" onclick="closeMenu()">会社概要</a>
+      <a href="contact.html" onclick="closeMenu()">お問い合わせ</a>
+      <div class="lang-switch"><a href="../history.html">KO</a><a href="../en/history.html">EN</a><a href="history.html" class="active">日本語</a><a href="../zh/history.html">中文</a></div>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <video autoplay muted loop playsinline poster="../assets/video/hero-history-poster.jpg">
+    <source src="../assets/video/hero-history.mp4" type="video/mp4" />
+  </video>
+  <div class="container">
+    <div class="kicker">開発沿革・成長目標</div>
+    <h1>開発沿革と成長目標</h1>
+    <p>クオントレアXは今も毎週実際の売買データをもとに改善を続けています。最近の成長過程と今後の目標です。</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-kicker">開発沿革</div>
+    <h2>開発沿革</h2>
+    <p class="section-desc">最近の成長過程です。</p>
+
+    <div class="timeline">
+      <div class="item">
+        <span class="dot"></span>
+        <div>
+          <span class="badge">2026年7月上旬</span>
+          <h4>安定したリスク管理基盤の構築</h4>
+          <p class="meta">オプション証拠金・手数料を市場別に精密計算し、保有ポジションを含めたリアルタイム評価資産を反映。売買発生時に前後の場面を自動的に記録する機能も追加しました。</p>
+        </div>
+      </div>
+      <div class="item">
+        <span class="dot"></span>
+        <div>
+          <span class="badge">2026年7月中旬</span>
+          <h4>戦略ビルダー「AI自動改善ループ」完成</h4>
+          <p class="meta">戦略を作成すると即座にバックテストされ、結果をAIが再確認して改善案を提示する流れを完成させました。ローソク足解剖・上位足分析といったプレミアムノードもこの時期から追加され始めました。</p>
+        </div>
+      </div>
+      <div class="item">
+        <span class="dot"></span>
+        <div>
+          <span class="badge">2026年7月下旬</span>
+          <h4>無人マルチアカウント自動売買・局面転換戦略の完成</h4>
+          <p class="meta">複数口座を同時に無人で運用できるインフラを構築し、画面を閉じても動作し続けるようにしました。市場局面（強気・弱気・横ばい）に応じて自動的に切り替わる戦略3種は、実戦検証において上昇局面対応戦略基準でシミュレーション（バックテスト）収益率152%（シャープレシオ2.8）を確認しました — 実口座の実績ではなくシミュレーション結果です。同時期にAndroidアプリもリリースしました。</p>
+        </div>
+      </div>
+      <div class="item">
+        <span class="dot"></span>
+        <div>
+          <span class="badge">2026年8月</span>
+          <h4>AIボットシグナル制御・予測ローソク足ルール売買</h4>
+          <p class="meta">AIボットの売買シグナルをそのまま採用するか、逆張りにするか、局面に応じて自動切替するかを設定する機能と、予測ローソク足を基準にエントリー・決済を自動実行する「予測ローソク足ルール売買」モードを新たに追加しました。その後、予測ローソク足売買システムをGemini・Claude・GPTの3重AI検証構造に拡張し、3つのAIの予測方向が一致した場合のみ売買に反映するよう高度化しました。</p>
+        </div>
+      </div>
+      <div class="item">
+        <span class="dot"></span>
+        <div>
+          <span class="badge">2026年8月</span>
+          <h4>ブランドリニューアル — クオントレアXとして新装</h4>
+          <p class="meta">会社名・製品名を新たに整備し、全面動画ベースの新しいホームページでブランドをリニューアルしました。</p>
+        </div>
+      </div>
+      <div class="item">
+        <span class="dot"></span>
+        <div>
+          <span class="badge">2026年8月</span>
+          <h4>チャートUIの全面改善</h4>
+          <p class="meta">チャート画面全体の視認性と操作感を改めて磨き上げました。</p>
+        </div>
+      </div>
+      <div class="item">
+        <span class="dot"></span>
+        <div>
+          <span class="badge">2026年8月</span>
+          <h4>モバイルアプリのバックグラウンド実行対応</h4>
+          <p class="meta">Androidアプリをバックグラウンドに置いた状態でも、売買状況の確認と自動売買の運用が途切れないよう改善しました。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-kicker">GROWTH</div>
+    <h2>クオントレアXの成長目標</h2>
+    <p class="section-desc">個人投資家向けサブスクリプションと法人向け戦略ライセンスをともに拡大し、毎年自社で検証した実績をもとに成長することを目指します。</p>
+
+    <div class="grid cols-3" style="margin-bottom:32px">
+      <div class="card" style="text-align:center">
+        <div class="metric-number">6億ウォン</div>
+        <h4 style="margin:0 0 6px">初年度目標売上</h4>
+        <p>個人加入者500人基準</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="metric-number">265億ウォン</div>
+        <h4 style="margin:0 0 6px">5年目目標売上</h4>
+        <p>個人加入2万人＋法人ライセンス5社</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="metric-number">年171%</div>
+        <h4 style="margin:0 0 6px">目標年平均成長率</h4>
+        <p>サブスクリプションと法人ライセンス売上の合算基準</p>
+      </div>
+    </div>
+
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>製品ロードマップ</h3>
+        <ul style="margin:12px 0 0 18px; color:var(--muted); font-size:14px;"><li>プレミアムノードのラインアップを継続拡張（プライスアクション、パターンマッチングなど）</li><li>独自の過去相場データベース構築によるバックテスト期間の拡張</li><li>法人向け戦略ライセンス・カスタム開発トラックの強化</li><li>証券会社提携／マルチベンダーマーケット出店の検討</li></ul>
+      </div>
+      <div class="card">
+        <h4 style="margin:0 0 10px">5カ年売上目標（単位：ウォン）</h4>
+        <div class="table-scroll">
+        <table class="institutional-table">
+          <thead>
+            <tr><th>年次</th><th>個人サブスクリプション</th><th>法人ライセンス</th><th>総売上</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1年目</td><td>6億</td><td>0億</td><td>6億</td></tr><tr><td>2年目</td><td>24億</td><td>0億</td><td>24億</td></tr><tr><td>3年目</td><td>60億</td><td>6億</td><td>66億</td></tr><tr><td>4年目</td><td>120億</td><td>15億</td><td>135億</td></tr><tr><td>5年目</td><td>240億</td><td>25億</td><td>265億</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="meta" style="color:var(--muted); font-size:13px; margin-top:12px;">上記の数値は目標値であり、実際の実績とは異なる場合があります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Quantrea-x. All rights reserved. · Powered by GHVIA</div>
+    <div class="meta">プライバシーポリシー・利用規約</div>
+  </div>
+</footer>
+
+<script src="../js/site.js"></script>
+
+</body>
+</html>

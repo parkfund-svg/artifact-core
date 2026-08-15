@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>主な機能 | クオントレアX</title>
+  <meta name="description" content="ノードベース戦略ビルダー、チャート売買ライン、AI予測ローソク足、AIボット自動売買などクオントレアXの主な機能。">
+  <link rel="canonical" href="https://artifact-core.com/ja/features.html" />
+  <link rel="alternate" hreflang="ko" href="https://artifact-core.com/features.html" />
+  <link rel="alternate" hreflang="en" href="https://artifact-core.com/en/features.html" />
+  <link rel="alternate" hreflang="ja" href="https://artifact-core.com/ja/features.html" />
+  <link rel="alternate" hreflang="zh" href="https://artifact-core.com/zh/features.html" />
+  <link rel="alternate" hreflang="x-default" href="https://artifact-core.com/features.html" />
+  <link rel="manifest" href="../manifest.json" />
+  <link rel="icon" type="image/png" href="../assets/logo-ghvia.png" />
+  <meta name="theme-color" content="#6fafc7" />
+  <link rel="apple-touch-icon" href="../assets/logo-ghvia.png" />
+  <link rel="stylesheet" href="../css/site.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="../assets/logo-ghvia.png" alt="GHVIA" />
+      GHVIA
+    </a>
+    <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="menu">☰</button>
+    <nav class="menu" id="mainMenu" aria-label="main menu">
+      <a href="about.html" onclick="closeMenu()">クオントレアXとは</a>
+      <a href="features.html" class="active" onclick="closeMenu()">機能</a>
+      <a href="videos.html" onclick="closeMenu()">動画</a>
+      <a href="history.html" onclick="closeMenu()">沿革・目標</a>
+      <a href="pricing.html" onclick="closeMenu()">料金</a>
+      <a href="company.html" onclick="closeMenu()">会社概要</a>
+      <a href="contact.html" onclick="closeMenu()">お問い合わせ</a>
+      <div class="lang-switch"><a href="../features.html">KO</a><a href="../en/features.html">EN</a><a href="features.html" class="active">日本語</a><a href="../zh/features.html">中文</a></div>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <video autoplay muted loop playsinline poster="../assets/video/hero-features-poster.jpg">
+    <source src="../assets/video/hero-features.mp4" type="video/mp4" />
+  </video>
+  <div class="container">
+    <div class="kicker">機能</div>
+    <h1>クオントレアXの主な機能</h1>
+    <p>各機能は単独でも、組み合わせても利用できます。</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid cols-2">
+      <div class="card">
+        <span class="badge">戦略ビルダー</span>
+        <h3>ノードベース戦略ビルダー</h3>
+        <p>売買アイデアをチャットで説明するとAIが条件・指標・注文ノードとして組み立てます。作成した戦略は即座にバックテストされ、「損切りがなく損失が大きかった」のように結果をもとに対話しながら調整できます。</p>
+      </div>
+      <div class="card">
+        <span class="badge">売買ライン</span>
+        <h3>チャート売買ライン</h3>
+        <p>チャート上にエントリー・利確・損切りラインを描くと、条件成立時に自動で約定します。分割エントリーのように複数のエントリーをタグで区別し、それぞれ異なる利確ラインに紐付けることもできます。</p>
+      </div>
+      <div class="card">
+        <span class="badge badge-accent">予測ローソク足</span>
+        <h3>AI予測ローソク足</h3>
+        <p>次のローソク足の動きをAIが予測してチャートに表示します。5本の統計ベース予測は5回繰り返した上で多数決により最終案を採用して信頼性を高め、1本予測は進行中の足の終値と次の足を同時に予測し、「予測ローソク足ルール売買」として自動実行することもできます。</p>
+      </div>
+      <div class="card">
+        <span class="badge badge-accent">3重検証</span>
+        <h3>AI3重検証予測ローソク足売買</h3>
+        <p>Gemini・Claude・GPTの3つのAIがそれぞれ独立して次のローソク足を予測し、方向が一致した場合のみ売買に反映します。単一のAIに依存せず、異なるAI同士が互いを検証する仕組みです。</p>
+      </div>
+      <div class="card">
+        <span class="badge">AIボット</span>
+        <h3>AIボット自動売買</h3>
+        <p>Gemini・Claude・GPTから希望のエンジンを選択して板情報と相場を分析させ、リアルタイムで売買判断を実行します。シグナルをそのまま採用するか、逆張りにするか、市場局面に応じて自動的に切り替えるかも設定できます。</p>
+      </div>
+      <div class="card">
+        <span class="badge">局面判断</span>
+        <h3>局面転換自動売買</h3>
+        <p>トレンド強度・ボラティリティ指標を定量的に組み合わせ、現在が上昇・下落・横ばい局面のいずれかを判断します。局面に合った戦略のみが自動的に作動し、合わない相場での無理な売買を防ぎます。</p>
+      </div>
+      <div class="card">
+        <span class="badge">無人運用</span>
+        <h3>無人マルチアカウント運用</h3>
+        <p>画面を開いていなくても複数口座の戦略・売買ライン・AIボットがバックグラウンドで動作し続けます。口座ごとの実行中の戦略と損益を一画面でまとめて確認できます。</p>
+      </div>
+      <div class="card">
+        <span class="badge">モバイル</span>
+        <h3>モバイル対応</h3>
+        <p>PCだけでなくAndroidアプリからも売買状況の確認と自動売買の運用が可能です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Quantrea-x. All rights reserved. · Powered by GHVIA</div>
+    <div class="meta">プライバシーポリシー・利用規約</div>
+  </div>
+</footer>
+
+<script src="../js/site.js"></script>
+
+</body>
+</html>

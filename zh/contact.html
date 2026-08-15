@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>咨询与联系 | Quantrea-X</title>
+  <meta name="description" content="申请Quantrea-X演示或技术咨询。">
+  <link rel="canonical" href="https://artifact-core.com/zh/contact.html" />
+  <link rel="alternate" hreflang="ko" href="https://artifact-core.com/contact.html" />
+  <link rel="alternate" hreflang="en" href="https://artifact-core.com/en/contact.html" />
+  <link rel="alternate" hreflang="ja" href="https://artifact-core.com/ja/contact.html" />
+  <link rel="alternate" hreflang="zh" href="https://artifact-core.com/zh/contact.html" />
+  <link rel="alternate" hreflang="x-default" href="https://artifact-core.com/contact.html" />
+  <link rel="manifest" href="../manifest.json" />
+  <link rel="icon" type="image/png" href="../assets/logo-ghvia.png" />
+  <meta name="theme-color" content="#6fafc7" />
+  <link rel="apple-touch-icon" href="../assets/logo-ghvia.png" />
+  <link rel="stylesheet" href="../css/site.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="../assets/logo-ghvia.png" alt="GHVIA" />
+      GHVIA
+    </a>
+    <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="menu">☰</button>
+    <nav class="menu" id="mainMenu" aria-label="main menu">
+      <a href="about.html" onclick="closeMenu()">关于Quantrea-X</a>
+      <a href="features.html" onclick="closeMenu()">功能</a>
+      <a href="videos.html" onclick="closeMenu()">视频</a>
+      <a href="history.html" onclick="closeMenu()">发展历程与目标</a>
+      <a href="pricing.html" onclick="closeMenu()">价格</a>
+      <a href="company.html" onclick="closeMenu()">公司简介</a>
+      <a href="contact.html" class="active" onclick="closeMenu()">联系我们</a>
+      <div class="lang-switch"><a href="../contact.html">KO</a><a href="../en/contact.html">EN</a><a href="../ja/contact.html">日本語</a><a href="contact.html" class="active">中文</a></div>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <video autoplay muted loop playsinline poster="../assets/video/hero-contact-poster.jpg">
+    <source src="../assets/video/hero-contact.mp4" type="video/mp4" />
+  </video>
+  <div class="container">
+    <div class="kicker">联系我们</div>
+    <h1>咨询与联系</h1>
+    <p>欢迎申请演示或技术咨询，我们将在1个工作日内回复。邮箱：parkfund@naver.com ・电话：+82-2-588-2844</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <form action="#" method="post" onsubmit="return handleSubmit(event)">
+      <div class="form-row">
+        <div>
+          <label for="name">姓名</label>
+          <input id="name" name="name" placeholder="张三" required />
+        </div>
+        <div>
+          <label for="email">邮箱</label>
+          <input id="email" type="email" name="email" placeholder="you@example.com" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label>关注领域（可多选）</label>
+          <div class="checkbox-row">
+            <label><input type="checkbox" name="interest" value="Quantrea-X产品" /><span>Quantrea-X产品</span></label>
+            <label><input type="checkbox" name="interest" value="投资" /><span>投资</span></label>
+          </div>
+        </div>
+        <div>
+          <label for="time">期望咨询时间</label>
+          <input id="time" name="time" placeholder="例如：工作日下午2-5点" />
+        </div>
+      </div>
+      <div>
+        <label for="message">需求内容</label>
+        <textarea id="message" name="message" placeholder="请简要说明您当前的情况和目标。" required></textarea>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <button class="btn btn-primary" type="submit">提交咨询</button>
+        <span class="meta" style="color:var(--muted);font-size:13px">提交即表示您同意我们的基本个人信息处理政策。</span>
+      </div>
+      <div id="submit-status"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Quantrea-x. All rights reserved. · Powered by GHVIA</div>
+    <div class="meta">隐私政策 · 服务条款</div>
+  </div>
+</footer>
+
+<script src="../js/site.js"></script>
+
+</body>
+</html>

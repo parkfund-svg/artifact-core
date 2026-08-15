@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>お問い合わせ・ご相談 | クオントレアX</title>
+  <meta name="description" content="クオントレアXのデモ依頼・技術相談はこちら。">
+  <link rel="canonical" href="https://artifact-core.com/ja/contact.html" />
+  <link rel="alternate" hreflang="ko" href="https://artifact-core.com/contact.html" />
+  <link rel="alternate" hreflang="en" href="https://artifact-core.com/en/contact.html" />
+  <link rel="alternate" hreflang="ja" href="https://artifact-core.com/ja/contact.html" />
+  <link rel="alternate" hreflang="zh" href="https://artifact-core.com/zh/contact.html" />
+  <link rel="alternate" hreflang="x-default" href="https://artifact-core.com/contact.html" />
+  <link rel="manifest" href="../manifest.json" />
+  <link rel="icon" type="image/png" href="../assets/logo-ghvia.png" />
+  <meta name="theme-color" content="#6fafc7" />
+  <link rel="apple-touch-icon" href="../assets/logo-ghvia.png" />
+  <link rel="stylesheet" href="../css/site.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="../assets/logo-ghvia.png" alt="GHVIA" />
+      GHVIA
+    </a>
+    <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="menu">☰</button>
+    <nav class="menu" id="mainMenu" aria-label="main menu">
+      <a href="about.html" onclick="closeMenu()">クオントレアXとは</a>
+      <a href="features.html" onclick="closeMenu()">機能</a>
+      <a href="videos.html" onclick="closeMenu()">動画</a>
+      <a href="history.html" onclick="closeMenu()">沿革・目標</a>
+      <a href="pricing.html" onclick="closeMenu()">料金</a>
+      <a href="company.html" onclick="closeMenu()">会社概要</a>
+      <a href="contact.html" class="active" onclick="closeMenu()">お問い合わせ</a>
+      <div class="lang-switch"><a href="../contact.html">KO</a><a href="../en/contact.html">EN</a><a href="contact.html" class="active">日本語</a><a href="../zh/contact.html">中文</a></div>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <video autoplay muted loop playsinline poster="../assets/video/hero-contact-poster.jpg">
+    <source src="../assets/video/hero-contact.mp4" type="video/mp4" />
+  </video>
+  <div class="container">
+    <div class="kicker">お問い合わせ</div>
+    <h1>お問い合わせ・ご相談</h1>
+    <p>デモのご依頼または技術相談はこちらから。1営業日以内にご返信いたします。メール: parkfund@naver.com ・電話: +82-2-588-2844</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <form action="#" method="post" onsubmit="return handleSubmit(event)">
+      <div class="form-row">
+        <div>
+          <label for="name">お名前</label>
+          <input id="name" name="name" placeholder="山田太郎" required />
+        </div>
+        <div>
+          <label for="email">メールアドレス</label>
+          <input id="email" type="email" name="email" placeholder="you@example.com" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label>ご関心分野（複数選択可）</label>
+          <div class="checkbox-row">
+            <label><input type="checkbox" name="interest" value="製品クオントレアX" /><span>製品クオントレアX</span></label>
+            <label><input type="checkbox" name="interest" value="投資" /><span>投資</span></label>
+          </div>
+        </div>
+        <div>
+          <label for="time">ご希望のご相談時間</label>
+          <input id="time" name="time" placeholder="例：平日午後2〜5時" />
+        </div>
+      </div>
+      <div>
+        <label for="message">ご要望内容</label>
+        <textarea id="message" name="message" placeholder="現在の状況とご希望を簡単にご記入ください。" required></textarea>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <button class="btn btn-primary" type="submit">相談を申し込む</button>
+        <span class="meta" style="color:var(--muted);font-size:13px">送信をもって基本個人情報の取り扱いに同意したものとみなします。</span>
+      </div>
+      <div id="submit-status"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Quantrea-x. All rights reserved. · Powered by GHVIA</div>
+    <div class="meta">プライバシーポリシー・利用規約</div>
+  </div>
+</footer>
+
+<script src="../js/site.js"></script>
+
+</body>
+</html>

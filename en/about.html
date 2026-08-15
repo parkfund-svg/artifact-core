@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About Quantrea-X | GHVIA Inc.</title>
+  <meta name="description" content="Quantrea-X combines an AI that designs strategies with a local engine that executes them.">
+  <link rel="canonical" href="https://artifact-core.com/en/about.html" />
+  <link rel="alternate" hreflang="ko" href="https://artifact-core.com/about.html" />
+  <link rel="alternate" hreflang="en" href="https://artifact-core.com/en/about.html" />
+  <link rel="alternate" hreflang="ja" href="https://artifact-core.com/ja/about.html" />
+  <link rel="alternate" hreflang="zh" href="https://artifact-core.com/zh/about.html" />
+  <link rel="alternate" hreflang="x-default" href="https://artifact-core.com/about.html" />
+  <link rel="manifest" href="../manifest.json" />
+  <link rel="icon" type="image/png" href="../assets/logo-ghvia.png" />
+  <meta name="theme-color" content="#6fafc7" />
+  <link rel="apple-touch-icon" href="../assets/logo-ghvia.png" />
+  <link rel="stylesheet" href="../css/site.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="../assets/logo-ghvia.png" alt="GHVIA" />
+      GHVIA
+    </a>
+    <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="menu">☰</button>
+    <nav class="menu" id="mainMenu" aria-label="main menu">
+      <a href="about.html" class="active" onclick="closeMenu()">About</a>
+      <a href="features.html" onclick="closeMenu()">Features</a>
+      <a href="videos.html" onclick="closeMenu()">Videos</a>
+      <a href="history.html" onclick="closeMenu()">History &amp; Growth</a>
+      <a href="pricing.html" onclick="closeMenu()">Pricing</a>
+      <a href="company.html" onclick="closeMenu()">Company</a>
+      <a href="contact.html" onclick="closeMenu()">Contact</a>
+      <div class="lang-switch"><a href="../about.html">KO</a><a href="about.html" class="active">EN</a><a href="../ja/about.html">日本語</a><a href="../zh/about.html">中文</a></div>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <video autoplay muted loop playsinline poster="../assets/video/hero-about-poster.jpg">
+    <source src="../assets/video/hero-about.mp4" type="video/mp4" />
+  </video>
+  <div class="container">
+    <div class="kicker">ABOUT QUANTREA-X</div>
+    <h1>What is Quantrea-X</h1>
+    <p>An AI autotrading program that combines an AI that designs strategies with a local engine that executes them quickly and consistently. No coding required — describe your trading idea in plain language and it becomes an executable strategy.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="concept-box">
+      <h3>💡 How Quantrea-X Works</h3>
+      <div class="grid cols-3">
+        <div>
+          <strong class="label">1. Design (AI)</strong>
+          <p>The AI analyzes your trading idea described in natural language and assembles it into a strategy graph made of nodes (conditions, indicators, orders).</p>
+        </div>
+        <div>
+          <strong class="label">2. Verify (Backtest)</strong>
+          <p>The assembled strategy is immediately backtested against historical prices, and the AI reviews the results (win rate, Sharpe ratio, MDD) to refine the strategy.</p>
+        </div>
+        <div>
+          <strong class="label">3. Execute (Local Engine)</strong>
+          <p>Once verified, the strategy graph runs repeatedly on the local engine without further AI calls — fast, low-cost, and running continuously even with no screen open.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:16px">Live Screen</h3>
+    <div class="proof-clip">
+      <video autoplay muted loop playsinline>
+        <source src="../assets/video/demo-quantrea-x.mp4" type="video/mp4" />
+      </video>
+      <div class="proof-caption">AI trading starts → buy order fills in real time → the uptrend continues. This is the actual account screen, unedited.</div>
+    </div>
+
+    <div class="grid cols-4">
+      <div class="card">
+        <h3>Node-Based Strategies</h3>
+        <p>Combine condition, indicator, and order nodes without coding to build your own trading logic.</p>
+      </div>
+      <div class="card">
+        <h3>Instant Backtesting</h3>
+        <p>Verify a strategy against real prices the moment you build it, then refine the results through conversation.</p>
+      </div>
+      <div class="card">
+        <h3>Unattended Execution</h3>
+        <p>Strategies, trade lines, and AI bots keep running in the background per account, even with no screen open.</p>
+      </div>
+      <div class="card">
+        <h3>Multi-Asset Coverage</h3>
+        <p>Manage domestic and overseas futures/options, domestic and overseas stocks, and crypto — all in one program.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Quantrea-x. All rights reserved. · Powered by GHVIA Inc.</div>
+    <div class="meta">Privacy Policy · Terms of Service</div>
+  </div>
+</footer>
+
+<script src="../js/site.js"></script>
+
+</body>
+</html>

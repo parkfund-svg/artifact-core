@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact &amp; Consultation | Quantrea-X</title>
+  <meta name="description" content="Request a Quantrea-X demo or technical consultation.">
+  <link rel="canonical" href="https://artifact-core.com/en/contact.html" />
+  <link rel="alternate" hreflang="ko" href="https://artifact-core.com/contact.html" />
+  <link rel="alternate" hreflang="en" href="https://artifact-core.com/en/contact.html" />
+  <link rel="alternate" hreflang="ja" href="https://artifact-core.com/ja/contact.html" />
+  <link rel="alternate" hreflang="zh" href="https://artifact-core.com/zh/contact.html" />
+  <link rel="alternate" hreflang="x-default" href="https://artifact-core.com/contact.html" />
+  <link rel="manifest" href="../manifest.json" />
+  <link rel="icon" type="image/png" href="../assets/logo-ghvia.png" />
+  <meta name="theme-color" content="#6fafc7" />
+  <link rel="apple-touch-icon" href="../assets/logo-ghvia.png" />
+  <link rel="stylesheet" href="../css/site.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="../assets/logo-ghvia.png" alt="GHVIA" />
+      GHVIA
+    </a>
+    <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="menu">☰</button>
+    <nav class="menu" id="mainMenu" aria-label="main menu">
+      <a href="about.html" onclick="closeMenu()">About</a>
+      <a href="features.html" onclick="closeMenu()">Features</a>
+      <a href="videos.html" onclick="closeMenu()">Videos</a>
+      <a href="history.html" onclick="closeMenu()">History &amp; Growth</a>
+      <a href="pricing.html" onclick="closeMenu()">Pricing</a>
+      <a href="company.html" onclick="closeMenu()">Company</a>
+      <a href="contact.html" class="active" onclick="closeMenu()">Contact</a>
+      <div class="lang-switch"><a href="../contact.html">KO</a><a href="contact.html" class="active">EN</a><a href="../ja/contact.html">日本語</a><a href="../zh/contact.html">中文</a></div>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <video autoplay muted loop playsinline poster="../assets/video/hero-contact-poster.jpg">
+    <source src="../assets/video/hero-contact.mp4" type="video/mp4" />
+  </video>
+  <div class="container">
+    <div class="kicker">CONTACT</div>
+    <h1>Contact &amp; Consultation</h1>
+    <p>Request a demo or a technical consultation below. We'll respond within 1 business day. Email: parkfund@naver.com · Tel: +82-2-588-2844</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <form action="#" method="post" onsubmit="return handleSubmit(event)">
+      <div class="form-row">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" name="name" placeholder="Jane Doe" required />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" placeholder="you@example.com" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label>Areas of Interest (select all that apply)</label>
+          <div class="checkbox-row">
+            <label><input type="checkbox" name="interest" value="Quantrea-X Product" /><span>Quantrea-X Product</span></label>
+            <label><input type="checkbox" name="interest" value="Investment" /><span>Investment</span></label>
+          </div>
+        </div>
+        <div>
+          <label for="time">Preferred Consultation Time</label>
+          <input id="time" name="time" placeholder="e.g. Weekdays 2–5pm KST" />
+        </div>
+      </div>
+      <div>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Briefly describe your current situation and goals." required></textarea>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <button class="btn btn-primary" type="submit">Request Consultation</button>
+        <span class="meta" style="color:var(--muted);font-size:13px">By submitting, you agree to our basic personal data handling policy.</span>
+      </div>
+      <div id="submit-status"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Quantrea-x. All rights reserved. · Powered by GHVIA Inc.</div>
+    <div class="meta">Privacy Policy · Terms of Service</div>
+  </div>
+</footer>
+
+<script src="../js/site.js"></script>
+
+</body>
+</html>
