@@ -116,7 +116,49 @@ async function loadVideos() {
   }
 }
 
+// 배경음악: 페이지 전체 공용 (뮤트 여부는 localStorage로 기억, 실제 재생은 사용자 클릭 후 시작)
+function initBgm() {
+  const audio = document.createElement('audio');
+  audio.id = 'bgmAudio';
+  audio.src = '/assets/audio/bgm.mp3';
+  audio.loop = true;
+  audio.preload = 'none';
+  audio.volume = 0.35;
+  document.body.appendChild(audio);
+
+  const btn = document.createElement('button');
+  btn.id = 'bgmToggle';
+  btn.className = 'bgm-toggle';
+  btn.setAttribute('aria-label', 'background music toggle');
+  btn.textContent = '🔇';
+  document.body.appendChild(btn);
+
+  const setPlayingUI = (playing) => {
+    btn.classList.toggle('playing', playing);
+    btn.textContent = playing ? '🔊' : '🔇';
+  };
+
+  btn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play().then(() => {
+        setPlayingUI(true);
+        localStorage.setItem('bgmPlaying', '1');
+      }).catch(() => {});
+    } else {
+      audio.pause();
+      setPlayingUI(false);
+      localStorage.setItem('bgmPlaying', '0');
+    }
+  });
+
+  // 이전에 재생 중이었다면 이번 페이지에서도 자동 재개 시도 (브라우저 정책상 차단될 수 있음 — 그 경우 버튼을 눌러야 함)
+  if (localStorage.getItem('bgmPlaying') === '1') {
+    audio.play().then(() => setPlayingUI(true)).catch(() => setPlayingUI(false));
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  initBgm();
   loadVideos();
 
   if ('serviceWorker' in navigator) {

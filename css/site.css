@@ -829,6 +829,48 @@ footer .container {
   gap: 12px;
 }
 
+/* Background music toggle */
+.bgm-toggle {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 60;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(15, 22, 40, 0.85);
+  backdrop-filter: blur(6px);
+  color: var(--fg);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.bgm-toggle:hover {
+  border-color: var(--brand);
+  transform: scale(1.06);
+}
+
+.bgm-toggle.playing {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+@media (max-width: 768px) {
+  .bgm-toggle {
+    right: 14px;
+    bottom: 14px;
+    width: 42px;
+    height: 42px;
+    font-size: 17px;
+  }
+}
+
 a:focus-visible, button:focus-visible {
   outline: 2px solid var(--brand-hover);
   outline-offset: 2px;
