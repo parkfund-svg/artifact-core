@@ -432,6 +432,107 @@ img {
   opacity: 0.85;
 }
 
+/* Numbered method cards (전략빌더/매매선/예측봉/AI봇 등) */
+.num-card .num {
+  font-size: 40px;
+  font-weight: 800;
+  color: rgba(111, 175, 199, 0.28);
+  line-height: 1;
+  margin-bottom: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+.num-card .quote {
+  color: var(--brand);
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+/* Tag pills row (주식 · 선물 · 코인 · 글로벌 금융시장 등) */
+.tag-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+
+.tag-row.center {
+  justify-content: center;
+}
+
+/* Flow strip (전략 설계 → AI 분석 → 백테스트 → 자동 실행) */
+.flow-strip {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  font-weight: 700;
+  color: var(--fg);
+  margin: 16px 0;
+}
+
+.flow-strip.center {
+  justify-content: center;
+}
+
+.flow-strip .step {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  font-size: 14px;
+}
+
+.flow-strip .arrow {
+  color: var(--accent);
+}
+
+/* Highlight intro block (about.html 상단 소개 문단) */
+.intro-block {
+  max-width: 760px;
+  margin: 0 auto 48px;
+}
+
+.intro-block p {
+  margin: 0 0 14px;
+  color: var(--fg);
+}
+
+.highlight {
+  color: var(--brand);
+  font-weight: 800;
+  font-size: 18px;
+  margin: 22px 0;
+}
+
+.intro-block .muted-note {
+  color: var(--muted);
+}
+
+/* Closing Q&A list (about.html 하단) */
+.qa-list {
+  display: grid;
+  gap: 14px;
+  margin: 0 0 32px;
+}
+
+.qa-list .qa-item {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.qa-list .qa-item .q {
+  color: var(--fg);
+  font-weight: 700;
+}
+
+.qa-list .qa-item .a {
+  color: var(--brand);
+  font-weight: 800;
+}
+
 /* Concept box */
 .concept-box {
   background: rgba(111, 175, 199, 0.08);
