@@ -1,13 +1,10 @@
-const CACHE_NAME = 'artifact-core-v6';
+const CACHE_NAME = 'ghvia-quantrea-x-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/css/style.css',
-  '/assets/logo.png',
-  '/assets/main.png',
-  '/assets/main2.png',
-  '/assets/main3.png',
-  '/assets/main4.png'
+  '/css/site.css',
+  '/js/site.js',
+  '/assets/logo-ghvia.png'
 ];
 
 self.addEventListener('install', event => {
@@ -17,10 +14,16 @@ self.addEventListener('install', event => {
   );
 });
 
+// 네트워크 우선: 온라인이면 항상 최신 페이지를 받아오고, 오프라인일 때만 캐시로 대체
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => response || fetch(event.request))
+    fetch(event.request)
+      .then(response => {
+        const clone = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+        return response;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
 

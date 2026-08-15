@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>핵심 기능 | 퀀트라엑스</title>
+  <meta name="description" content="노드 기반 전략빌더, 차트 매매선, AI 예측봉, AI봇 자동매매 등 퀀트라엑스의 핵심 기능.">
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="assets/logo-ghvia.png" />
+  <meta name="theme-color" content="#6fafc7" />
+  <link rel="apple-touch-icon" href="assets/logo-ghvia.png" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-ghvia.png" alt="지비아 로고" />
+      GHVIA
+    </a>
+    <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="메뉴">☰</button>
+    <nav class="menu" id="mainMenu" aria-label="주요 메뉴">
+      <a href="about.html" onclick="closeMenu()">퀀트라엑스란</a>
+      <a href="features.html" class="active" onclick="closeMenu()">기능</a>
+      <a href="videos.html" onclick="closeMenu()">영상</a>
+      <a href="history.html" onclick="closeMenu()">연혁·목표</a>
+      <a href="pricing.html" onclick="closeMenu()">가격</a>
+      <a href="company.html" onclick="closeMenu()">회사소개</a>
+      <a href="contact.html" onclick="closeMenu()">문의</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <video autoplay muted loop playsinline poster="assets/video/hero-features-poster.jpg">
+    <source src="assets/video/hero-features.mp4" type="video/mp4" />
+  </video>
+  <div class="container">
+    <div class="kicker">FEATURES</div>
+    <h1>퀀트라엑스의 핵심 기능</h1>
+    <p>각 기능은 독립적으로도, 조합해서도 사용할 수 있습니다.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid cols-2">
+      <div class="card">
+        <span class="badge">전략빌더</span>
+        <h3>노드 기반 전략빌더</h3>
+        <p>매매 아이디어를 채팅으로 설명하면 AI가 조건·지표·주문 노드로 조립합니다. 만든 전략은 즉시 백테스트되고, "손절이 없어서 손실이 컸다"처럼 결과를 바탕으로 대화하며 다듬을 수 있습니다.</p>
+      </div>
+      <div class="card">
+        <span class="badge">매매선</span>
+        <h3>차트 매매선</h3>
+        <p>차트에 진입선·익절선·손절선을 그리면 조건 충족 시 자동으로 체결됩니다. 분할매수처럼 여러 진입을 태그로 구분해 각각 다른 익절선에 연결할 수 있습니다.</p>
+      </div>
+      <div class="card">
+        <span class="badge badge-accent">예측봉</span>
+        <h3>AI 예측봉</h3>
+        <p>다음 캔들의 흐름을 AI가 예측해 차트에 표시합니다. 5개짜리 통계 기반 예측은 5회 반복 후 다수결로 최종안을 뽑아 신뢰도를 높였고, 1개짜리 예측은 진행 중인 봉의 마감가와 다음 봉을 함께 예측해 "예측봉 규칙매매"로 자동 실행할 수도 있습니다.</p>
+      </div>
+      <div class="card">
+        <span class="badge">AI봇</span>
+        <h3>AI봇 자동매매</h3>
+        <p>재미나이·클로드·GPT 중 원하는 엔진을 선택해 호가창과 시세를 분석시키고, 실시간으로 매매 판단을 실행합니다. 신호를 그대로 따를지, 반전시킬지, 시장 국면에 따라 자동으로 바꿀지도 설정할 수 있습니다.</p>
+      </div>
+      <div class="card">
+        <span class="badge">국면 판단</span>
+        <h3>시장 국면 기반 전략 전환</h3>
+        <p>추세 강도·변동성 지표를 정량적으로 조합해 지금이 강세장·약세장·횡보장인지 판단합니다. 국면에 맞는 전략만 자동으로 작동해, 안 맞는 장에서 억지로 매매하는 것을 막습니다.</p>
+      </div>
+      <div class="card">
+        <span class="badge">무인 운영</span>
+        <h3>다중 계좌 무인 자동매매</h3>
+        <p>여러 계좌에 서로 다른 전략을 걸어두면 화면을 보지 않아도 백그라운드에서 계속 실행됩니다. 계좌·전략별로 포지션이 독립적으로 관리돼 서로 섞이지 않습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>&copy; 2026 Quantrea-x. All rights reserved. · Powered by (주) 지비아</div>
+    <div class="meta">개인정보 처리방침 · 이용약관</div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>퀀트라엑스란 | (주) 지비아</title>
+  <meta name="description" content="퀀트라엑스(Quantrea-x)는 전략을 설계하는 AI와 로컬 실행 엔진을 결합한 AI 자동매매 프로그램입니다.">
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="assets/logo-ghvia.png" />
+  <meta name="theme-color" content="#6fafc7" />
+  <link rel="apple-touch-icon" href="assets/logo-ghvia.png" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-ghvia.png" alt="지비아 로고" />
+      GHVIA
+    </a>
+    <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="메뉴">☰</button>
+    <nav class="menu" id="mainMenu" aria-label="주요 메뉴">
+      <a href="about.html" class="active" onclick="closeMenu()">퀀트라엑스란</a>
+      <a href="features.html" onclick="closeMenu()">기능</a>
+      <a href="videos.html" onclick="closeMenu()">영상</a>
+      <a href="history.html" onclick="closeMenu()">연혁·목표</a>
+      <a href="pricing.html" onclick="closeMenu()">가격</a>
+      <a href="company.html" onclick="closeMenu()">회사소개</a>
+      <a href="contact.html" onclick="closeMenu()">문의</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <video autoplay muted loop playsinline poster="assets/video/hero-about-poster.jpg">
+    <source src="assets/video/hero-about.mp4" type="video/mp4" />
+  </video>
+  <div class="container">
+    <div class="kicker">ABOUT QUANTREA-X</div>
+    <h1>퀀트라엑스란 무엇인가</h1>
+    <p>전략을 설계하는 AI와, 그 전략을 빠르고 일관되게 실행하는 로컬 엔진을 결합한 AI 자동매매 프로그램입니다. 코딩을 몰라도 매매 아이디어를 말로 설명하면 실행 가능한 전략으로 바뀝니다.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="concept-box">
+      <h3>💡 퀀트라엑스가 작동하는 방식</h3>
+      <div class="grid cols-3">
+        <div>
+          <strong class="label">1. 설계 (AI)</strong>
+          <p>자연어로 설명한 매매 아이디어를 AI가 분석해, 노드(조건·지표·주문)로 구성된 전략 그래프로 조립합니다.</p>
+        </div>
+        <div>
+          <strong class="label">2. 검증 (백테스트)</strong>
+          <p>조립된 전략을 과거 시세로 즉시 백테스트하고, 결과(승률·샤프비율·MDD)를 AI가 다시 확인해 전략을 개선합니다.</p>
+        </div>
+        <div>
+          <strong class="label">3. 실행 (로컬 엔진)</strong>
+          <p>검증된 전략 그래프는 이후 추가 AI 호출 없이 로컬 엔진이 반복 실행 — 빠르고 비용이 낮으며, 화면이 없어도 계속 동작합니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:16px">실제 화면</h3>
+    <div class="proof-clip">
+      <video autoplay muted loop playsinline>
+        <source src="assets/video/demo-quantrea-x.mp4" type="video/mp4" />
+      </video>
+      <div class="proof-caption">AI 매매 시작 → 실시간 매수 체결 → 우상향 진행, 실제 계좌 화면 그대로입니다.</div>
+    </div>
+
+    <div class="grid cols-4">
+      <div class="card">
+        <h3>노드 기반 전략</h3>
+        <p>코딩 없이 조건·지표·주문 노드를 조합해 나만의 매매 로직을 만듭니다.</p>
+      </div>
+      <div class="card">
+        <h3>즉시 백테스트</h3>
+        <p>전략을 만들자마자 실제 시세로 검증하고, 대화하듯 결과를 개선합니다.</p>
+      </div>
+      <div class="card">
+        <h3>무인 실행</h3>
+        <p>화면을 보지 않아도 계좌별로 전략·매매선·AI봇이 백그라운드에서 계속 작동합니다.</p>
+      </div>
+      <div class="card">
+        <h3>다중 자산군</h3>
+        <p>국내·해외 선물/옵션, 국내/해외 주식, 코인까지 한 프로그램에서 관리합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>&copy; 2026 Quantrea-x. All rights reserved. · Powered by (주) 지비아</div>
+    <div class="meta">개인정보 처리방침 · 이용약관</div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+
+</body>
+</html>

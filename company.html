@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>회사 소개 | (주) 지비아</title>
+  <meta name="description" content="하이브리드 AI 트레이딩을 만드는 (주) 지비아 회사 소개.">
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="assets/logo-ghvia.png" />
+  <meta name="theme-color" content="#6fafc7" />
+  <link rel="apple-touch-icon" href="assets/logo-ghvia.png" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-ghvia.png" alt="지비아 로고" />
+      GHVIA
+    </a>
+    <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="메뉴">☰</button>
+    <nav class="menu" id="mainMenu" aria-label="주요 메뉴">
+      <a href="about.html" onclick="closeMenu()">퀀트라엑스란</a>
+      <a href="features.html" onclick="closeMenu()">기능</a>
+      <a href="videos.html" onclick="closeMenu()">영상</a>
+      <a href="history.html" onclick="closeMenu()">연혁·목표</a>
+      <a href="pricing.html" onclick="closeMenu()">가격</a>
+      <a href="company.html" class="active" onclick="closeMenu()">회사소개</a>
+      <a href="contact.html" onclick="closeMenu()">문의</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <video autoplay muted loop playsinline poster="assets/video/hero-company-poster.jpg">
+    <source src="assets/video/hero-company.mp4" type="video/mp4" />
+  </video>
+  <div class="container">
+    <div class="kicker">COMPANY</div>
+    <h1>회사 소개</h1>
+    <p>하이브리드 AI 트레이딩을 만드는 (주) 지비아입니다.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>회사 개요</h3>
+        <div class="info-row"><strong>회사명</strong>(주) 지비아</div>
+        <div class="info-row"><strong>대표</strong>박규현</div>
+        <div class="info-row"><strong>주소</strong>서울시 금천구 가산디지털로9길 46 210호</div>
+        <div class="info-row"><strong>연락처</strong>02-588-2844 / 010-7600-2927</div>
+        <div class="info-row"><strong>이메일</strong><a href="mailto:parkfund@naver.com">parkfund@naver.com</a></div>
+      </div>
+      <div class="card">
+        <h3>경영 철학</h3>
+        <p style="margin-bottom:10px">지비아는 고객의 투자 성공을 위한 AI 기술 솔루션 개발에 전념합니다.</p>
+        <p style="margin-bottom:10px">정교하고 오류 없는 알고리즘만이 고객에게 안정적인 자산 증식의 기회를 제공한다는 사명 아래, 기술적 완벽성을 핵심 가치로 삼습니다.</p>
+        <p>급변하는 금융 시장 환경에 맞춰, 고객의 시스템이 항상 시장의 최전선에서 경쟁력을 갖추도록 개발을 멈추지 않습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>&copy; 2026 Quantrea-x. All rights reserved. · Powered by (주) 지비아</div>
+    <div class="meta">개인정보 처리방침 · 이용약관</div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>문의 및 상담 | 퀀트라엑스</title>
+  <meta name="description" content="퀀트라엑스 데모 신청 및 기술 상담 문의.">
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="assets/logo-ghvia.png" />
+  <meta name="theme-color" content="#6fafc7" />
+  <link rel="apple-touch-icon" href="assets/logo-ghvia.png" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-ghvia.png" alt="지비아 로고" />
+      GHVIA
+    </a>
+    <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="메뉴">☰</button>
+    <nav class="menu" id="mainMenu" aria-label="주요 메뉴">
+      <a href="about.html" onclick="closeMenu()">퀀트라엑스란</a>
+      <a href="features.html" onclick="closeMenu()">기능</a>
+      <a href="videos.html" onclick="closeMenu()">영상</a>
+      <a href="history.html" onclick="closeMenu()">연혁·목표</a>
+      <a href="pricing.html" onclick="closeMenu()">가격</a>
+      <a href="company.html" onclick="closeMenu()">회사소개</a>
+      <a href="contact.html" class="active" onclick="closeMenu()">문의</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <video autoplay muted loop playsinline poster="assets/video/hero-contact-poster.jpg">
+    <source src="assets/video/hero-contact.mp4" type="video/mp4" />
+  </video>
+  <div class="container">
+    <div class="kicker">CONTACT</div>
+    <h1>문의 및 상담</h1>
+    <p>데모 신청 또는 기술 상담을 남겨주세요. 1영업일 내 답변 드립니다. Email: <a href="mailto:parkfund@naver.com">parkfund@naver.com</a> · Tel: 02-588-2844</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <form action="#" method="post" onsubmit="return handleSubmit(event)">
+      <div class="form-row">
+        <div>
+          <label for="name">이름</label>
+          <input id="name" name="name" placeholder="홍길동" required />
+        </div>
+        <div>
+          <label for="email">이메일</label>
+          <input id="email" type="email" name="email" placeholder="you@example.com" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label>관심사항 (복수선택 가능)</label>
+          <div class="checkbox-row">
+            <label><input type="checkbox" name="interest" value="제품 퀀트라엑스" /><span>제품 퀀트라엑스</span></label>
+            <label><input type="checkbox" name="interest" value="투자" /><span>투자</span></label>
+          </div>
+        </div>
+        <div>
+          <label for="time">상담 희망 시간</label>
+          <input id="time" name="time" placeholder="예: 평일 오후 2–5시" />
+        </div>
+      </div>
+      <div>
+        <label for="message">요청 내용</label>
+        <textarea id="message" name="message" placeholder="현재 상황과 목표를 간단히 적어주세요." required></textarea>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <button class="btn btn-primary" type="submit">상담 신청</button>
+        <span class="meta" style="color:var(--muted);font-size:13px">제출 시 기본 개인정보 처리에 동의한 것으로 간주합니다.</span>
+      </div>
+      <div id="submit-status"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>&copy; 2026 Quantrea-x. All rights reserved. · Powered by (주) 지비아</div>
+    <div class="meta">개인정보 처리방침 · 이용약관</div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+
+</body>
+</html>
