@@ -164,6 +164,12 @@ const CAROUSEL_SLIDES = [
   { type: 'photo', src: 'assets/mobile/phone-4.png', alt: '모바일 화면 4' },
   { type: 'photo', src: 'assets/mobile/phone-5.png', alt: '모바일 화면 5' },
   { type: 'photo', src: 'assets/mobile/phone-6.png', alt: '모바일 화면 6' },
+  { type: 'photo', src: 'assets/mobile/phone-7.png', alt: '모바일 화면 7' },
+  { type: 'photo', src: 'assets/mobile/phone-8.png', alt: '모바일 화면 8' },
+  { type: 'photo', src: 'assets/mobile/phone-9.png', alt: '모바일 화면 9' },
+  { type: 'photo', src: 'assets/mobile/phone-10.png', alt: '모바일 화면 10' },
+  { type: 'photo', src: 'assets/mobile/phone-11.png', alt: '모바일 화면 11' },
+  { type: 'photo', src: 'assets/mobile/phone-12.png', alt: '모바일 화면 12' },
   { type: 'logo', src: 'assets/logo-ghvia.png', alt: 'GHVIA' },
 ];
 let carouselIndex = 0;
