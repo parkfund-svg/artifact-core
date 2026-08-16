@@ -116,6 +116,130 @@ async function loadVideos() {
   }
 }
 
+// 기능소개 영상 모달 (전략빌더 등 기능 카드용)
+function ensureFeatureVideoModal() {
+  if (document.getElementById('featureVideoModal')) return;
+  const modal = document.createElement('div');
+  modal.className = 'feature-video-modal';
+  modal.id = 'featureVideoModal';
+  modal.innerHTML = `
+    <div class="feature-video-modal-inner">
+      <button class="feature-video-close" onclick="closeFeatureVideo()">✕</button>
+      <video id="featureVideoPlayer" controls playsinline></video>
+    </div>
+  `;
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeFeatureVideo(); });
+  document.body.appendChild(modal);
+}
+
+function openFeatureVideo(el) {
+  ensureFeatureVideoModal();
+  const src = el.getAttribute('data-video');
+  const poster = el.getAttribute('data-poster');
+  const player = document.getElementById('featureVideoPlayer');
+  player.src = src;
+  if (poster) player.poster = poster;
+  document.getElementById('featureVideoModal').classList.add('open');
+  player.play().catch(() => {});
+}
+
+function closeFeatureVideo() {
+  const modal = document.getElementById('featureVideoModal');
+  const player = document.getElementById('featureVideoPlayer');
+  if (player) { player.pause(); player.currentTime = 0; }
+  if (modal) modal.classList.remove('open');
+}
+
+document.addEventListener('keydown', (e) => {
+  const modal = document.getElementById('featureVideoModal');
+  if (modal && modal.classList.contains('open') && e.key === 'Escape') closeFeatureVideo();
+});
+
+// 모바일 스크린샷 캐러셀 (모바일 지원 카드용)
+const CAROUSEL_SLIDES = [
+  { type: 'logo', src: 'assets/logo-quantrea-x.png', alt: 'Quantrea-X' },
+  { type: 'photo', src: 'assets/mobile/phone-1.png', alt: '모바일 화면 1' },
+  { type: 'photo', src: 'assets/mobile/phone-2.png', alt: '모바일 화면 2' },
+  { type: 'photo', src: 'assets/mobile/phone-3.png', alt: '모바일 화면 3' },
+  { type: 'photo', src: 'assets/mobile/phone-4.png', alt: '모바일 화면 4' },
+  { type: 'photo', src: 'assets/mobile/phone-5.png', alt: '모바일 화면 5' },
+  { type: 'photo', src: 'assets/mobile/phone-6.png', alt: '모바일 화면 6' },
+  { type: 'logo', src: 'assets/logo-ghvia.png', alt: 'GHVIA' },
+];
+let carouselIndex = 0;
+
+function ensureCarouselModal() {
+  if (document.getElementById('carouselModal')) return;
+
+  const modal = document.createElement('div');
+  modal.className = 'carousel-modal';
+  modal.id = 'carouselModal';
+
+  const slidesHtml = CAROUSEL_SLIDES.map(s =>
+    `<div class="carousel-slide${s.type === 'logo' ? ' logo-slide' : ''}"><img src="${s.src}" alt="${s.alt}" /></div>`
+  ).join('');
+  const dotsHtml = CAROUSEL_SLIDES.map((_, i) =>
+    `<button class="dot${i === 0 ? ' active' : ''}" onclick="carouselGoTo(${i})" aria-label="slide ${i + 1}"></button>`
+  ).join('');
+
+  modal.innerHTML = `
+    <div class="carousel-modal-inner">
+      <button class="carousel-close" onclick="closeCarousel()">✕</button>
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="carouselTrack">${slidesHtml}</div>
+        <button class="carousel-nav prev" onclick="carouselPrev()">‹</button>
+        <button class="carousel-nav next" onclick="carouselNext()">›</button>
+      </div>
+      <div class="carousel-dots" id="carouselDots">${dotsHtml}</div>
+    </div>
+  `;
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeCarousel(); });
+  document.body.appendChild(modal);
+}
+
+function updateCarousel() {
+  const track = document.getElementById('carouselTrack');
+  if (track) track.style.transform = `translateX(-${carouselIndex * 100}%)`;
+  document.querySelectorAll('#carouselDots .dot').forEach((d, i) => {
+    d.classList.toggle('active', i === carouselIndex);
+  });
+}
+
+function carouselGoTo(i) {
+  carouselIndex = i;
+  updateCarousel();
+}
+
+function carouselPrev() {
+  carouselIndex = (carouselIndex - 1 + CAROUSEL_SLIDES.length) % CAROUSEL_SLIDES.length;
+  updateCarousel();
+}
+
+function carouselNext() {
+  carouselIndex = (carouselIndex + 1) % CAROUSEL_SLIDES.length;
+  updateCarousel();
+}
+
+function openCarousel() {
+  ensureCarouselModal();
+  carouselIndex = 0;
+  updateCarousel();
+  document.getElementById('carouselModal').classList.add('open');
+}
+
+function closeCarousel() {
+  const modal = document.getElementById('carouselModal');
+  if (modal) modal.classList.remove('open');
+}
+
+document.addEventListener('keydown', (e) => {
+  const modal = document.getElementById('carouselModal');
+  if (!modal || !modal.classList.contains('open')) return;
+  if (e.key === 'Escape') closeCarousel();
+  if (e.key === 'ArrowLeft') carouselPrev();
+  if (e.key === 'ArrowRight') carouselNext();
+});
+
 // 배경음악: 페이지 전체 공용 (뮤트 여부는 localStorage로 기억, 실제 재생은 사용자 클릭 후 시작)
 function initBgm() {
   const audio = document.createElement('audio');

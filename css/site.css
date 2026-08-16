@@ -829,6 +829,236 @@ footer .container {
   gap: 12px;
 }
 
+/* Feature video card + modal player */
+.feature-video-card {
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.feature-video-card:hover {
+  border-color: var(--brand);
+  transform: translateY(-2px);
+}
+
+.play-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--brand);
+  margin-left: 8px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.feature-video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(3, 10, 26, 0.92);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.feature-video-modal.open {
+  display: flex;
+}
+
+.feature-video-modal-inner {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  background: #000;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.feature-video-modal-inner video {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.feature-video-close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  background: rgba(15, 22, 40, 0.85);
+  border: 1px solid var(--border);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.feature-video-close:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+@media (max-width: 768px) {
+  .feature-video-close {
+    top: 8px;
+    right: 8px;
+    z-index: 2;
+  }
+}
+
+/* Mobile screenshot carousel modal */
+.carousel-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(3, 10, 26, 0.92);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.carousel-modal.open {
+  display: flex;
+}
+
+.carousel-modal-inner {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+}
+
+.carousel-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 486 / 936;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #05070d;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.carousel-slide.logo-slide img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(15, 22, 40, 0.85);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.carousel-nav:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+.carousel-nav.prev { left: -8px; }
+.carousel-nav.next { right: -8px; }
+
+.carousel-dots {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.carousel-dots .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--border);
+  cursor: pointer;
+  padding: 0;
+  border: none;
+}
+
+.carousel-dots .dot.active {
+  background: var(--brand);
+  width: 18px;
+  border-radius: 4px;
+}
+
+.carousel-close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  background: rgba(15, 22, 40, 0.85);
+  border: 1px solid var(--border);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.carousel-close:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+@media (max-width: 480px) {
+  .carousel-modal-inner {
+    max-width: 260px;
+  }
+
+  .carousel-close {
+    top: 8px;
+    right: 8px;
+    z-index: 3;
+  }
+
+  .carousel-nav.prev { left: 4px; }
+  .carousel-nav.next { right: 4px; }
+}
+
 /* Background music toggle */
 .bgm-toggle {
   position: fixed;
