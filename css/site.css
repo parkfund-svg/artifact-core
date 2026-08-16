@@ -934,13 +934,14 @@ footer .container {
 .carousel-modal-inner {
   position: relative;
   width: 100%;
-  max-width: 340px;
+  max-width: 480px;
 }
 
 .carousel-viewport {
   position: relative;
   width: 100%;
-  aspect-ratio: 486 / 936;
+  max-height: 86vh;
+  aspect-ratio: 800 / 1421;
   border-radius: 18px;
   overflow: hidden;
   background: var(--bg-card);

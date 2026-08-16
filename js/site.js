@@ -157,20 +157,9 @@ document.addEventListener('keydown', (e) => {
 
 // 모바일 스크린샷 캐러셀 (모바일 지원 카드용)
 const CAROUSEL_SLIDES = [
-  { type: 'logo', src: 'assets/logo-quantrea-x.png', alt: 'Quantrea-X' },
-  { type: 'photo', src: 'assets/mobile/phone-1.png', alt: '모바일 화면 1' },
-  { type: 'photo', src: 'assets/mobile/phone-2.png', alt: '모바일 화면 2' },
-  { type: 'photo', src: 'assets/mobile/phone-3.png', alt: '모바일 화면 3' },
-  { type: 'photo', src: 'assets/mobile/phone-4.png', alt: '모바일 화면 4' },
-  { type: 'photo', src: 'assets/mobile/phone-5.png', alt: '모바일 화면 5' },
-  { type: 'photo', src: 'assets/mobile/phone-6.png', alt: '모바일 화면 6' },
-  { type: 'photo', src: 'assets/mobile/phone-7.png', alt: '모바일 화면 7' },
-  { type: 'photo', src: 'assets/mobile/phone-8.png', alt: '모바일 화면 8' },
-  { type: 'photo', src: 'assets/mobile/phone-9.png', alt: '모바일 화면 9' },
-  { type: 'photo', src: 'assets/mobile/phone-10.png', alt: '모바일 화면 10' },
-  { type: 'photo', src: 'assets/mobile/phone-11.png', alt: '모바일 화면 11' },
-  { type: 'photo', src: 'assets/mobile/phone-12.png', alt: '모바일 화면 12' },
-  { type: 'logo', src: 'assets/logo-ghvia.png', alt: 'GHVIA' },
+  { type: 'photo', src: 'assets/mobile/mobile-grid-1.jpg', alt: '모바일 화면 모음 1' },
+  { type: 'photo', src: 'assets/mobile/mobile-grid-2.jpg', alt: '모바일 화면 모음 2' },
+  { type: 'photo', src: 'assets/mobile/mobile-grid-3.jpg', alt: '모바일 화면 모음 3' },
 ];
 let carouselIndex = 0;
 
