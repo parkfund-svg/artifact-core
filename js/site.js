@@ -156,10 +156,11 @@ document.addEventListener('keydown', (e) => {
 });
 
 // 모바일 스크린샷 캐러셀 (모바일 지원 카드용)
-const CAROUSEL_SLIDES = [
-  { type: 'photo', src: 'assets/mobile/mobile-pair-1.jpg', alt: 'AI 봇 편집 화면' },
-  { type: 'photo', src: 'assets/mobile/mobile-pair-2.jpg', alt: 'AI 봇 실행 상태 화면' },
-];
+const CAROUSEL_SLIDES = Array.from({ length: 12 }, (_, i) => ({
+  type: 'photo',
+  src: `assets/mobile/mobile-pair-${String(i + 1).padStart(2, '0')}.jpg`,
+  alt: `모바일 화면 세트 ${i + 1}`,
+}));
 let carouselIndex = 0;
 
 function ensureCarouselModal() {
