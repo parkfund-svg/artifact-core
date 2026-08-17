@@ -157,9 +157,8 @@ document.addEventListener('keydown', (e) => {
 
 // 모바일 스크린샷 캐러셀 (모바일 지원 카드용)
 const CAROUSEL_SLIDES = [
-  { type: 'photo', src: 'assets/mobile/mobile-grid-1.jpg', alt: '모바일 화면 모음 1' },
-  { type: 'photo', src: 'assets/mobile/mobile-grid-2.jpg', alt: '모바일 화면 모음 2' },
-  { type: 'photo', src: 'assets/mobile/mobile-grid-3.jpg', alt: '모바일 화면 모음 3' },
+  { type: 'photo', src: 'assets/mobile/mobile-shot-1.jpg', alt: 'AI 봇 실행 상태 화면' },
+  { type: 'photo', src: 'assets/mobile/mobile-shot-2.jpg', alt: 'AI 봇 편집 화면' },
 ];
 let carouselIndex = 0;
 
