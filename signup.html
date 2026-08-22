@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>회원가입 | 퀀트라엑스</title>
+  <meta name="description" content="퀀트라엑스 계정을 만드세요.">
+  <link rel="canonical" href="https://artifact-core.com/signup.html" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="assets/logo-ghvia.png" />
+  <meta name="theme-color" content="#6fafc7" />
+  <link rel="apple-touch-icon" href="assets/logo-ghvia.png" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-ghvia.png" alt="GHVIA" />
+      GHVIA
+    </a>
+    <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="menu">☰</button>
+    <nav class="menu" id="mainMenu" aria-label="main menu">
+      <a href="about.html" onclick="closeMenu()">퀀트라엑스란</a>
+      <a href="features.html" onclick="closeMenu()">기능</a>
+      <a href="videos.html" onclick="closeMenu()">영상</a>
+      <a href="history.html" onclick="closeMenu()">연혁·목표</a>
+      <a href="pricing.html" onclick="closeMenu()">가격</a>
+      <a href="company.html" onclick="closeMenu()">회사소개</a>
+      <a href="contact.html" onclick="closeMenu()">문의</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="auth-card">
+      <h1 style="text-align:center;margin-bottom:8px">회원가입</h1>
+      <p style="text-align:center;color:var(--muted);margin-bottom:32px">퀀트라엑스 계정을 만들어보세요.</p>
+
+      <div class="card">
+        <form onsubmit="return handleSignup(event)">
+          <div style="margin-bottom:16px">
+            <label for="email">이메일</label>
+            <input id="email" type="email" required placeholder="you@example.com" />
+          </div>
+          <div style="margin-bottom:16px">
+            <label for="password">비밀번호</label>
+            <input id="password" type="password" required placeholder="6자 이상" />
+          </div>
+          <div style="margin-bottom:20px">
+            <label for="password2">비밀번호 확인</label>
+            <input id="password2" type="password" required placeholder="비밀번호 다시 입력" />
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">회원가입</button>
+          <div id="authStatus" style="margin-top:12px;font-size:13px;color:var(--muted)"></div>
+        </form>
+
+        <div class="auth-divider">또는</div>
+
+        <button class="btn btn-block" onclick="handleGoogleAuth()">Google 계정으로 가입</button>
+
+        <p style="text-align:center;margin-top:20px;font-size:14px">이미 계정이 있으신가요? <a href="login.html">로그인</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Quantrea-x. All rights reserved. · Powered by (주) 지비아</div>
+    <div class="meta">개인정보 처리방침 · 이용약관</div>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+<script src="js/site.js"></script>
+
+</body>
+</html>

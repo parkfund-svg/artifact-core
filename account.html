@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>마이페이지 | 퀀트라엑스</title>
+  <meta name="description" content="퀀트라엑스 내 계정 정보.">
+  <link rel="canonical" href="https://artifact-core.com/account.html" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="assets/logo-ghvia.png" />
+  <meta name="theme-color" content="#6fafc7" />
+  <link rel="apple-touch-icon" href="assets/logo-ghvia.png" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-ghvia.png" alt="GHVIA" />
+      GHVIA
+    </a>
+    <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="menu">☰</button>
+    <nav class="menu" id="mainMenu" aria-label="main menu">
+      <a href="about.html" onclick="closeMenu()">퀀트라엑스란</a>
+      <a href="features.html" onclick="closeMenu()">기능</a>
+      <a href="videos.html" onclick="closeMenu()">영상</a>
+      <a href="history.html" onclick="closeMenu()">연혁·목표</a>
+      <a href="pricing.html" onclick="closeMenu()">가격</a>
+      <a href="company.html" onclick="closeMenu()">회사소개</a>
+      <a href="contact.html" onclick="closeMenu()">문의</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container" style="max-width:640px">
+    <h1>마이페이지</h1>
+    <div class="card" id="accountCard">
+      <p style="color:var(--muted)">불러오는 중...</p>
+    </div>
+
+    <h3 style="margin:48px 0 16px">프로그램 다운로드</h3>
+    <div class="card">
+      <p style="color:var(--muted)">준비 중입니다. 출시되면 로그인하신 계정으로 여기서 다운로드하고 결제할 수 있습니다.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Quantrea-x. All rights reserved. · Powered by (주) 지비아</div>
+    <div class="meta">개인정보 처리방침 · 이용약관</div>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+<script src="js/site.js"></script>
+
+</body>
+</html>

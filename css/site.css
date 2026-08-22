@@ -151,6 +151,74 @@ img {
   }
 }
 
+/* Auth widget (로그인/회원가입/계정) */
+.auth-widget {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 12px;
+  margin-left: 4px;
+  border-left: 1px solid var(--border);
+}
+
+.auth-widget .auth-link {
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.auth-widget .auth-signup-btn {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.auth-widget .auth-user {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--fg);
+  white-space: nowrap;
+}
+
+.auth-widget .auth-logout {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.auth-widget .auth-logout:hover {
+  color: var(--fg);
+  border-color: var(--brand);
+}
+
+@media (max-width: 768px) {
+  .auth-widget {
+    border-left: none;
+    border-top: 1px solid var(--border);
+    padding: 12px 0 0;
+    margin: 8px 0 0;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+.auth-card {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.auth-divider {
+  margin: 20px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 .mobile-menu-toggle {
   display: none;
   background: none;

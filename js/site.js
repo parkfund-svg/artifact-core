@@ -276,9 +276,152 @@ function initBgm() {
   }
 }
 
+// ===== 회원가입 / 로그인 (Firebase Authentication, HATS 프로젝트 공용) =====
+const firebaseConfig = {
+  apiKey: 'AIzaSyAzPrf9b4y2bAT_TB24Twdu9gu9i-sIV7k',
+  authDomain: 'hats-398d5.firebaseapp.com',
+  projectId: 'hats-398d5',
+  storageBucket: 'hats-398d5.firebasestorage.app',
+  messagingSenderId: '998297935635',
+  appId: '1:998297935635:web:b6e969f3fa0052f97884e6',
+};
+
+if (typeof firebase !== 'undefined' && !firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
+function authSignUp(email, password) {
+  return firebase.auth().createUserWithEmailAndPassword(email, password);
+}
+
+function authLogin(email, password) {
+  return firebase.auth().signInWithEmailAndPassword(email, password);
+}
+
+function authLoginGoogle() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  return firebase.auth().signInWithPopup(provider);
+}
+
+function authLogout() {
+  return firebase.auth().signOut().then(() => { window.location.href = 'index.html'; });
+}
+
+function authErrorMessage(err) {
+  const map = {
+    'auth/email-already-in-use': '이미 가입된 이메일입니다.',
+    'auth/invalid-email': '이메일 형식이 올바르지 않습니다.',
+    'auth/weak-password': '비밀번호는 6자 이상이어야 합니다.',
+    'auth/user-not-found': '가입되지 않은 이메일입니다.',
+    'auth/wrong-password': '비밀번호가 올바르지 않습니다.',
+    'auth/invalid-credential': '이메일 또는 비밀번호가 올바르지 않습니다.',
+    'auth/too-many-requests': '시도가 너무 많습니다. 잠시 후 다시 시도해주세요.',
+    'auth/popup-closed-by-user': '로그인 창이 닫혔습니다.',
+    'auth/network-request-failed': '네트워크 오류입니다. 연결을 확인해주세요.',
+  };
+  return map[err.code] || ('오류: ' + err.message);
+}
+
+async function handleLogin(e) {
+  e.preventDefault();
+  const status = document.getElementById('authStatus');
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  status.textContent = '로그인 중...';
+  try {
+    await authLogin(email, password);
+    window.location.href = 'account.html';
+  } catch (err) {
+    status.textContent = authErrorMessage(err);
+  }
+  return false;
+}
+
+async function handleSignup(e) {
+  e.preventDefault();
+  const status = document.getElementById('authStatus');
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const password2 = document.getElementById('password2').value;
+  if (password !== password2) {
+    status.textContent = '비밀번호가 일치하지 않습니다.';
+    return false;
+  }
+  if (password.length < 6) {
+    status.textContent = '비밀번호는 6자 이상이어야 합니다.';
+    return false;
+  }
+  status.textContent = '가입 처리 중...';
+  try {
+    await authSignUp(email, password);
+    window.location.href = 'account.html';
+  } catch (err) {
+    status.textContent = authErrorMessage(err);
+  }
+  return false;
+}
+
+async function handleGoogleAuth() {
+  const status = document.getElementById('authStatus');
+  try {
+    await authLoginGoogle();
+    window.location.href = 'account.html';
+  } catch (err) {
+    if (status) status.textContent = authErrorMessage(err);
+  }
+}
+
+function renderAuthWidget(user) {
+  const menu = document.getElementById('mainMenu');
+  if (!menu) return;
+  let widget = document.getElementById('authWidget');
+  if (!widget) {
+    widget = document.createElement('div');
+    widget.id = 'authWidget';
+    widget.className = 'auth-widget';
+    menu.appendChild(widget);
+  }
+  if (user) {
+    const name = user.displayName || (user.email ? user.email.split('@')[0] : '회원');
+    widget.innerHTML = `
+      <a href="account.html" class="auth-user">${name}님</a>
+      <button class="auth-logout" onclick="authLogout()">로그아웃</button>
+    `;
+  } else {
+    widget.innerHTML = `
+      <a href="login.html" class="auth-link">로그인</a>
+      <a href="signup.html" class="btn btn-primary auth-signup-btn">회원가입</a>
+    `;
+  }
+}
+
+function initAccountPage() {
+  const card = document.getElementById('accountCard');
+  if (!card) return;
+  firebase.auth().onAuthStateChanged(user => {
+    if (!user) {
+      window.location.href = 'login.html';
+      return;
+    }
+    const joined = user.metadata && user.metadata.creationTime
+      ? new Date(user.metadata.creationTime).toLocaleDateString('ko-KR')
+      : '-';
+    card.innerHTML = `
+      <div class="info-row"><strong>이메일</strong>${user.email || '-'}</div>
+      <div class="info-row"><strong>가입일</strong>${joined}</div>
+      <button class="btn" style="margin-top:16px" onclick="authLogout()">로그아웃</button>
+    `;
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initBgm();
   loadVideos();
+
+  if (typeof firebase !== 'undefined') {
+    firebase.auth().onAuthStateChanged(renderAuthWidget);
+  }
+  initAccountPage();
 
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
