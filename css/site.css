@@ -212,11 +212,81 @@ img {
   margin: 0 auto;
 }
 
+.auth-card.wide {
+  max-width: 560px;
+}
+
 .auth-divider {
   margin: 20px 0;
   text-align: center;
   color: var(--muted);
   font-size: 13px;
+}
+
+.form-section {
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.form-section:last-of-type {
+  margin-bottom: 20px;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.form-section h3 {
+  font-size: 15px;
+  margin: 0 0 4px;
+  color: var(--brand);
+}
+
+.form-section .form-section-desc {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.chip-group input[type="checkbox"],
+.chip-group input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.chip-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #171f33;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 0;
+  transition: all 0.15s;
+}
+
+.chip-group input:checked + label {
+  background: rgba(111, 175, 199, 0.15);
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+.chip-group input:focus-visible + label {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
 }
 
 .mobile-menu-toggle {

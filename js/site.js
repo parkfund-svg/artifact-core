@@ -351,9 +351,40 @@ async function handleSignup(e) {
     status.textContent = '비밀번호는 6자 이상이어야 합니다.';
     return false;
   }
+
+  // 개인정보/연락처/투자성향 (필드가 있는 페이지에서만 수집)
+  const nameEl = document.getElementById('name');
+  const birthDateEl = document.getElementById('birthDate');
+  const phoneEl = document.getElementById('phone');
+  const genderEl = document.querySelector('input[name="gender"]:checked');
+
+  if (nameEl && !nameEl.value.trim()) {
+    status.textContent = '성함을 입력해주세요.';
+    return false;
+  }
+  if (birthDateEl && !birthDateEl.value) {
+    status.textContent = '생년월일을 선택해주세요.';
+    return false;
+  }
+  if (document.querySelector('input[name="gender"]') && !genderEl) {
+    status.textContent = '성별을 선택해주세요.';
+    return false;
+  }
+  if (phoneEl && !phoneEl.value.trim()) {
+    status.textContent = '휴대전화 번호를 입력해주세요.';
+    return false;
+  }
+
   status.textContent = '가입 처리 중...';
   try {
-    await authSignUp(email, password);
+    const cred = await authSignUp(email, password);
+    await saveUserProfile(cred.user, {
+      name: nameEl ? nameEl.value.trim() : '',
+      birthDate: birthDateEl ? birthDateEl.value : '',
+      gender: genderEl ? genderEl.value : '',
+      phoneNumber: phoneEl ? phoneEl.value.trim() : '',
+      investmentInterests: Array.from(document.querySelectorAll('#interestGroup input:checked')).map(i => i.value),
+    });
     window.location.href = 'account.html';
   } catch (err) {
     status.textContent = authErrorMessage(err);
@@ -361,10 +392,23 @@ async function handleSignup(e) {
   return false;
 }
 
+function saveUserProfile(user, profile) {
+  if (typeof firebase === 'undefined' || !firebase.firestore || !user) return Promise.resolve();
+  return firebase.firestore().collection('users').doc(user.uid).set({
+    uid: user.uid,
+    email: user.email,
+    isEmailVerified: !!user.emailVerified,
+    isPhoneVerified: false,
+    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+    ...profile,
+  }, { merge: true }).catch(err => console.log('프로필 저장 실패:', err));
+}
+
 async function handleGoogleAuth() {
   const status = document.getElementById('authStatus');
   try {
-    await authLoginGoogle();
+    const result = await authLoginGoogle();
+    await saveUserProfile(result.user, {});
     window.location.href = 'account.html';
   } catch (err) {
     if (status) status.textContent = authErrorMessage(err);
@@ -395,10 +439,12 @@ function renderAuthWidget(user) {
   }
 }
 
+const GENDER_LABEL = { M: '남성', F: '여성', O: '기타' };
+
 function initAccountPage() {
   const card = document.getElementById('accountCard');
   if (!card) return;
-  firebase.auth().onAuthStateChanged(user => {
+  firebase.auth().onAuthStateChanged(async user => {
     if (!user) {
       window.location.href = 'login.html';
       return;
@@ -406,11 +452,30 @@ function initAccountPage() {
     const joined = user.metadata && user.metadata.creationTime
       ? new Date(user.metadata.creationTime).toLocaleDateString('ko-KR')
       : '-';
-    card.innerHTML = `
-      <div class="info-row"><strong>이메일</strong>${user.email || '-'}</div>
-      <div class="info-row"><strong>가입일</strong>${joined}</div>
-      <button class="btn" style="margin-top:16px" onclick="authLogout()">로그아웃</button>
-    `;
+
+    let profile = {};
+    try {
+      if (firebase.firestore) {
+        const doc = await firebase.firestore().collection('users').doc(user.uid).get();
+        if (doc.exists) profile = doc.data();
+      }
+    } catch (err) {
+      console.log('프로필 불러오기 실패:', err);
+    }
+
+    const rows = [
+      `<div class="info-row"><strong>이메일</strong>${user.email || '-'}</div>`,
+      `<div class="info-row"><strong>가입일</strong>${joined}</div>`,
+    ];
+    if (profile.name) rows.push(`<div class="info-row"><strong>성함</strong>${profile.name}</div>`);
+    if (profile.birthDate) rows.push(`<div class="info-row"><strong>생년월일</strong>${profile.birthDate}</div>`);
+    if (profile.gender) rows.push(`<div class="info-row"><strong>성별</strong>${GENDER_LABEL[profile.gender] || profile.gender}</div>`);
+    if (profile.phoneNumber) rows.push(`<div class="info-row"><strong>휴대전화</strong>${profile.phoneNumber}</div>`);
+    if (profile.investmentInterests && profile.investmentInterests.length) {
+      rows.push(`<div class="info-row"><strong>관심분야</strong>${profile.investmentInterests.join(', ')}</div>`);
+    }
+
+    card.innerHTML = rows.join('') + `<button class="btn" style="margin-top:16px" onclick="authLogout()">로그아웃</button>`;
   });
 }
 
