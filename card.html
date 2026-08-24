@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>박규현 | (주) 지비아 온라인 명함</title>
+  <meta name="description" content="(주) 지비아 대표 박규현 온라인 명함. AI 자동매매 플랫폼 퀀트라엑스(Quantrea-X)를 만듭니다.">
+  <link rel="canonical" href="https://artifact-core.com/card.html" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="박규현 | (주) 지비아" />
+  <meta property="og:description" content="AI 자동매매 플랫폼 퀀트라엑스(Quantrea-X)를 만듭니다. 연락처를 저장하세요." />
+  <meta property="og:image" content="https://artifact-core.com/assets/logo-ghvia.png" />
+  <meta property="og:url" content="https://artifact-core.com/card.html" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="assets/logo-ghvia.png" />
+  <meta name="theme-color" content="#6fafc7" />
+  <link rel="apple-touch-icon" href="assets/logo-ghvia.png" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav" style="justify-content:center">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-ghvia.png" alt="GHVIA" />
+      GHVIA
+    </a>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="auth-card">
+      <div class="card" style="text-align:center;padding:40px 28px">
+        <img src="assets/logo-ghvia.png" alt="GHVIA" style="width:72px;height:72px;margin:0 auto 20px;border-radius:16px" />
+        <h1 style="margin:0 0 4px;font-size:24px">박규현</h1>
+        <p style="color:var(--brand);font-weight:700;margin:0 0 4px">대표이사</p>
+        <p style="color:var(--muted);margin:0 0 24px">(주) 지비아 · GHVIA</p>
+        <p style="color:var(--muted);font-size:13px;margin-bottom:28px">AI 자동매매 플랫폼 퀀트라엑스(Quantrea-X)를 만듭니다.</p>
+
+        <div style="display:grid;gap:10px">
+          <a href="tel:0225882844" class="btn btn-block">전화 걸기 · 02-588-2844</a>
+          <a href="tel:01076002927" class="btn btn-block">휴대전화 · 010-7600-2927</a>
+          <a href="sms:01076002927" class="btn btn-block">문자 보내기</a>
+          <a href="mailto:parkfund@naver.com" class="btn btn-block">이메일 · parkfund@naver.com</a>
+          <a href="https://map.naver.com/p/search/서울시 금천구 가산디지털로9길 46" target="_blank" rel="noopener" class="btn btn-block">오시는 길 · 서울 금천구 가산디지털로9길 46 210호</a>
+          <a href="https://artifact-core.com" class="btn btn-block">웹사이트 · artifact-core.com</a>
+        </div>
+
+        <button class="btn btn-primary btn-block" style="margin-top:20px" onclick="saveContact()">연락처 저장</button>
+        <button class="btn btn-block" style="margin-top:10px" onclick="shareCard()">명함 공유하기</button>
+
+        <div style="margin-top:32px">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&bgcolor=17-25-42&color=229-234-240&data=https://artifact-core.com/card.html" alt="온라인 명함 QR 코드" width="180" height="180" style="margin:0 auto;border-radius:8px;background:var(--bg-card);padding:8px" />
+          <p style="color:var(--muted);font-size:12px;margin-top:10px">QR 코드를 스캔하면 이 명함으로 바로 연결됩니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>© 2026 Quantrea-x. All rights reserved. · Powered by (주) 지비아</div>
+    <div class="meta">개인정보 처리방침 · 이용약관</div>
+  </div>
+</footer>
+
+<script>
+  function saveContact() {
+    const vcard = [
+      'BEGIN:VCARD',
+      'VERSION:3.0',
+      'N:박규현;;;;',
+      'FN:박규현',
+      'ORG:(주) 지비아;GHVIA',
+      'TITLE:대표이사',
+      'TEL;TYPE=CELL:010-7600-2927',
+      'TEL;TYPE=WORK:02-588-2844',
+      'EMAIL:parkfund@naver.com',
+      'ADR;TYPE=WORK:;;서울시 금천구 가산디지털로9길 46 210호;;;;',
+      'URL:https://artifact-core.com',
+      'END:VCARD',
+    ].join('\r\n');
+    const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = '박규현_지비아.vcf';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  function shareCard() {
+    const shareData = {
+      title: '박규현 | (주) 지비아',
+      text: 'AI 자동매매 플랫폼 퀀트라엑스(Quantrea-X)를 만듭니다.',
+      url: window.location.href,
+    };
+    if (navigator.share) {
+      navigator.share(shareData).catch(() => {});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('명함 링크가 복사되었습니다.');
+      });
+    }
+  }
+</script>
+
+<script src="js/site.js"></script>
+
+</body>
+</html>
