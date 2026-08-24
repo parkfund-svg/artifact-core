@@ -89,7 +89,7 @@ ${data.message}
 ${SpreadsheetApp.getActiveSpreadsheet().getUrl()}
 
 관리자 페이지:
-https://artifact-core.com/admin.html
+https://ghvia.com/admin.html
 비밀번호: artifact2025
       `;
 
