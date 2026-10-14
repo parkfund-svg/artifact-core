@@ -88,9 +88,7 @@ ${data.message}
 스프레드시트에서 전체 내역 확인:
 ${SpreadsheetApp.getActiveSpreadsheet().getUrl()}
 
-관리자 페이지:
-https://ghvia.com/admin.html
-비밀번호: artifact2025
+
       `;
 
       GmailApp.sendEmail(ADMIN_EMAIL, subject, body);
