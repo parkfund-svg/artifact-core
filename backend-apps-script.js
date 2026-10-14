@@ -5,7 +5,7 @@
 const ADMIN_EMAIL = 'parkfund@naver.com';
 const SHEET_NAME = '상담신청';
 const VIDEO_SHEET_NAME = '매매영상';
-const ADMIN_PASSWORD = 'artifact2025'; // admin.html / videos-admin.html과 동일하게 유지
+const ADMIN_PASSWORD = 'CHANGE_ME'; // 실제 비밀번호는 Apps Script 편집기에만 입력 // admin.html / videos-admin.html과 동일하게 유지
 
 // 스프레드시트 가져오기 또는 생성
 function getSheet() {
