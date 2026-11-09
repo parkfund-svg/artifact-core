@@ -1049,6 +1049,17 @@ footer .container {
   gap: 12px;
 }
 
+footer .biz-info {
+  display: grid;
+  gap: 4px;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+footer .biz-info strong {
+  color: var(--fg);
+}
+
 /* Feature video card + modal player */
 .feature-video-card {
   cursor: pointer;
