@@ -1391,3 +1391,8 @@ a:focus-visible, button:focus-visible {
     min-height: 70vh;
   }
 }
+
+/* 구독 결제 (2026-11-09) */
+.billing-notice { margin: 16px 0; padding-left: 18px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+.billing-agree { display: flex; gap: 8px; align-items: center; margin: 12px 0 16px; font-size: 14px; cursor: pointer; }
+.btn.disabled { opacity: 0.55; pointer-events: none; }

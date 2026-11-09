@@ -48,7 +48,7 @@
   <div class="container">
     <div class="kicker">PRICING</div>
     <h1>가격</h1>
-    <p>개인 투자자를 위한 구독 요금제입니다. 결제 연동은 준비 중이며, 지금은 문의를 통해 안내해드립니다.</p>
+    <p>전략 만들기·백테스트는 무료, 신호 알림부터 자동매매·AI까지 필요한 만큼 구독하세요. 카드 등록 후 매달 자동 결제되며 언제든 해지할 수 있습니다.</p>
   </div>
 </section>
 
@@ -56,27 +56,32 @@
   <div class="container">
     <div class="pricing">
       <div class="price-card">
-        
-        <h3>Basic</h3>
+        <h3>전략빌더</h3>
+        <div class="price">무료</div>
+        <ul><li>블록으로 전략 만들기(무제한)</li><li>백테스트·분봉별 검증</li><li>AI로 전략 만들기 월 몇 회</li><li>매매선 긋기·기본 도구</li></ul>
+        <a href="signup.html" class="btn btn-block">무료로 시작하기</a>
+      </div>
+      <div class="price-card">
+        <h3>신호 알림</h3>
         <div class="price">₩120,000 <span class="unit">/ 월</span></div>
-        <ul><li>전략빌더 기본 노드</li><li>모의투자 무제한 검증</li><li>단일봉 AI 예측 조회</li></ul>
-        <a href="contact.html" class="btn btn-block">문의하기</a>
+        <ul><li>전략빌더 전체</li><li>증권사 시세 연결 실시간 신호 알림</li><li>매매선에 닿으면 알림</li><li>주문은 직접(코인은 연결 없이 알림)</li></ul>
+        <a href="subscribe.html?plan=signal" data-plan="signal" class="btn btn-block">구독하기</a>
       </div>
       <div class="price-card featured">
         <span class="badge badge-accent">인기</span>
-        <h3>Pro</h3>
+        <h3>자동매매</h3>
         <div class="price">₩290,000 <span class="unit">/ 월</span></div>
-        <ul><li>AI봇 자동매매 (재미나이)</li><li>차트 매매선 자동 체결</li><li>실계좌 연동 1개</li><li>5봉 예측봉 앙상블</li></ul>
-        <a href="contact.html" class="btn btn-primary btn-block">문의하기</a>
+        <ul><li>신호 알림 전체</li><li>전략대로 자동 주문</li><li>매매선 자동 체결</li><li>증권사 실계좌·모의계좌 연동</li></ul>
+        <a href="subscribe.html?plan=auto" data-plan="auto" class="btn btn-primary btn-block">구독하기</a>
       </div>
       <div class="price-card">
-        
-        <h3>Premium</h3>
+        <h3>퀀트라 전체</h3>
         <div class="price">₩480,000 <span class="unit">/ 월</span></div>
-        <ul><li>프리미엄 노드 전체 이용</li><li>다중 계좌 무인 자동매매</li><li>AI 엔진 선택 (클로드·GPT 포함)</li><li>예측봉 규칙매매, 우선 지원</li></ul>
-        <a href="contact.html" class="btn btn-block">문의하기</a>
+        <ul><li>자동매매 전체</li><li>AI봇 자동매매</li><li>피봇 자동 매매선·예측봉</li><li>프리미엄 블록·AI 넉넉히, 우선 지원</li></ul>
+        <a href="subscribe.html?plan=full" data-plan="full" class="btn btn-block">구독하기</a>
       </div>
     </div>
+    <p style="color:var(--muted);font-size:13px;margin-top:16px">검증된 고급 전략은 구독 등급과 별도로 추가 구매할 수 있습니다(준비 중).</p>
 
     <div class="card" style="margin-top:32px">
       <span class="badge badge-accent">기관 · 고액자산가 전용</span>
@@ -135,7 +140,10 @@
 
 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-functions-compat.js"></script>
 <script src="js/site.js"></script>
+<script src="js/billing.js"></script>
 
 </body>
 </html>

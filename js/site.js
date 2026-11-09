@@ -276,14 +276,19 @@ function initBgm() {
   }
 }
 
-// ===== 회원가입 / 로그인 (Firebase Authentication, HATS 프로젝트 공용) =====
+// ===== 회원가입 / 로그인 (Firebase Authentication, Quantrea-X 운영 프로젝트 공용) =====
+// 2026-08-23: 개발자 개인 테스트 프로젝트(hats-398d5)에서 고객용 운영
+// 프로젝트(quantrea-x-prod)로 전환 — 실제 고객 계정/데이터가 개발자 테스트
+// 데이터와 섞이지 않도록 분리. 이 파일에 등록된 홈페이지 전용 웹앱은
+// quantrea-x-prod에 새로 만든 것(HATS 데스크톱/안드로이드 앱이 쓰는
+// android/windows 앱과는 별개 등록).
 const firebaseConfig = {
-  apiKey: 'AIzaSyAzPrf9b4y2bAT_TB24Twdu9gu9i-sIV7k',
-  authDomain: 'hats-398d5.firebaseapp.com',
-  projectId: 'hats-398d5',
-  storageBucket: 'hats-398d5.firebasestorage.app',
-  messagingSenderId: '998297935635',
-  appId: '1:998297935635:web:b6e969f3fa0052f97884e6',
+  apiKey: 'AIzaSyAXdr62sA_JV3W6rJtN5CnptlTKGbpzfm8',
+  authDomain: 'quantrea-x-prod.firebaseapp.com',
+  projectId: 'quantrea-x-prod',
+  storageBucket: 'quantrea-x-prod.firebasestorage.app',
+  messagingSenderId: '872196187137',
+  appId: '1:872196187137:web:f3f3cb1ef07835fdf84c00',
 };
 
 if (typeof firebase !== 'undefined' && !firebase.apps.length) {
@@ -330,7 +335,7 @@ async function handleLogin(e) {
   status.textContent = '로그인 중...';
   try {
     await authLogin(email, password);
-    window.location.href = 'account.html';
+    goAfterLogin();
   } catch (err) {
     status.textContent = authErrorMessage(err);
   }
@@ -385,7 +390,7 @@ async function handleSignup(e) {
       phoneNumber: phoneEl ? phoneEl.value.trim() : '',
       investmentInterests: Array.from(document.querySelectorAll('#interestGroup input:checked')).map(i => i.value),
     });
-    window.location.href = 'account.html';
+    goAfterLogin();
   } catch (err) {
     status.textContent = authErrorMessage(err);
   }
@@ -409,7 +414,7 @@ async function handleGoogleAuth() {
   try {
     const result = await authLoginGoogle();
     await saveUserProfile(result.user, {});
-    window.location.href = 'account.html';
+    goAfterLogin();
   } catch (err) {
     if (status) status.textContent = authErrorMessage(err);
   }
@@ -437,6 +442,12 @@ function renderAuthWidget(user) {
       <a href="signup.html" class="btn btn-primary auth-signup-btn">회원가입</a>
     `;
   }
+}
+
+// 2026-11-09: 로그인/가입 후 돌아갈 곳 — ?next=subscribe.html?plan=... (같은 사이트 안의 페이지만 허용)
+function goAfterLogin() {
+  const next = new URLSearchParams(location.search).get('next') || '';
+  window.location.href = /^[a-z0-9_-]+\.html(\?[A-Za-z0-9=&_.-]*)?$/.test(next) ? next : 'account.html';
 }
 
 const GENDER_LABEL = { M: '남성', F: '여성', O: '기타' };

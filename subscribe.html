@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>구독 결제 | 퀀트라엑스</title>
+  <meta name="description" content="퀀트라엑스 구독 결제.">
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="https://ghvia.com/subscribe.html" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="assets/logo-ghvia.png" />
+  <meta name="theme-color" content="#6fafc7" />
+  <link rel="apple-touch-icon" href="assets/logo-ghvia.png" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-ghvia.png" alt="GHVIA" />
+      GHVIA
+    </a>
+    <button class="mobile-menu-toggle" onclick="toggleMenu()" aria-label="menu">☰</button>
+    <nav class="menu" id="mainMenu" aria-label="main menu">
+      <a href="about.html" onclick="closeMenu()">퀀트라엑스란</a>
+      <a href="features.html" onclick="closeMenu()">기능</a>
+      <a href="videos.html" onclick="closeMenu()">영상</a>
+      <a href="history.html" onclick="closeMenu()">연혁·목표</a>
+      <a href="pricing.html" onclick="closeMenu()">가격</a>
+      <a href="company.html" onclick="closeMenu()">회사소개</a>
+      <a href="contact.html" onclick="closeMenu()">문의</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="auth-card">
+      <div class="card" id="subscribeBox">
+        <p style="color:var(--muted)">불러오는 중...</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="biz-info">
+      <div><strong>지비아(GHVIA)</strong> · 자동매매 프로그램 퀀트라엑스(Quantrea-X)</div>
+      <div>상호 주식회사 더클래스인베스트먼트(지비아) · 대표 박규현 · 사업자등록번호 243-88-02831</div>
+      <div>주소 서울특별시 금천구 디지털로9길 46, 2층 210호(이앤씨드림타워7차)</div>
+      <div>TEL 02-522-1060 · HP 010-3270-6273 · FAX 02-6944-8260 · parkfund@naver.com</div>
+      <div>© 2026 GHVIA. All rights reserved.</div>
+    </div>
+    <div class="meta">개인정보 처리방침 · 이용약관</div>
+  </div>
+</footer>
+
+<script src="https://js.tosspayments.com/v2/standard"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-functions-compat.js"></script>
+<script src="js/site.js"></script>
+<script src="js/billing.js"></script>
+
+</body>
+</html>
