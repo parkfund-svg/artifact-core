@@ -3,7 +3,7 @@
 // 이 파일은 화면만 그린다. 가격 표시는 안내용이고 실제 금액은 서버 표(functions/plans.js)가 정한다.
 
 // ⚠ 지금은 토스 공개 테스트 키(실제 돈 안 나감). 계약 후 라이브 키(live_ck_...)로 교체.
-const TOSS_CLIENT_KEY = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq';
+const TOSS_CLIENT_KEY = 'test_ck_c19xNfdNOUxHQkg7EuOv2o7C5zo4olkFoW'; // 우리 상점 테스트 키(2026-11-12) — 서버 TOSS_SECRET_KEY(test_sk)와 짝
 const FUNCTIONS_REGION = 'asia-northeast3';
 
 const QX_PLANS = {
