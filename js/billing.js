@@ -12,6 +12,11 @@ const QX_PLANS = {
   auto: { name: '자동매매', amount: 290000 },
   full: { name: '퀀트라 전체', amount: 480000 },
 };
+// 결제 주기 (2026-11-11): 연간 = 월 × 10 ('2개월 무료') — 서버 functions/plans.js와 같은 규칙
+const QX_CYCLES = {
+  month: { label: '월간', unit: '월', mult: 1 },
+  year: { label: '연간', unit: '년', mult: 10 },
+};
 
 const STATUS_LABEL = { active: '이용 중', past_due: '결제 실패(재시도 중)', canceled: '해지됨' };
 
@@ -96,12 +101,17 @@ async function initSubscribePage() {
     location.href = 'pricing.html';
     return;
   }
+  let cycle = params.get('cycle') === 'year' ? 'year' : 'month';
 
   box.innerHTML = `
     <h3>${plan.name}</h3>
-    <div class="price">${won(plan.amount)} <span class="unit">/ 월</span></div>
+    <div class="cycle-toggle" role="radiogroup" aria-label="결제 주기" style="display:flex;gap:8px;margin:8px 0 12px">
+      <button type="button" class="btn" data-cycle="month">월간</button>
+      <button type="button" class="btn" data-cycle="year">연간 <small style="color:var(--accent,#e2ad30)">2개월 무료</small></button>
+    </div>
+    <div class="price" id="priceLine"></div>
     <ul class="billing-notice">
-      <li>카드를 한 번 등록하면 <strong>오늘 첫 결제</strong> 후 <strong>매달 같은 날 자동 결제</strong>됩니다.</li>
+      <li id="cycleNotice"></li>
       <li>언제든 마이페이지에서 해지할 수 있고, 해지해도 이미 결제한 기간은 끝까지 이용할 수 있습니다.</li>
       <li>이미 구독 중이면 카드만 바뀌고, 다른 등급을 고르면 다음 결제일부터 바뀝니다(이번 달 추가 결제 없음).</li>
       <li>결제 계정: ${escapeHtml(user.email || '')}</li>
@@ -111,6 +121,24 @@ async function initSubscribePage() {
     <button class="btn btn-primary btn-block" id="billingStart">카드 등록하고 결제하기</button>
     <p id="billingMsg" style="color:var(--danger);font-size:13px"></p>`;
 
+  const renderCycle = () => {
+    const c = QX_CYCLES[cycle];
+    document.getElementById('priceLine').innerHTML =
+      `${won(plan.amount * c.mult)} <span class="unit">/ ${c.unit}</span>` +
+      (cycle === 'year' ? ` <span class="unit">(월 ${won(Math.round(plan.amount * 10 / 12))} 꼴)</span>` : '');
+    document.getElementById('cycleNotice').innerHTML = cycle === 'year'
+      ? '카드를 한 번 등록하면 <strong>오늘 1년치를 결제</strong>하고 <strong>1년 뒤 같은 날 자동 결제</strong>됩니다.'
+      : '카드를 한 번 등록하면 <strong>오늘 첫 결제</strong> 후 <strong>매달 같은 날 자동 결제</strong>됩니다.';
+    box.querySelectorAll('[data-cycle]').forEach((b) => {
+      b.classList.toggle('btn-primary', b.dataset.cycle === cycle);
+      b.setAttribute('aria-checked', b.dataset.cycle === cycle ? 'true' : 'false');
+    });
+  };
+  box.querySelectorAll('[data-cycle]').forEach((b) => {
+    b.onclick = () => { cycle = b.dataset.cycle; renderCycle(); };
+  });
+  renderCycle();
+
   document.getElementById('billingStart').onclick = async () => {
     const msg = document.getElementById('billingMsg');
     if (!document.getElementById('billingAgree').checked) {
@@ -119,7 +147,7 @@ async function initSubscribePage() {
     }
     msg.textContent = '';
     try {
-      const prep = await callFn('prepareBilling', { tier });
+      const prep = await callFn('prepareBilling', { tier, cycle });
       const toss = TossPayments(TOSS_CLIENT_KEY);
       const payment = toss.payment({ customerKey: prep.customerKey });
       const base = location.origin + location.pathname;
@@ -160,7 +188,7 @@ async function initBillingCard() {
 
   const plan = QX_PLANS[s.tier] || { name: s.tier };
   const rows = [
-    `<div class="info-row"><strong>등급</strong>${plan.name} · ${won(plan.amount)} / 월</div>`,
+    `<div class="info-row"><strong>등급</strong>${plan.name} · ${s.cycle === 'year' ? `${won((plan.amount || 0) * 10)} / 년` : `${won(plan.amount)} / 월`}</div>`,
     `<div class="info-row"><strong>상태</strong>${STATUS_LABEL[s.status] || s.status}${s.cancelAtPeriodEnd ? ' · 해지 예약됨' : ''}</div>`,
     `<div class="info-row"><strong>${s.cancelAtPeriodEnd ? '이용 종료일' : '다음 결제일'}</strong>${ymd(s.currentPeriodEnd)}</div>`,
   ];
