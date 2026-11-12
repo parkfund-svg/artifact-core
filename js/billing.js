@@ -223,8 +223,30 @@ async function initBillingCard() {
 
 const AI_ENGINES = { claude: '클로드', gemini: '재미나이' };
 
-function aiLeftText(left) {
-  return left == null ? '무제한' : `${won(Math.max(0, left))} 남음`;
+// 고객에게는 원가(원)를 보여 주지 않고 '얼마나 썼는지' 막대만 (11-12 사용자 지시, 앱 ai_usage_meter와 같은 규칙)
+const AI_FREE_CREDIT_WON = 1000; // 서버 functions/ai.js FREE_CREDIT과 같은 값
+
+function aiRatio(u, engine) {
+  const used = u[engine + 'Won'] || 0;
+  const left = u[engine + 'LeftWon'];
+  if (left == null) return null; // 무제한
+  const isFree = !u.tier || u.tier === 'builder';
+  const total = isFree ? Math.max(left, AI_FREE_CREDIT_WON) : used + left;
+  if (total <= 0) return 1;
+  return Math.min(1, Math.max(0, 1 - left / total));
+}
+
+function aiBarRow(label, r) {
+  const pct = r == null ? 0 : Math.round(r * 100);
+  const color = r == null ? 'var(--brand,#6fafc7)' : r >= 1 ? 'var(--danger,#d9534f)' : r >= 0.8 ? '#f0a020' : 'var(--brand,#6fafc7)';
+  const text = r == null ? '무제한' : r >= 1 ? '다 씀' : `${pct}% 사용`;
+  return `<div class="info-row" style="display:flex;align-items:center;gap:12px">
+      <strong style="min-width:64px">${label}</strong>
+      <div style="flex:1;height:8px;border-radius:4px;background:var(--border,rgba(127,127,127,.2));overflow:hidden">
+        <div style="width:${r == null ? 100 : pct}%;height:100%;background:${color};opacity:${r == null ? .35 : 1}"></div>
+      </div>
+      <span style="min-width:64px;text-align:right;font-size:13px${r != null && r >= 1 ? ';color:var(--danger)' : ''}">${text}</span>
+    </div>`;
 }
 
 async function initAiCard() {
@@ -249,14 +271,16 @@ async function initAiCard() {
   const subscribed = s && ['active', 'past_due'].includes(s.status);
   const price = (u.topUp && u.topUp.price) || 0;
 
-  const rows = Object.keys(AI_ENGINES).map((e) =>
-    `<div class="info-row"><strong>${AI_ENGINES[e]}</strong>이번 달 ${won(u[e + 'Won'])} 사용 · ${aiLeftText(u[e + 'LeftWon'])}</div>`);
+  const rows = Object.keys(AI_ENGINES).map((e) => aiBarRow(AI_ENGINES[e], aiRatio(u, e)));
+  rows.push(`<p style="color:var(--muted);font-size:12px;margin:6px 0 0">${subscribed
+    ? '이번 달 AI 사용량입니다. 매월 1일에 초기화되고, 충전한 사용량은 다음 달로 이어집니다.'
+    : '가입 무료 AI 사용량입니다. 다 쓰면 정액제에 가입해 계속 쓸 수 있습니다.'}</p>`);
 
   let bottom;
   if (subscribed) {
     const card4 = s.card && s.card.number ? ` (${escapeHtml(s.card.number)})` : '';
     bottom = `<p style="color:var(--muted);font-size:13px;margin-top:16px">
-        충전 1회 ${won(price)} · 등록된 카드${card4}로 바로 결제됩니다. 충전한 사용량은 달이 바뀌어도 남습니다.</p>
+        충전 1회 ${won(price)} · 등록된 카드${card4}로 바로 결제되고, 사용 한도가 늘어납니다.</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         ${Object.keys(AI_ENGINES).map((e) => `<button class="btn" data-topup="${e}">${AI_ENGINES[e]} 충전</button>`).join('')}
       </div>
@@ -270,7 +294,7 @@ async function initAiCard() {
   card.querySelectorAll('[data-topup]').forEach((b) => {
     b.onclick = async () => {
       const engine = b.dataset.topup;
-      if (!confirm(`${AI_ENGINES[engine]} 사용량을 ${won(price)}에 충전할까요? 등록된 카드로 바로 결제됩니다.`)) return;
+      if (!confirm(`${AI_ENGINES[engine]} 사용 한도를 충전할까요? 등록된 카드로 ${won(price)}이 바로 결제됩니다.`)) return;
       const msg = document.getElementById('aiMsg');
       card.querySelectorAll('[data-topup]').forEach((x) => { x.disabled = true; });
       msg.style.color = 'var(--muted)';
@@ -280,7 +304,7 @@ async function initAiCard() {
         const receipt = r.receiptUrl ? ` <a href="${escapeHtml(r.receiptUrl)}" target="_blank" rel="noopener">영수증 보기</a>` : '';
         await initAiCard();
         const m2 = document.getElementById('aiMsg');
-        if (m2) { m2.style.color = ''; m2.innerHTML = `${AI_ENGINES[engine]} ${won(r.amount)} 충전 완료.${receipt}`; }
+        if (m2) { m2.style.color = ''; m2.innerHTML = `${AI_ENGINES[engine]} 사용 한도를 충전했습니다.${receipt}`; }
       } catch (err) {
         msg.style.color = 'var(--danger)';
         msg.textContent = fnErrorText(err);
