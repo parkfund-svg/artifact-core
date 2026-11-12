@@ -217,6 +217,79 @@ async function initBillingCard() {
   };
 }
 
+// ---------- 마이페이지 AI 사용량·충전 (account.html, 2026-11-12) ----------
+// 서버 topUpAi: 구독 중인 고객의 등록 카드로 바로 결제 → 고른 엔진 지갑에 적립(매달 초기화 안 됨).
+// 금액·적립액은 서버(functions/ai.js TOPUP)가 정한다. 화면은 getAiUsage가 준 값만 보여 준다.
+
+const AI_ENGINES = { claude: '클로드', gemini: '재미나이' };
+
+function aiLeftText(left) {
+  return left == null ? '무제한' : `${won(Math.max(0, left))} 남음`;
+}
+
+async function initAiCard() {
+  const card = document.getElementById('aiCard');
+  if (!card) return;
+  const user = await waitForUser();
+  if (!user) return;
+
+  let u;
+  try {
+    u = await callFn('getAiUsage');
+  } catch (err) {
+    card.innerHTML = `<p style="color:var(--muted)">사용량을 불러오지 못했습니다. (${escapeHtml(fnErrorText(err))})</p>`;
+    return;
+  }
+
+  let s = null;
+  try {
+    const doc = await firebase.firestore().collection('user_billing_status').doc(user.uid).get();
+    if (doc.exists) s = doc.data();
+  } catch (_) {}
+  const subscribed = s && ['active', 'past_due'].includes(s.status);
+  const price = (u.topUp && u.topUp.price) || 0;
+
+  const rows = Object.keys(AI_ENGINES).map((e) =>
+    `<div class="info-row"><strong>${AI_ENGINES[e]}</strong>이번 달 ${won(u[e + 'Won'])} 사용 · ${aiLeftText(u[e + 'LeftWon'])}</div>`);
+
+  let bottom;
+  if (subscribed) {
+    const card4 = s.card && s.card.number ? ` (${escapeHtml(s.card.number)})` : '';
+    bottom = `<p style="color:var(--muted);font-size:13px;margin-top:16px">
+        충전 1회 ${won(price)} · 등록된 카드${card4}로 바로 결제됩니다. 충전한 사용량은 달이 바뀌어도 남습니다.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        ${Object.keys(AI_ENGINES).map((e) => `<button class="btn" data-topup="${e}">${AI_ENGINES[e]} 충전</button>`).join('')}
+      </div>
+      <p id="aiMsg" style="font-size:13px"></p>`;
+  } else {
+    bottom = `<p style="color:var(--muted);font-size:13px;margin-top:16px">충전은 정액제 구독 중인 고객만 할 수 있습니다.</p>
+      <a class="btn btn-primary" href="pricing.html">요금제 보기</a>`;
+  }
+  card.innerHTML = rows.join('') + bottom;
+
+  card.querySelectorAll('[data-topup]').forEach((b) => {
+    b.onclick = async () => {
+      const engine = b.dataset.topup;
+      if (!confirm(`${AI_ENGINES[engine]} 사용량을 ${won(price)}에 충전할까요? 등록된 카드로 바로 결제됩니다.`)) return;
+      const msg = document.getElementById('aiMsg');
+      card.querySelectorAll('[data-topup]').forEach((x) => { x.disabled = true; });
+      msg.style.color = 'var(--muted)';
+      msg.textContent = '결제하는 중입니다...';
+      try {
+        const r = await callFn('topUpAi', { engine });
+        const receipt = r.receiptUrl ? ` <a href="${escapeHtml(r.receiptUrl)}" target="_blank" rel="noopener">영수증 보기</a>` : '';
+        await initAiCard();
+        const m2 = document.getElementById('aiMsg');
+        if (m2) { m2.style.color = ''; m2.innerHTML = `${AI_ENGINES[engine]} ${won(r.amount)} 충전 완료.${receipt}`; }
+      } catch (err) {
+        msg.style.color = 'var(--danger)';
+        msg.textContent = fnErrorText(err);
+        card.querySelectorAll('[data-topup]').forEach((x) => { x.disabled = false; });
+      }
+    };
+  });
+}
+
 // ---------- 요금제 페이지 버튼: 이미 구독 중이면 등급 변경으로 ----------
 
 async function initPricingButtons() {
@@ -252,5 +325,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof firebase === 'undefined') return;
   initSubscribePage();
   initBillingCard();
+  initAiCard();
   initPricingButtons();
 });
